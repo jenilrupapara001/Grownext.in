@@ -3,7 +3,7 @@
 import * as React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { 
   ChevronRight, 
   ShieldCheck, 
@@ -81,31 +81,27 @@ const itemVariants = {
 }
 
 export default function Home() {
-  const { scrollYProgress } = useScroll()
-  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0])
-  const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95])
-
   return (
     <div className="flex flex-col gap-24 pb-20">
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-16 lg:pt-24 min-h-[90vh] flex items-center">
         {/* Animated Background Elements */}
-        <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 -z-10 overflow-hidden">
           <motion.div 
             animate={{ 
-              scale: [1, 1.2, 1],
-              rotate: [0, 90, 0],
+              scale: [1, 1.1, 1],
+              opacity: [0.3, 0.5, 0.3],
             }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl" 
+            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+            className="absolute -top-24 -right-24 w-96 h-96 bg-primary/10 rounded-full blur-[100px] transform-gpu" 
           />
           <motion.div 
             animate={{ 
-              scale: [1, 1.5, 1],
-              rotate: [0, -90, 0],
+              scale: [1, 1.2, 1],
+              opacity: [0.2, 0.4, 0.2],
             }}
-            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-            className="absolute bottom-24 -left-24 w-[30rem] h-[30rem] bg-orange-200/20 rounded-full blur-3xl" 
+            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            className="absolute bottom-24 -left-24 w-[30rem] h-[30rem] bg-orange-200/20 rounded-full blur-[100px] transform-gpu" 
           />
         </div>
 
@@ -115,13 +111,13 @@ export default function Home() {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="max-w-2xl"
+              className="max-w-2xl transform-gpu"
             >
               <motion.div 
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-bold leading-6 text-primary ring-1 ring-inset ring-primary/20 mb-8"
+                className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-bold leading-6 text-primary ring-1 ring-inset ring-primary/20 mb-8 transform-gpu"
               >
                 <BadgeCheck className="h-4 w-4" />
                 Official Alibaba.com Channel Partner
@@ -133,7 +129,7 @@ export default function Home() {
                     initial={{ pathLength: 0 }}
                     animate={{ pathLength: 1 }}
                     transition={{ duration: 1, delay: 1 }}
-                    className="absolute -bottom-2 left-0 w-full h-3 text-primary/30" 
+                    className="absolute -bottom-2 left-0 w-full h-3 text-primary/30 transform-gpu" 
                     viewBox="0 0 100 10" 
                     preserveAspectRatio="none"
                   >
@@ -145,10 +141,10 @@ export default function Home() {
                 From onboarding to global lead generation — GrowNext helps Indian SMEs scale exports through strategic Alibaba.com partnership and certified expertise.
               </p>
               <div className="flex flex-wrap gap-6">
-                <Button asChild size="lg" className="rounded-full px-10 h-16 text-lg font-bold shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all active:scale-95">
+                <Button asChild size="lg" className="rounded-full px-10 h-16 text-lg font-bold shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all active:scale-95 transform-gpu">
                   <Link href="/contact">Get Free Consultation</Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="rounded-full px-10 h-16 text-lg font-bold border-2 hover:bg-gray-50 transition-all active:scale-95">
+                <Button asChild variant="outline" size="lg" className="rounded-full px-10 h-16 text-lg font-bold border-2 hover:bg-gray-50 transition-all active:scale-95 transform-gpu">
                   <Link href="/services">Our Services</Link>
                 </Button>
               </div>
@@ -156,7 +152,7 @@ export default function Home() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.8 }}
-                className="mt-12 flex items-center gap-x-6"
+                className="mt-12 flex items-center gap-x-6 transform-gpu"
               >
                 <div className="flex -space-x-3">
                   {[1, 2, 3, 4, 5].map((i) => (
@@ -204,29 +200,29 @@ export default function Home() {
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-950/40 via-transparent to-transparent" />
               </div>
               
-              {/* Floating Cards */}
-              <motion.div 
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-8 -left-12 bg-white p-6 rounded-3xl shadow-2xl border border-gray-100 max-w-[280px] z-20 hidden md:block"
-              >
-                <div className="flex items-center gap-4 mb-3">
-                  <div className="h-12 w-12 rounded-2xl bg-green-100 flex items-center justify-center text-green-600">
-                    <CheckCircle2 className="h-6 w-6" />
+                {/* Floating Cards */}
+                <motion.div 
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                  className="absolute -bottom-8 -left-12 bg-white p-6 rounded-3xl shadow-2xl border border-gray-100 max-w-[280px] z-20 hidden md:block transform-gpu"
+                >
+                  <div className="flex items-center gap-4 mb-3">
+                    <div className="h-12 w-12 rounded-2xl bg-green-100 flex items-center justify-center text-green-600">
+                      <CheckCircle2 className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <span className="font-extrabold text-gray-900 block text-lg">Verified Partner</span>
+                      <span className="text-xs font-bold text-green-600 uppercase tracking-wider">Active Status</span>
+                    </div>
                   </div>
-                  <div>
-                    <span className="font-extrabold text-gray-900 block text-lg">Verified Partner</span>
-                    <span className="text-xs font-bold text-green-600 uppercase tracking-wider">Active Status</span>
-                  </div>
-                </div>
-                <p className="text-sm text-gray-500 font-medium">Certified by Alibaba.com for SME Onboarding & Global Account Management.</p>
-              </motion.div>
-
-              <motion.div 
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute -top-8 -right-8 bg-white/90 backdrop-blur-md p-5 rounded-3xl shadow-2xl border border-white/20 z-20 hidden lg:block"
-              >
+                  <p className="text-sm text-gray-500 font-medium">Certified by Alibaba.com for SME Onboarding & Global Account Management.</p>
+                </motion.div>
+  
+                <motion.div 
+                  animate={{ y: [0, 10, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                  className="absolute -top-8 -right-8 bg-white/90 backdrop-blur-md p-5 rounded-3xl shadow-2xl border border-white/20 z-20 hidden lg:block transform-gpu"
+                >
                 <div className="flex flex-col items-center text-center">
                   <div className="text-3xl font-black text-primary mb-1">190+</div>
                   <div className="text-[10px] font-black uppercase tracking-widest text-gray-400">Countries Reached</div>

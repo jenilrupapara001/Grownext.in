@@ -97,138 +97,138 @@ const steps = [
 export default function Services() {
   return (
     <div className="flex flex-col gap-24 pb-20">
-      {/* Hero Section */}
-      <section className="relative pt-24 lg:pt-36 bg-gray-950 overflow-hidden min-h-[70vh] flex items-center">
-        {/* Animated Grid Background */}
-        <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #FF6600 1px, transparent 0)', backgroundSize: '40px 40px' }} />
-        
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-24 relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-4xl"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 text-primary text-sm font-black uppercase tracking-widest mb-8 border border-primary/30">
-              <Layers className="h-4 w-4" />
-              Full-Stack Export Agency
-            </div>
-            <h1 className="text-5xl font-black tracking-tight text-white sm:text-8xl mb-8 leading-[1]">
-              The <span className="text-primary">End-to-End</span> Growth Roadmap
-            </h1>
-            <p className="text-xl leading-9 text-gray-400 font-medium max-w-2xl">
-              We guide Indian manufacturers through every stage of their global selling journey. From initial validation to long-term account dominance, GrowNext is your dedicated machinery for export success.
-            </p>
-            
-            <div className="mt-12 flex flex-wrap gap-6">
-              <Button asChild size="lg" className="rounded-full px-10 h-16 text-lg font-bold">
-                <Link href="/contact">Download Service Guide</Link>
-              </Button>
-              <div className="flex items-center gap-4">
-                 <div className="flex -space-x-2">
-                    {[1,2,3].map(i => (
-                      <div key={i} className="h-10 w-10 rounded-full border-2 border-gray-900 bg-gray-800" />
-                    ))}
-                 </div>
-                 <p className="text-gray-500 font-bold text-sm">Certified by Alibaba.com</p>
+        {/* Hero Section */}
+        <section className="relative pt-24 lg:pt-36 bg-gray-950 overflow-hidden min-h-[70vh] flex items-center">
+          {/* Animated Grid Background */}
+          <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #FF6600 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+          
+          <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-24 relative z-10">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="max-w-4xl transform-gpu"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 text-primary text-sm font-black uppercase tracking-widest mb-8 border border-primary/30 transform-gpu">
+                <Layers className="h-4 w-4" />
+                Full-Stack Export Agency
               </div>
-            </div>
-          </motion.div>
-        </div>
-        
-        {/* Abstract shapes */}
-        <motion.div 
-          animate={{ rotate: 360 }}
-          transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
-          className="absolute -right-64 top-1/2 -translate-y-1/2 w-[40rem] h-[40rem] border-[40px] border-primary/5 rounded-full" 
-        />
-      </section>
+              <h1 className="text-5xl font-black tracking-tight text-white sm:text-8xl mb-8 leading-[1]">
+                The <span className="text-primary">End-to-End</span> Growth Roadmap
+              </h1>
+              <p className="text-xl leading-9 text-gray-400 font-medium max-w-2xl">
+                We guide Indian manufacturers through every stage of their global selling journey. From initial validation to long-term account dominance, GrowNext is your dedicated machinery for export success.
+              </p>
+              
+              <div className="mt-12 flex flex-wrap gap-6">
+                <Button asChild size="lg" className="rounded-full px-10 h-16 text-lg font-bold transform-gpu">
+                  <Link href="/contact">Download Service Guide</Link>
+                </Button>
+                <div className="flex items-center gap-4">
+                   <div className="flex -space-x-2">
+                      {[1,2,3].map(i => (
+                        <div key={i} className="h-10 w-10 rounded-full border-2 border-gray-900 bg-gray-800" />
+                      ))}
+                   </div>
+                   <p className="text-gray-500 font-bold text-sm">Certified by Alibaba.com</p>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+          
+          {/* Abstract shapes */}
+          <motion.div 
+            animate={{ rotate: 360 }}
+            transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+            className="absolute -right-64 top-1/2 -translate-y-1/2 w-[40rem] h-[40rem] border-[40px] border-primary/5 rounded-full transform-gpu" 
+          />
+        </section>
 
       {/* Steps Section - Ultra Detailed */}
       <section className="mx-auto max-w-7xl px-6 lg:px-8 relative">
         <div className="absolute top-0 left-8 bottom-0 w-px bg-gray-100 hidden lg:block" />
         
-        <div className="space-y-32">
-          {steps.map((step, index) => (
-            <motion.div
-              key={step.title}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8 }}
-              className={`flex flex-col lg:flex-row gap-16 lg:gap-24 items-start`}
-            >
-              {/* Vertical Step Marker */}
-              <div className="hidden lg:flex flex-col items-center gap-4 relative z-10 pt-2">
-                 <div className={`h-16 w-16 rounded-2xl ${step.color} text-white flex items-center justify-center font-black text-2xl shadow-xl`}>
-                    {index + 1}
-                 </div>
-                 <div className="flex-grow w-px bg-gray-100" />
-              </div>
-
-              <div className="lg:w-1/2 flex-grow">
-                <div className="flex items-center gap-4 mb-6 lg:hidden">
-                   <div className={`h-12 w-12 rounded-xl ${step.color} text-white flex items-center justify-center font-black text-xl shadow-lg`}>
+          <div className="space-y-32">
+            {steps.map((step, index) => (
+              <motion.div
+                key={step.title}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.8 }}
+                className={`flex flex-col lg:flex-row gap-16 lg:gap-24 items-start transform-gpu`}
+              >
+                {/* Vertical Step Marker */}
+                <div className="hidden lg:flex flex-col items-center gap-4 relative z-10 pt-2 transform-gpu">
+                   <div className={`h-16 w-16 rounded-2xl ${step.color} text-white flex items-center justify-center font-black text-2xl shadow-xl transform-gpu`}>
                       {index + 1}
                    </div>
-                   <div className="text-sm font-black text-primary uppercase tracking-widest">{step.step}</div>
+                   <div className="flex-grow w-px bg-gray-100" />
                 </div>
-                
-                <h2 className="text-4xl font-black tracking-tight text-gray-900 sm:text-5xl mb-8">
-                  {step.title}
-                </h2>
-                <p className="text-xl leading-9 text-gray-600 mb-10 font-medium">
-                  {step.description}
-                </p>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
-                  {step.details.map((detail) => (
-                    <div key={detail} className="flex items-start gap-3 p-4 rounded-2xl bg-gray-50 border border-transparent hover:border-gray-200 transition-all group">
-                      <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                      <span className="text-gray-700 font-bold text-sm leading-relaxed">{detail}</span>
+
+                <div className="lg:w-1/2 flex-grow transform-gpu">
+                  <div className="flex items-center gap-4 mb-6 lg:hidden transform-gpu">
+                     <div className={`h-12 w-12 rounded-xl ${step.color} text-white flex items-center justify-center font-black text-xl shadow-lg transform-gpu`}>
+                        {index + 1}
+                     </div>
+                     <div className="text-sm font-black text-primary uppercase tracking-widest">{step.step}</div>
+                  </div>
+                  
+                  <h2 className="text-4xl font-black tracking-tight text-gray-900 sm:text-5xl mb-8">
+                    {step.title}
+                  </h2>
+                  <p className="text-xl leading-9 text-gray-600 mb-10 font-medium">
+                    {step.description}
+                  </p>
+                  
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12 transform-gpu">
+                    {step.details.map((detail) => (
+                      <div key={detail} className="flex items-start gap-3 p-4 rounded-2xl bg-gray-50 border border-transparent hover:border-gray-200 transition-all group transform-gpu">
+                        <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                        <span className="text-gray-700 font-bold text-sm leading-relaxed">{detail}</span>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <div className="flex items-center gap-6 transform-gpu">
+                    <Button asChild variant="outline" className="rounded-full px-6 h-12 font-bold group border-2 transform-gpu">
+                      <Link href="/contact" className="flex items-center gap-2">
+                        Get Started <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                      </Link>
+                    </Button>
+                    <div className="h-10 w-px bg-gray-200" />
+                    <div>
+                      <div className="text-xs font-black text-gray-400 uppercase tracking-widest">Typical Outcome</div>
+                      <div className="text-lg font-black text-gray-900">{step.stat}</div>
                     </div>
-                  ))}
-                </div>
-                
-                <div className="flex items-center gap-6">
-                  <Button asChild variant="outline" className="rounded-full px-6 h-12 font-bold group border-2">
-                    <Link href="/contact" className="flex items-center gap-2">
-                      Get Started <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                  </Button>
-                  <div className="h-10 w-px bg-gray-200" />
-                  <div>
-                    <div className="text-xs font-black text-gray-400 uppercase tracking-widest">Typical Outcome</div>
-                    <div className="text-lg font-black text-gray-900">{step.stat}</div>
                   </div>
                 </div>
-              </div>
 
-              <motion.div 
-                whileHover={{ scale: 1.02 }}
-                className="lg:w-[45%] w-full aspect-[4/3] rounded-[3.5rem] bg-white border-8 border-gray-50 shadow-2xl flex items-center justify-center relative overflow-hidden group"
-              >
-                <div className={`absolute inset-0 ${step.color} opacity-[0.03] group-hover:opacity-[0.08] transition-opacity`} />
-                <step.icon className={`h-40 w-40 ${step.color.replace('bg-', 'text-')} opacity-20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-700`} />
-                
-                {/* Floating Micro-UI element */}
-                <div className="absolute bottom-10 left-10 right-10 bg-white/80 backdrop-blur-md p-6 rounded-3xl border border-white/20 shadow-xl">
-                   <div className="flex items-center justify-between mb-4">
-                      <div className="text-sm font-black text-gray-900 uppercase tracking-widest">Process Flow</div>
-                      <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
-                   </div>
-                   <div className="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
-                      <motion.div 
-                        initial={{ width: 0 }}
-                        whileInView={{ width: '100%' }}
-                        transition={{ duration: 2, delay: 0.5 }}
-                        className={`h-full ${step.color}`} 
-                      />
-                   </div>
-                </div>
+                <motion.div 
+                  whileHover={{ scale: 1.02 }}
+                  className="lg:w-[45%] w-full aspect-[4/3] rounded-[3.5rem] bg-white border-8 border-gray-50 shadow-2xl flex items-center justify-center relative overflow-hidden group transform-gpu"
+                >
+                  <div className={`absolute inset-0 ${step.color} opacity-[0.03] group-hover:opacity-[0.08] transition-opacity`} />
+                  <step.icon className={`h-40 w-40 ${step.color.replace('bg-', 'text-')} opacity-20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-700 transform-gpu`} />
+                  
+                  {/* Floating Micro-UI element */}
+                  <div className="absolute bottom-10 left-10 right-10 bg-white/80 backdrop-blur-md p-6 rounded-3xl border border-white/20 shadow-xl transform-gpu">
+                     <div className="flex items-center justify-between mb-4">
+                        <div className="text-sm font-black text-gray-900 uppercase tracking-widest">Process Flow</div>
+                        <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
+                     </div>
+                     <div className="w-full bg-gray-100 h-2 rounded-full overflow-hidden">
+                        <motion.div 
+                          initial={{ width: 0 }}
+                          whileInView={{ width: '100%' }}
+                          transition={{ duration: 2, delay: 0.5 }}
+                          className={`h-full ${step.color} transform-gpu`} 
+                        />
+                     </div>
+                  </div>
+                </motion.div>
               </motion.div>
-            </motion.div>
-          ))}
-        </div>
+            ))}
+          </div>
       </section>
 
       {/* Performance Summary Cards */}

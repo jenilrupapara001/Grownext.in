@@ -71,67 +71,68 @@ const faqs = [
 export default function AlibabaSelling() {
   return (
     <div className="flex flex-col gap-24 pb-20">
-      {/* Hero Section - Brand Themed */}
-      <section className="relative pt-24 lg:pt-36 bg-[#FF6600]/5 overflow-hidden min-h-[70vh] flex items-center">
-        {/* Decorative Grid */}
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'linear-gradient(#FF6600 1px, transparent 1px), linear-gradient(90deg, #FF6600 1px, transparent 1px)', backgroundSize: '100px 100px' }} />
-        
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-24 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-black uppercase tracking-widest mb-8">
-                <Globe2 className="h-4 w-4" />
-                GATEWAY TO GLOBAL TRADE
-              </div>
-              <h1 className="text-5xl font-black tracking-tight text-gray-900 sm:text-7xl mb-8 leading-[1.1]">
-                Master the World's Largest <span className="text-primary">B2B Engine</span>
-              </h1>
-              <p className="text-xl leading-9 text-gray-600 font-medium mb-12">
-                Alibaba.com connects millions of buyers and sellers across 190+ countries. For Indian manufacturers, it's not just a platform—it's the most powerful infrastructure for global export growth.
-              </p>
-              <div className="flex flex-wrap gap-6">
-                <Button asChild size="lg" className="rounded-full px-10 h-16 text-lg font-bold">
-                  <Link href="/contact">Apply for Onboarding</Link>
-                </Button>
-                <div className="flex items-center gap-4 text-gray-500 font-bold">
-                   <div className="h-12 w-12 rounded-full bg-white flex items-center justify-center shadow-lg border border-gray-100">
-                      <Play className="h-5 w-5 text-primary fill-primary" />
-                   </div>
-                   Watch Platform Intro
+        {/* Hero Section - Brand Themed */}
+        <section className="relative pt-24 lg:pt-36 bg-[#FF6600]/5 overflow-hidden min-h-[70vh] flex items-center">
+          {/* Decorative Grid */}
+          <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'linear-gradient(#FF6600 1px, transparent 1px), linear-gradient(90deg, #FF6600 1px, transparent 1px)', backgroundSize: '100px 100px' }} />
+          
+          <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-24 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+                className="transform-gpu"
+              >
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-black uppercase tracking-widest mb-8 transform-gpu">
+                  <Globe2 className="h-4 w-4" />
+                  GATEWAY TO GLOBAL TRADE
                 </div>
-              </div>
-            </motion.div>
-            
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.4 }}
-              className="relative"
-            >
-              <div className="aspect-video rounded-[3rem] overflow-hidden shadow-[0_48px_100px_-12px_rgba(255,102,0,0.2)] border-8 border-white bg-white p-2">
-                 <div className="h-full w-full bg-gray-50 rounded-[2.5rem] flex flex-col items-center justify-center relative">
-                    <div className="text-primary font-black text-6xl mb-4 tracking-tighter">Alibaba.com</div>
-                    <div className="text-sm font-black text-gray-400 uppercase tracking-[0.3em]">Official Gold Supplier Portal</div>
-                    
-                    {/* Floating HUD elements */}
-                    <motion.div 
-                      animate={{ y: [0, -10, 0] }}
-                      transition={{ duration: 4, repeat: Infinity }}
-                      className="absolute -top-10 -right-10 bg-white p-6 rounded-3xl shadow-2xl border border-gray-100"
-                    >
-                       <div className="text-primary font-black text-2xl">200M+</div>
-                       <div className="text-[10px] font-bold text-gray-400 uppercase">Registered Buyers</div>
-                    </motion.div>
-                 </div>
-              </div>
-            </motion.div>
+                <h1 className="text-5xl font-black tracking-tight text-gray-900 sm:text-7xl mb-8 leading-[1.1]">
+                  Master the World's Largest <span className="text-primary">B2B Engine</span>
+                </h1>
+                <p className="text-xl leading-9 text-gray-600 font-medium mb-12">
+                  Alibaba.com connects millions of buyers and sellers across 190+ countries. For Indian manufacturers, it's not just a platform—it's the most powerful infrastructure for global export growth.
+                </p>
+                <div className="flex flex-wrap gap-6">
+                  <Button asChild size="lg" className="rounded-full px-10 h-16 text-lg font-bold transform-gpu">
+                    <Link href="/contact">Apply for Onboarding</Link>
+                  </Button>
+                  <div className="flex items-center gap-4 text-gray-500 font-bold transform-gpu">
+                     <div className="h-12 w-12 rounded-full bg-white flex items-center justify-center shadow-lg border border-gray-100">
+                        <Play className="h-5 w-5 text-primary fill-primary" />
+                     </div>
+                     Watch Platform Intro
+                  </div>
+                </div>
+              </motion.div>
+              
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1, delay: 0.4 }}
+                className="relative transform-gpu"
+              >
+                <div className="aspect-video rounded-[3rem] overflow-hidden shadow-[0_48px_100px_-12px_rgba(255,102,0,0.2)] border-8 border-white bg-white p-2 transform-gpu">
+                   <div className="h-full w-full bg-gray-50 rounded-[2.5rem] flex flex-col items-center justify-center relative transform-gpu">
+                      <div className="text-primary font-black text-6xl mb-4 tracking-tighter">Alibaba.com</div>
+                      <div className="text-sm font-black text-gray-400 uppercase tracking-[0.3em]">Official Gold Supplier Portal</div>
+                      
+                      {/* Floating HUD elements */}
+                      <motion.div 
+                        animate={{ y: [0, -10, 0] }}
+                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute -top-10 -right-10 bg-white p-6 rounded-3xl shadow-2xl border border-gray-100 transform-gpu"
+                      >
+                         <div className="text-primary font-black text-2xl">200M+</div>
+                         <div className="text-[10px] font-bold text-gray-400 uppercase">Registered Buyers</div>
+                      </motion.div>
+                   </div>
+                </div>
+              </motion.div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       {/* Why Alibaba - Stats Focus */}
       <section className="mx-auto max-w-7xl px-6 lg:px-8">

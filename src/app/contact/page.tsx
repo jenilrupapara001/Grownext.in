@@ -91,6 +91,7 @@ export default function Contact() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
+            className="transform-gpu"
           >
              <h1 className="text-5xl font-black tracking-tight text-gray-900 sm:text-7xl mb-8">
               Let's Start Your <span className="text-primary">Export Journey</span>
@@ -102,9 +103,9 @@ export default function Contact() {
         </div>
         
         {/* Abstract Background Decoration */}
-        <div className="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none">
-           <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-[100px]" />
-           <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px]" />
+        <div className="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none overflow-hidden">
+           <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-[100px] transform-gpu" />
+           <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px] transform-gpu" />
         </div>
       </section>
 

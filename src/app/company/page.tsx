@@ -47,9 +47,9 @@ export default function Company() {
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="max-w-3xl"
+            className="max-w-3xl transform-gpu"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-black uppercase tracking-widest mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-black uppercase tracking-widest mb-8 transform-gpu">
               <Sparkles className="h-4 w-4" />
               Est. 2020
             </div>
@@ -63,14 +63,14 @@ export default function Company() {
         </div>
         
         {/* Animated Background Decoration */}
-        <div className="absolute top-0 right-0 -z-0 h-full w-full hidden lg:block">
+        <div className="absolute top-0 right-0 -z-0 h-full w-full hidden lg:block overflow-hidden">
           <motion.div 
             initial={{ opacity: 0, x: 100 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
-            className="absolute top-0 right-0 h-full w-1/2 bg-primary/5 -skew-x-12 origin-top-right" 
+            className="absolute top-0 right-0 h-full w-1/2 bg-primary/5 -skew-x-12 origin-top-right transform-gpu" 
           />
-          <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[100px] animate-pulse" />
+          <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[100px] animate-pulse transform-gpu" />
         </div>
       </section>
 

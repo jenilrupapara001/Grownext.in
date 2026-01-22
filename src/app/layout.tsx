@@ -5,6 +5,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { VisualEditsMessenger } from "orchids-visual-edits";
 import { Toaster } from "@/components/ui/sonner";
+import { SmoothScroll } from "@/components/SmoothScroll";
 
 const lexend = Lexend({
   subsets: ["latin"],
@@ -27,6 +28,7 @@ export default function RootLayout({
       <body
         className={`${lexend.variable} font-sans antialiased bg-white text-gray-900`}
       >
+        <SmoothScroll />
         <Navbar />
         <main className="pt-16 min-h-screen">
           {children}
