@@ -12,7 +12,11 @@ import {
   MessageSquare, 
   Send,
   Loader2,
-  CheckCircle2
+  CheckCircle2,
+  Globe,
+  ShieldCheck,
+  Zap,
+  ArrowRight
 } from 'lucide-react'
 import { toast } from 'sonner'
 import { supabase } from '@/lib/supabase'
@@ -80,54 +84,69 @@ export default function Contact() {
   }
 
   return (
-    <div className="flex flex-col gap-20 pb-20">
+    <div className="flex flex-col gap-24 pb-20">
       {/* Hero Section */}
-      <section className="relative pt-20 lg:pt-32 bg-gray-50 overflow-hidden">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-20 text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl mb-6">
-            Let's Start Your <span className="text-primary">Export Journey</span>
-          </h1>
-          <p className="text-xl leading-8 text-gray-600 max-w-2xl mx-auto">
-            Ready to reach global buyers? Fill out the form below or contact us directly. Our experts are ready to help.
-          </p>
+      <section className="relative pt-24 lg:pt-36 bg-gray-50 overflow-hidden min-h-[50vh] flex items-center">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-24 text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+             <h1 className="text-5xl font-black tracking-tight text-gray-900 sm:text-7xl mb-8">
+              Let's Start Your <span className="text-primary">Export Journey</span>
+            </h1>
+            <p className="text-xl leading-9 text-gray-600 max-w-2xl mx-auto font-medium">
+              Ready to reach global buyers? Fill out the form below or contact us directly. Our Alibaba-certified experts are ready to build your global roadmap.
+            </p>
+          </motion.div>
+        </div>
+        
+        {/* Abstract Background Decoration */}
+        <div className="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none">
+           <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-[100px]" />
+           <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px]" />
         </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
           {/* Contact Info */}
-          <div>
-            <h2 className="text-3xl font-bold tracking-tight text-gray-900 mb-8">
-              Get in Touch
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl font-black tracking-tight text-gray-900 mb-12">
+              Connect With Us
             </h2>
-            <div className="space-y-8">
-              <div className="flex gap-6">
-                <div className="h-14 w-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                  <Phone className="h-7 w-7" />
+            <div className="space-y-10">
+              <div className="flex gap-8 group">
+                <div className="h-16 w-16 rounded-[2rem] bg-primary/10 flex items-center justify-center text-primary shrink-0 group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                  <Phone className="h-8 w-8" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-900 text-lg">Call or WhatsApp</h4>
-                  <p className="text-gray-600 mt-1">+91 98765 43210</p>
-                  <p className="text-gray-600 text-sm mt-1">Mon-Sat, 9am to 7pm IST</p>
+                  <h4 className="font-black text-gray-900 text-xl mb-1">Call or WhatsApp</h4>
+                  <p className="text-gray-600 text-lg font-medium">+91 98765 43210</p>
+                  <p className="text-gray-400 font-bold text-sm mt-1 uppercase tracking-widest">Mon-Sat, 9am to 7pm IST</p>
                 </div>
               </div>
-              <div className="flex gap-6">
-                <div className="h-14 w-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                  <Mail className="h-7 w-7" />
+              <div className="flex gap-8 group">
+                <div className="h-16 w-16 rounded-[2rem] bg-primary/10 flex items-center justify-center text-primary shrink-0 group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                  <Mail className="h-8 w-8" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-900 text-lg">Email Us</h4>
-                  <p className="text-gray-600 mt-1">hello@grownext.in</p>
-                  <p className="text-gray-600 mt-1">support@grownext.in</p>
+                  <h4 className="font-black text-gray-900 text-xl mb-1">Email Our Strategy Team</h4>
+                  <p className="text-gray-600 text-lg font-medium">hello@grownext.in</p>
+                  <p className="text-gray-600 text-lg font-medium">support@grownext.in</p>
                 </div>
               </div>
-              <div className="flex gap-6">
-                <div className="h-14 w-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                  <MapPin className="h-7 w-7" />
+              <div className="flex gap-8 group">
+                <div className="h-16 w-16 rounded-[2rem] bg-primary/10 flex items-center justify-center text-primary shrink-0 group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                  <MapPin className="h-8 w-8" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-gray-900 text-lg">Visit Our Office</h4>
-                  <p className="text-gray-600 mt-1">
+                  <h4 className="font-black text-gray-900 text-xl mb-1">Visit Our Hub</h4>
+                  <p className="text-gray-600 text-lg font-medium leading-relaxed">
                     Level 5, Export Tower, BKC, Mumbai,<br />
                     Maharashtra 400051, India
                   </p>
@@ -135,54 +154,72 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="mt-12 p-8 rounded-3xl bg-gray-950 text-white relative overflow-hidden">
+            {/* Why Contact Us Card */}
+            <div className="mt-16 p-10 rounded-[3rem] bg-gray-950 text-white relative overflow-hidden group">
                <div className="relative z-10">
-                  <h4 className="text-xl font-bold mb-4 flex items-center gap-2">
-                    <MessageSquare className="h-5 w-5 text-primary" />
-                    Quick Consultation
+                  <h4 className="text-2xl font-black mb-6 flex items-center gap-3">
+                    <div className="h-2 w-2 rounded-full bg-primary" />
+                    Why consult with GrowNext?
                   </h4>
-                  <p className="text-gray-400 mb-6">
-                    Looking for a faster response? Start a chat with us on WhatsApp.
-                  </p>
-                  <Button asChild className="rounded-full w-full">
-                    <a href="https://wa.me/919876543210" target="_blank">Chat on WhatsApp</a>
+                  <div className="space-y-4 mb-10">
+                    {[
+                      { icon: ShieldCheck, text: 'Official Alibaba.com verification guidance' },
+                      { icon: Globe, text: 'Market hotspots & demand analysis' },
+                      { icon: Zap, text: 'Competitor benchmarking for your category' },
+                    ].map((item, i) => (
+                      <div key={i} className="flex items-center gap-4">
+                         <item.icon className="h-5 w-5 text-primary" />
+                         <span className="text-gray-400 font-medium">{item.text}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <Button asChild size="lg" className="rounded-full w-full h-16 text-lg font-black shadow-2xl">
+                    <a href="https://wa.me/919876543210" target="_blank" className="flex items-center justify-center gap-2">
+                       Chat on WhatsApp <ArrowRight className="h-5 w-5" />
+                    </a>
                   </Button>
                </div>
-               <div className="absolute -right-8 -bottom-8 h-32 w-32 bg-primary/20 rounded-full blur-3xl" />
+               {/* Decorative background icon */}
+               <MessageSquare className="absolute -right-8 -bottom-8 h-48 w-48 text-primary opacity-5 group-hover:scale-110 group-hover:rotate-12 transition-all duration-700" />
             </div>
-          </div>
+          </motion.div>
 
           {/* Contact Form */}
-          <div className="bg-white p-8 lg:p-12 rounded-3xl border border-gray-100 shadow-xl">
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="bg-white p-8 lg:p-16 rounded-[3.5rem] border border-gray-100 shadow-[0_48px_100px_-12px_rgba(0,0,0,0.08)] relative overflow-hidden"
+          >
             {isSuccess ? (
               <motion.div 
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="text-center py-12"
+                className="text-center py-16"
               >
-                <div className="inline-flex h-20 w-20 items-center justify-center rounded-full bg-green-100 text-green-600 mb-6">
-                  <CheckCircle2 className="h-10 w-10" />
+                <div className="inline-flex h-24 w-24 items-center justify-center rounded-full bg-green-100 text-green-600 mb-8">
+                  <CheckCircle2 className="h-12 w-12" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Request Received!</h3>
-                <p className="text-gray-600 mb-8">
-                  Thank you for your interest in GrowNext. One of our export experts will contact you within 24 hours.
+                <h3 className="text-3xl font-black text-gray-900 mb-6">Request Received!</h3>
+                <p className="text-xl text-gray-600 mb-12 font-medium">
+                  Thank you for your interest. An Alibaba-certified export consultant will contact you within 24 business hours.
                 </p>
-                <Button variant="outline" className="rounded-full px-8" onClick={() => setIsSuccess(false)}>
+                <Button variant="outline" className="rounded-full px-10 h-14 font-black border-2" onClick={() => setIsSuccess(false)}>
                   Send Another Request
                 </Button>
               </motion.div>
             ) : (
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 relative z-10">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <FormField
                       control={form.control}
                       name="name"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Full Name</FormLabel>
+                          <FormLabel className="text-gray-900 font-black uppercase tracking-widest text-xs">Full Name</FormLabel>
                           <FormControl>
-                            <Input placeholder="John Doe" {...field} className="rounded-xl h-12" />
+                            <Input placeholder="John Doe" {...field} className="rounded-2xl h-14 border-gray-100 bg-gray-50 focus:bg-white focus:ring-primary/20 transition-all font-medium" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -193,24 +230,24 @@ export default function Contact() {
                       name="business_name"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Business Name</FormLabel>
+                          <FormLabel className="text-gray-900 font-black uppercase tracking-widest text-xs">Business Name</FormLabel>
                           <FormControl>
-                            <Input placeholder="Acme Exports" {...field} className="rounded-xl h-12" />
+                            <Input placeholder="Acme Exports" {...field} className="rounded-2xl h-14 border-gray-100 bg-gray-50 focus:bg-white focus:ring-primary/20 transition-all font-medium" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
                     />
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <FormField
                       control={form.control}
                       name="email"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Email Address</FormLabel>
+                          <FormLabel className="text-gray-900 font-black uppercase tracking-widest text-xs">Email Address</FormLabel>
                           <FormControl>
-                            <Input placeholder="john@example.com" {...field} className="rounded-xl h-12" />
+                            <Input placeholder="john@example.com" {...field} className="rounded-2xl h-14 border-gray-100 bg-gray-50 focus:bg-white focus:ring-primary/20 transition-all font-medium" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -221,9 +258,9 @@ export default function Contact() {
                       name="phone"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Phone Number</FormLabel>
+                          <FormLabel className="text-gray-900 font-black uppercase tracking-widest text-xs">Phone Number</FormLabel>
                           <FormControl>
-                            <Input placeholder="+91 98765 43210" {...field} className="rounded-xl h-12" />
+                            <Input placeholder="+91 98765 43210" {...field} className="rounded-2xl h-14 border-gray-100 bg-gray-50 focus:bg-white focus:ring-primary/20 transition-all font-medium" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -235,14 +272,14 @@ export default function Contact() {
                     name="product_category"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Product Category</FormLabel>
+                        <FormLabel className="text-gray-900 font-black uppercase tracking-widest text-xs">Product Category</FormLabel>
                         <Select onValueChange={field.onChange} defaultValue={field.value}>
                           <FormControl>
-                            <SelectTrigger className="rounded-xl h-12">
+                            <SelectTrigger className="rounded-2xl h-14 border-gray-100 bg-gray-50 focus:bg-white transition-all font-medium">
                               <SelectValue placeholder="Select your category" />
                             </SelectTrigger>
                           </FormControl>
-                          <SelectContent>
+                          <SelectContent className="rounded-2xl border-gray-100">
                             <SelectItem value="textiles">Textiles & Apparel</SelectItem>
                             <SelectItem value="agriculture">Agriculture & Food</SelectItem>
                             <SelectItem value="machinery">Machinery & Industrial</SelectItem>
@@ -260,11 +297,11 @@ export default function Contact() {
                     name="message"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>How can we help you? (Optional)</FormLabel>
+                        <FormLabel className="text-gray-900 font-black uppercase tracking-widest text-xs">Export Goals (Optional)</FormLabel>
                         <FormControl>
                           <Textarea 
-                            placeholder="Tell us about your export goals..." 
-                            className="rounded-xl min-h-[120px] resize-none"
+                            placeholder="Tell us about your products and target markets..." 
+                            className="rounded-2xl min-h-[140px] resize-none border-gray-100 bg-gray-50 focus:bg-white transition-all font-medium p-6"
                             {...field} 
                           />
                         </FormControl>
@@ -272,22 +309,25 @@ export default function Contact() {
                       </FormItem>
                     )}
                   />
-                  <Button type="submit" className="w-full rounded-xl h-14 text-lg font-bold" disabled={isSubmitting}>
+                  <Button type="submit" className="w-full rounded-2xl h-18 text-xl font-black shadow-2xl shadow-primary/25 group" disabled={isSubmitting}>
                     {isSubmitting ? (
                       <>
-                        <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                        <Loader2 className="mr-3 h-6 w-6 animate-spin" />
                         Processing...
                       </>
                     ) : (
-                      <>
-                        Book Free Consultation <Send className="ml-2 h-5 w-5" />
-                      </>
+                      <span className="flex items-center gap-3">
+                        Book Free Consultation <Send className="h-6 w-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                      </span>
                     )}
                   </Button>
                 </form>
               </Form>
             )}
-          </div>
+            
+            {/* Background pattern */}
+            <div className="absolute top-0 right-0 h-64 w-64 bg-primary/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none" />
+          </motion.div>
         </div>
       </section>
     </div>
