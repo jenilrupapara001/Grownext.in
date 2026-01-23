@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { Globe, Mail, Phone, MapPin, Linkedin, Twitter, Facebook, Instagram } from 'lucide-react'
+import Image from 'next/image'
+import { Mail, Phone, MapPin, Linkedin, Twitter, Facebook, Instagram } from 'lucide-react'
 
 const footerNavigation = {
   solutions: [
@@ -33,13 +34,8 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 lg:px-8">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8">
-            <Link href="/" className="flex items-center gap-2">
-              <div className="bg-primary p-1.5 rounded-lg">
-                <Globe className="h-6 w-6 text-white" />
-              </div>
-              <span className="text-xl font-bold tracking-tight text-white">
-                Grow<span className="text-primary">Next</span>
-              </span>
+            <Link href="/">
+              <Image src="/Logo.png" alt="GrowNext Logo" width={120} height={40} />
             </Link>
             <p className="text-sm leading-6 max-w-xs">
               Official Alibaba.com Channel Partner empowering Indian Businesses to scale exports through global lead generation and strategic onboarding.

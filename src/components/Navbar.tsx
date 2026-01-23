@@ -2,8 +2,9 @@
 
 import * as React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { Menu, X, Globe, ChevronRight } from 'lucide-react'
+import { Menu, X, ChevronRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 
@@ -23,13 +24,8 @@ export function Navbar() {
     <header className="fixed inset-x-0 top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2">
-            <div className="bg-primary p-1.5 rounded-lg">
-              <Globe className="h-6 w-6 text-white" />
-            </div>
-            <span className="text-xl font-bold tracking-tight text-gray-900">
-              Grow<span className="text-primary">Next</span>
-            </span>
+          <Link href="/" className="-m-1.5 p-1.5">
+            <Image src="/Logo.png" alt="GrowNext Logo" width={120} height={40} />
           </Link>
         </div>
         <div className="flex lg:hidden">
@@ -71,13 +67,8 @@ export function Navbar() {
         mobileMenuOpen ? "translate-x-0" : "translate-x-full"
       )}>
         <div className="flex items-center justify-between p-4 lg:px-8 border-b border-gray-100">
-          <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
-            <div className="bg-primary p-1.5 rounded-lg">
-              <Globe className="h-6 w-6 text-white" />
-            </div>
-            <span className="text-xl font-bold tracking-tight text-gray-900">
-              Grow<span className="text-primary">Next</span>
-            </span>
+          <Link href="/" className="-m-1.5 p-1.5" onClick={() => setMobileMenuOpen(false)}>
+            <Image src="/Logo.png" alt="GrowNext Logo" width={120} height={40} />
           </Link>
           <button
             type="button"

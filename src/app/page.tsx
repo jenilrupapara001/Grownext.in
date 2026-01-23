@@ -19,7 +19,8 @@ import {
   Package,
   LineChart,
   Ship,
-  Factory
+  Factory,
+  Diamond
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
@@ -110,7 +111,7 @@ export default function Home() {
                       className="inline-block h-12 w-12 rounded-full ring-4 ring-white overflow-hidden bg-gray-100 shadow-sm"
                     >
                       <Image 
-                        src={`https://images.unsplash.com/photo-${1500000000000 + i * 100000000}?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80`} 
+                        src={`/user.png`} 
                         alt="User" 
                         width={48} 
                         height={48} 
@@ -277,7 +278,7 @@ export default function Home() {
             <div className="relative">
               <div className="aspect-[4/5] rounded-[3rem] overflow-hidden bg-gray-900 relative shadow-2xl border-4 border-white/5">
                 <Image 
-                  src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&q=80&w=1200" 
+                  src="/1.png" 
                   alt="Industrial Logistics" 
                   fill
                   className="object-cover opacity-70"
@@ -315,7 +316,7 @@ export default function Home() {
               {[
                 { icon: Factory, label: 'Industrial Machinery' },
                 { icon: Package, label: 'Textiles & Apparel' },
-                { icon: Ship, label: 'Handicrafts & Decor' },
+                { icon: Diamond, label: 'Jewels & Diamonds' },
                 { icon: LineChart, label: 'Agriculture & Food' }
               ].map((sector) => (
                 <div key={sector.label} className="flex items-center gap-4 p-4 rounded-2xl bg-gray-50 border border-gray-100">
@@ -328,7 +329,7 @@ export default function Home() {
           <div className="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-8">
             <div className="relative h-[400px] rounded-[3rem] overflow-hidden group">
               <Image 
-                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800"
+                src="/machine.png"
                 alt="Manufacturing"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -341,7 +342,7 @@ export default function Home() {
             </div>
             <div className="relative h-[400px] rounded-[3rem] overflow-hidden group">
               <Image 
-                src="https://images.unsplash.com/photo-1605146768851-eda79da39897?auto=format&fit=crop&q=80&w=800"
+                src="/apparel.png"
                 alt="Textiles"
                 fill
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -350,6 +351,32 @@ export default function Home() {
               <div className="absolute bottom-8 left-8">
                 <h3 className="text-white text-2xl font-black">Apparel & Fabrics</h3>
                 <p className="text-gray-300 font-bold">Globalizing Indian textiles</p>
+              </div>
+            </div>
+            <div className="relative h-[400px] rounded-[3rem] overflow-hidden group">
+              <Image 
+                src="/food.png"
+                alt="Agriculture"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 to-transparent" />
+              <div className="absolute bottom-8 left-8">
+                <h3 className="text-white text-2xl font-black">Agriculture & Food</h3>
+                <p className="text-gray-300 font-bold">Globalizing Indian Spices</p>
+              </div>
+            </div>
+            <div className="relative h-[400px] rounded-[3rem] overflow-hidden group">
+              <Image 
+                src="/jewel.png"
+                alt="Agriculture"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 to-transparent" />
+              <div className="absolute bottom-8 left-8">
+                <h3 className="text-white text-2xl font-black">Jewels & Diamond</h3>
+                <p className="text-gray-300 font-bold">Globalizing Indian Spices</p>
               </div>
             </div>
           </div>
