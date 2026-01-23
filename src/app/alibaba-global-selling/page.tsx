@@ -3,7 +3,6 @@
 import * as React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
 import { 
   Globe2, 
   TrendingUp, 
@@ -73,18 +72,13 @@ export default function AlibabaSelling() {
     <div className="flex flex-col gap-24 pb-20">
         {/* Hero Section - Brand Themed */}
         <section className="relative pt-24 lg:pt-36 bg-[#FF6600]/5 overflow-hidden min-h-[70vh] flex items-center">
-          {/* Decorative Grid */}
+          {/* Static Grid */}
           <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'linear-gradient(#FF6600 1px, transparent 1px), linear-gradient(90deg, #FF6600 1px, transparent 1px)', backgroundSize: '100px 100px' }} />
           
           <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-24 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8 }}
-                className="transform-gpu"
-              >
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-black uppercase tracking-widest mb-8 transform-gpu">
+              <div>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-black uppercase tracking-widest mb-8">
                   <Globe2 className="h-4 w-4" />
                   GATEWAY TO GLOBAL TRADE
                 </div>
@@ -95,41 +89,40 @@ export default function AlibabaSelling() {
                   Alibaba.com connects millions of buyers and sellers across 190+ countries. For Indian manufacturers, it's not just a platform—it's the most powerful infrastructure for global export growth.
                 </p>
                 <div className="flex flex-wrap gap-6">
-                  <Button asChild size="lg" className="rounded-full px-10 h-16 text-lg font-bold transform-gpu">
+                  <Button asChild size="lg" className="rounded-full px-10 h-16 text-lg font-bold shadow-lg shadow-primary/20">
                     <Link href="/contact">Apply for Onboarding</Link>
                   </Button>
-                  <div className="flex items-center gap-4 text-gray-500 font-bold transform-gpu">
+                  <div className="flex items-center gap-4 text-gray-500 font-bold">
                      <div className="h-12 w-12 rounded-full bg-white flex items-center justify-center shadow-lg border border-gray-100">
                         <Play className="h-5 w-5 text-primary fill-primary" />
                      </div>
                      Watch Platform Intro
                   </div>
                 </div>
-              </motion.div>
+              </div>
               
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 1, delay: 0.4 }}
-                className="relative transform-gpu"
-              >
-                <div className="aspect-video rounded-[3rem] overflow-hidden shadow-[0_48px_100px_-12px_rgba(255,102,0,0.2)] border-8 border-white bg-white p-2 transform-gpu">
-                   <div className="h-full w-full bg-gray-50 rounded-[2.5rem] flex flex-col items-center justify-center relative transform-gpu">
-                      <div className="text-primary font-black text-6xl mb-4 tracking-tighter">Alibaba.com</div>
-                      <div className="text-sm font-black text-gray-400 uppercase tracking-[0.3em]">Official Gold Supplier Portal</div>
+              <div className="relative">
+                <div className="aspect-video rounded-[3rem] overflow-hidden shadow-[0_48px_100px_-12px_rgba(255,102,0,0.2)] border-8 border-white bg-white p-2">
+                   <div className="h-full w-full bg-gray-50 rounded-[2.5rem] flex flex-col items-center justify-center relative overflow-hidden group">
+                      <Image 
+                        src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&q=80&w=1200"
+                        alt="Global Logistics"
+                        fill
+                        className="object-cover opacity-20"
+                      />
+                      <div className="relative z-10 text-center">
+                        <div className="text-primary font-black text-6xl mb-4 tracking-tighter">Alibaba.com</div>
+                        <div className="text-sm font-black text-gray-400 uppercase tracking-[0.3em]">Official Gold Supplier Portal</div>
+                      </div>
                       
-                      {/* Floating HUD elements */}
-                      <motion.div 
-                        animate={{ y: [0, -10, 0] }}
-                        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute -top-10 -right-10 bg-white p-6 rounded-3xl shadow-2xl border border-gray-100 transform-gpu"
-                      >
+                      {/* Static cards */}
+                      <div className="absolute top-8 right-8 bg-white p-4 rounded-2xl shadow-xl border border-gray-100 hidden md:block">
                          <div className="text-primary font-black text-2xl">200M+</div>
                          <div className="text-[10px] font-bold text-gray-400 uppercase">Registered Buyers</div>
-                      </motion.div>
+                      </div>
                    </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </section>
@@ -164,12 +157,8 @@ export default function AlibabaSelling() {
               stat: 'Live Analytics'
             }
           ].map((item, i) => (
-            <motion.div 
+            <div 
               key={item.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
               className="p-12 rounded-[3rem] border border-gray-100 bg-white shadow-sm hover:shadow-2xl transition-all duration-500 group"
             >
               <div className="h-16 w-16 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-10 group-hover:bg-primary group-hover:text-white transition-colors duration-500">
@@ -181,7 +170,7 @@ export default function AlibabaSelling() {
                  <span className="text-sm font-black text-gray-400 uppercase tracking-widest">Platform Reach</span>
                  <span className="text-lg font-black text-primary">{item.stat}</span>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>
@@ -199,12 +188,8 @@ export default function AlibabaSelling() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {myths.map((m, i) => (
-              <motion.div 
+              <div 
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
                 className="bg-white/5 backdrop-blur-xl p-10 rounded-[2.5rem] border border-white/10 flex flex-col"
               >
                 <div className="flex items-center gap-3 mb-6 text-orange-500">
@@ -219,7 +204,7 @@ export default function AlibabaSelling() {
                    </div>
                    <p className="text-gray-400 font-medium leading-relaxed">{m.fact}</p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -228,11 +213,7 @@ export default function AlibabaSelling() {
       {/* Success Metrics / Ecosystem */}
       <section className="mx-auto max-w-7xl px-6 lg:px-8">
          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center bg-gray-50 p-12 lg:p-24 rounded-[4rem] border border-gray-100">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
+            <div>
                <h2 className="text-4xl font-black text-gray-900 mb-8 leading-[1.2]">
                   Join the Fastest Growing <br /> <span className="text-primary">B2B Ecosystem</span>
                </h2>
@@ -257,15 +238,10 @@ export default function AlibabaSelling() {
                     </div>
                   ))}
                </div>
-            </motion.div>
+            </div>
             
             <div className="relative">
-               <motion.div 
-                 initial={{ opacity: 0, scale: 0.95 }}
-                 whileInView={{ opacity: 1, scale: 1 }}
-                 viewport={{ once: true }}
-                 className="grid grid-cols-2 gap-6"
-               >
+               <div className="grid grid-cols-2 gap-6">
                   <div className="space-y-6 pt-12">
                      <div className="bg-primary p-8 rounded-[2.5rem] text-white">
                         <div className="text-3xl font-black mb-1">40M+</div>
@@ -286,7 +262,7 @@ export default function AlibabaSelling() {
                         <div className="text-[10px] font-bold uppercase tracking-widest">Languages</div>
                      </div>
                   </div>
-               </motion.div>
+               </div>
             </div>
          </div>
       </section>
@@ -300,7 +276,7 @@ export default function AlibabaSelling() {
           <h2 className="text-4xl font-black tracking-tight text-gray-900 sm:text-5xl">
             Common Inquiries
           </h2>
-          <p className="mt-4 text-xl text-gray-500 font-medium">Everything you need to know about the partnership.</p>
+          <p className="mt-4 text-xl text-gray-500 font-medium">Everything you need to know about the platform and our partnership.</p>
         </div>
         
         <Accordion type="single" collapsible className="w-full space-y-6">

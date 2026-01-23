@@ -4,7 +4,6 @@ import * as React from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
-import { motion } from 'framer-motion'
 import { 
   Mail, 
   Phone, 
@@ -88,35 +87,25 @@ export default function Contact() {
       {/* Hero Section */}
       <section className="relative pt-24 lg:pt-36 bg-gray-50 overflow-hidden min-h-[50vh] flex items-center">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-24 text-center relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="transform-gpu"
-          >
-             <h1 className="text-5xl font-black tracking-tight text-gray-900 sm:text-7xl mb-8">
-              Let's Start Your <span className="text-primary">Export Journey</span>
-            </h1>
-            <p className="text-xl leading-9 text-gray-600 max-w-2xl mx-auto font-medium">
-              Ready to reach global buyers? Fill out the form below or contact us directly. Our Alibaba-certified experts are ready to build your global roadmap.
-            </p>
-          </motion.div>
+           <h1 className="text-5xl font-black tracking-tight text-gray-900 sm:text-7xl mb-8">
+            Let's Start Your <span className="text-primary">Export Journey</span>
+          </h1>
+          <p className="text-xl leading-9 text-gray-600 max-w-2xl mx-auto font-medium">
+            Ready to reach global buyers? Fill out the form below or contact us directly. Our Alibaba-certified experts are ready to build your global roadmap.
+          </p>
         </div>
         
-        {/* Abstract Background Decoration */}
+        {/* Static Background Decoration */}
         <div className="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none overflow-hidden">
-           <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-[100px] transform-gpu" />
-           <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px] transform-gpu" />
+           <div className="absolute top-1/2 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-[100px]" />
+           <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[120px]" />
         </div>
       </section>
 
       <section className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
           {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
+          <div>
             <h2 className="text-4xl font-black tracking-tight text-gray-900 mb-12">
               Connect With Us
             </h2>
@@ -127,7 +116,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-black text-gray-900 text-xl mb-1">Call or WhatsApp</h4>
-                  <p className="text-gray-600 text-lg font-medium">+91 98765 43210</p>
+                  <p className="text-gray-600 text-lg font-medium">+91 99883 39166</p>
                   <p className="text-gray-400 font-bold text-sm mt-1 uppercase tracking-widest">Mon-Sat, 9am to 7pm IST</p>
                 </div>
               </div>
@@ -137,8 +126,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-black text-gray-900 text-xl mb-1">Email Our Strategy Team</h4>
-                  <p className="text-gray-600 text-lg font-medium">hello@grownext.in</p>
-                  <p className="text-gray-600 text-lg font-medium">support@grownext.in</p>
+                  <p className="text-gray-600 text-lg font-medium">info@grownext.in</p>
                 </div>
               </div>
               <div className="flex gap-8 group">
@@ -148,8 +136,7 @@ export default function Contact() {
                 <div>
                   <h4 className="font-black text-gray-900 text-xl mb-1">Visit Our Hub</h4>
                   <p className="text-gray-600 text-lg font-medium leading-relaxed">
-                    Level 5, Export Tower, BKC, Mumbai,<br />
-                    Maharashtra 400051, India
+                   4th Floor, Vama House, Ring Rd, near Rivaa House, <br/>opp. S B Center, Udhana Darwaja, Rustampura, Surat, Gujarat 395002
                   </p>
                 </div>
               </div>
@@ -175,27 +162,22 @@ export default function Contact() {
                     ))}
                   </div>
                   <Button asChild size="lg" className="rounded-full w-full h-16 text-lg font-black shadow-2xl">
-                    <a href="https://wa.me/919876543210" target="_blank" className="flex items-center justify-center gap-2">
+                    <a href="https://wa.me/919988339166" target="_blank" className="flex items-center justify-center gap-2">
                        Chat on WhatsApp <ArrowRight className="h-5 w-5" />
                     </a>
                   </Button>
                </div>
-               {/* Decorative background icon */}
+               {/* Static background icon */}
                <MessageSquare className="absolute -right-8 -bottom-8 h-48 w-48 text-primary opacity-5 group-hover:scale-110 group-hover:rotate-12 transition-all duration-700" />
             </div>
-          </motion.div>
+          </div>
 
           {/* Contact Form */}
-          <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+          <div 
             className="bg-white p-8 lg:p-16 rounded-[3.5rem] border border-gray-100 shadow-[0_48px_100px_-12px_rgba(0,0,0,0.08)] relative overflow-hidden"
           >
             {isSuccess ? (
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
+              <div 
                 className="text-center py-16"
               >
                 <div className="inline-flex h-24 w-24 items-center justify-center rounded-full bg-green-100 text-green-600 mb-8">
@@ -208,7 +190,7 @@ export default function Contact() {
                 <Button variant="outline" className="rounded-full px-10 h-14 font-black border-2" onClick={() => setIsSuccess(false)}>
                   Send Another Request
                 </Button>
-              </motion.div>
+              </div>
             ) : (
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 relative z-10">
@@ -328,7 +310,7 @@ export default function Contact() {
             
             {/* Background pattern */}
             <div className="absolute top-0 right-0 h-64 w-64 bg-primary/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none" />
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>

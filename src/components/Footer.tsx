@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Globe, Mail, Phone, MapPin, Linkedin, Twitter, Facebook } from 'lucide-react'
+import { Globe, Mail, Phone, MapPin, Linkedin, Twitter, Facebook, Instagram } from 'lucide-react'
 
 const footerNavigation = {
   solutions: [
@@ -20,9 +20,9 @@ const footerNavigation = {
     { name: 'Cookie Policy', href: '#' },
   ],
   social: [
-    { name: 'LinkedIn', href: '#', icon: Linkedin },
-    { name: 'Twitter', href: '#', icon: Twitter },
-    { name: 'Facebook', href: '#', icon: Facebook },
+    { name: 'LinkedIn', href: 'https://www.linkedin.com/company/mr-exporter/posts/?feedView=all', icon: Linkedin },
+    { name: 'Instagram', href: 'https://www.instagram.com/mr.exporter_india/', icon: Instagram },
+    { name: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61564674801339', icon: Facebook },
   ],
 }
 
@@ -86,15 +86,15 @@ export function Footer() {
                 <ul role="list" className="mt-6 space-y-4">
                   <li className="flex gap-3 text-sm">
                     <MapPin className="h-5 w-5 text-primary shrink-0" />
-                    <span>Mumbai, Maharashtra, India</span>
+                    <span>Surat, Gujarat, India</span>
                   </li>
                   <li className="flex gap-3 text-sm">
                     <Phone className="h-5 w-5 text-primary shrink-0" />
-                    <span>+91 98765 43210</span>
+                    <span>+91 99883 39166</span>
                   </li>
                   <li className="flex gap-3 text-sm">
                     <Mail className="h-5 w-5 text-primary shrink-0" />
-                    <span>hello@grownext.in</span>
+                    <span>info@grownext.in</span>
                   </li>
                 </ul>
               </div>
