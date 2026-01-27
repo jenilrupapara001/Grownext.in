@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   title: "GrowNext | Official Alibaba.com Partner in India",
   description: "Empowering Indian Businesses to sell globally through Alibaba.com. Official Channel Partner for onboarding, optimization, and global marketing.",
   keywords: ["Alibaba partner India", "export services India", "sell on Alibaba", "B2B export consultancy"],
+  icons: '/Logo.png',
 };
 
 export default function RootLayout({
@@ -26,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${lexend.variable} font-sans antialiased bg-white text-gray-900`}
+        className={`${lexend.variable} font-sans antialiased bg-[#F9FAFB] text-gray-900`}
       >
         <SmoothScroll />
         <Navbar />

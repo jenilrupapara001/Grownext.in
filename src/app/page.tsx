@@ -73,7 +73,7 @@ export default function Home() {
   return (
     <div className="flex flex-col gap-24 pb-20">
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-16 lg:pt-24 min-h-[90vh] flex items-center bg-[#fcfcfc]">
+      <section className="relative overflow-hidden pt-16 lg:pt-24 min-h-[90vh] flex items-center bg-white">
         {/* Decorative Background Elements */}
         <div className="absolute inset-0 -z-10 overflow-hidden">
           <div className="absolute -top-24 -right-24 w-96 h-96 bg-primary/10 rounded-full blur-[100px]" />
@@ -87,12 +87,12 @@ export default function Home() {
                 <BadgeCheck className="h-4 w-4" />
                 Official Alibaba.com Channel Partner
               </div>
-              <h1 className="text-5xl font-extrabold tracking-tight text-gray-900 sm:text-7xl mb-8 leading-[1.1]">
+              <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-6xl mb-6 leading-[1.1]">
                 Empowering Indian Manufacturers to <span className="text-primary relative inline-block">
                   Sell Globally
                 </span>
               </h1>
-              <p className="text-xl leading-8 text-gray-600 mb-12 max-w-xl">
+              <p className="text-lg leading-7 text-gray-600 mb-10 max-w-xl">
                 From onboarding to global lead generation — GrowNext helps Indian SMEs scale exports through strategic Alibaba.com partnership and certified expertise.
               </p>
               <div className="flex flex-wrap gap-6">
@@ -103,30 +103,32 @@ export default function Home() {
                   <Link href="/services">Our Services</Link>
                 </Button>
               </div>
-              <div className="mt-12 flex items-center gap-x-6">
-                <div className="flex -space-x-3">
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <div 
-                      key={i} 
-                      className="inline-block h-12 w-12 rounded-full ring-4 ring-white overflow-hidden bg-gray-100 shadow-sm"
-                    >
-                      <Image 
-                        src={`/user.png`} 
-                        alt="User" 
-                        width={48} 
-                        height={48} 
-                      />
-                    </div>
-                  ))}
-                </div>
-                <div className="flex flex-col">
-                  <p className="text-sm font-bold text-gray-900">
-                    Trusted by 500+ Indian exporters
-                  </p>
-                  <div className="flex gap-0.5 mt-1">
+              <div className="mt-12 bg-gray-50 rounded-2xl p-6">
+                <div className="flex items-center gap-x-6">
+                  <div className="flex -space-x-3">
                     {[1, 2, 3, 4, 5].map((i) => (
-                      <Star key={i} className="h-3 w-3 fill-primary text-primary" />
+                      <div
+                        key={i}
+                        className="inline-block h-12 w-12 rounded-full ring-4 ring-white overflow-hidden bg-gray-100 shadow-sm"
+                      >
+                        <Image
+                          src={`/user.png`}
+                          alt="User"
+                          width={48}
+                          height={48}
+                        />
+                      </div>
                     ))}
+                  </div>
+                  <div className="flex flex-col">
+                    <p className="text-sm font-bold text-gray-900">
+                      Trusted by 500+ Indian exporters
+                    </p>
+                    <div className="flex gap-0.5 mt-1">
+                      {[1, 2, 3, 4, 5].map((i) => (
+                        <Star key={i} className="h-3 w-3 fill-primary text-primary" />
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -191,7 +193,7 @@ export default function Home() {
       </section>
 
       {/* Services Snapshot */}
-      <section className="mx-auto max-w-7xl px-6 lg:px-8">
+      <section className="bg-white mx-auto max-w-7xl px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <h2 className="text-base font-black leading-7 text-primary uppercase tracking-widest">
             Expert Guidance
