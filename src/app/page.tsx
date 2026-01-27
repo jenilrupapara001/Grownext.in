@@ -93,7 +93,7 @@ export default function Home() {
                 </span>
               </h1>
               <p className="text-lg leading-7 text-gray-600 mb-10 max-w-xl">
-                From onboarding to global lead generation — GrowNext helps Indian SMEs scale exports through strategic Alibaba.com partnership and certified expertise.
+                From onboarding to global lead generation GrowNext helps Indian SMEs scale exports through strategic Alibaba.com partnership and certified expertise.
               </p>
               <div className="flex flex-wrap gap-6">
                 <Button asChild size="lg" className="rounded-full px-10 h-16 text-lg font-bold shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all active:scale-95">

@@ -91,7 +91,7 @@ export default function Company() {
                 Founded with a vision to revolutionize how Indian SMEs approach exports, GrowNext has quickly established itself as a leading Alibaba.com Channel Partner in India.
               </p>
               <p>
-                We understand the unique challenges faced by Indian manufacturers — from language barriers and digital compliance to global competition and lead management. Our team of certified experts provides the "local touch" needed to succeed on a global scale.
+                We understand the unique challenges faced by Indian manufacturers from language barriers and digital compliance to global competition and lead management. Our team of certified experts provides the "local touch" needed to succeed on a global scale.
               </p>
               <p>
                 By combining Alibaba's world-class platform with our hands-on onboarding and management services, we help businesses unlock new revenue streams and establish a lasting global presence. Our mission is to see "Made in India" products in every corner of the world.
