@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "GrowNext | Official Alibaba.com Partner in India",
   description: "Empowering Indian Businesses to sell globally through Alibaba.com. Official Channel Partner for onboarding, optimization, and global marketing.",
   keywords: ["Alibaba partner India", "export services India", "sell on Alibaba", "B2B export consultancy"],
-  icons: '/Logo.png',
+  icons: '/Logo.png?v=2',
 };
 
 export default function RootLayout({
