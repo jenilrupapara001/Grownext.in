@@ -40,7 +40,7 @@ export function Navbar() {
           <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2">
             <div className="lg:hidden">
               <Image
-                src="/Logo.png"
+                src="/Logo.png?v=2"
                 alt="GrowNext Logo"
                 width={50}
                 height={50}
@@ -49,7 +49,7 @@ export function Navbar() {
             </div>
             <div className="hidden lg:block">
               <Image
-                src="/Logo.png"
+                src="/Logo.png?v=2"
                 alt="GrowNext Logo"
                 width={120}
                 height={40}
