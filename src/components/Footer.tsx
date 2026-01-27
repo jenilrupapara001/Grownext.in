@@ -35,7 +35,7 @@ export function Footer() {
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8">
             <Link href="/">
-              <Image src="/Logo.png" alt="GrowNext Logo" width={120} height={40} />
+              <Image src="/Logo.png?v=2" alt="GrowNext Logo" width={120} height={40} />
             </Link>
             <p className="text-sm leading-6 max-w-xs">
               Official Alibaba.com Channel Partner empowering Indian Businesses to scale exports through global lead generation and strategic onboarding.
