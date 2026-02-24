@@ -179,7 +179,7 @@ export default function HomeClient({ latestPosts }: { latestPosts: BlogPost[] })
               className="flex flex-wrap items-center gap-4"
             >
               <Button asChild size="lg" className="rounded-full px-8 h-14 text-base font-bold bg-primary hover:bg-gray-900 text-white transition-all shadow-xl hover:shadow-2xl border-none active:scale-95">
-                <Link href="/contact">Get a Free Export Plan <ArrowRight className="ml-2 h-5 w-5" /></Link>
+                <Link href="/contact">Schedule Your Export Growth Audit <ArrowRight className="ml-2 h-5 w-5" /></Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="rounded-full px-8 h-14 text-base font-bold border-gray-300 text-gray-900 bg-white/80 backdrop-blur-sm hover:bg-white hover:border-gray-400 transition-all shadow-sm">
                 <Link href="/services">How It Works</Link>
@@ -529,7 +529,7 @@ export default function HomeClient({ latestPosts }: { latestPosts: BlogPost[] })
                   image: sector.img,
                   icon: <sector.icon className="h-8 w-8 text-white" />
                 }))}
-                speed={80}
+                speed={7}
               />
             </div>
           </div>
