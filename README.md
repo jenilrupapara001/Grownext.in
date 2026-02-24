@@ -226,7 +226,7 @@ This project is proprietary software owned by GrowNext. All rights reserved.
 **GrowNext - Official Alibaba.com Partner in India**
 
 - **Website**: [https://grownext.in](https://grownext.in)
-- **Email**: info@grownext.in
+- **Email**: contact@grownext.in
 - **Phone**: +91 XXXXX XXXXX
 - **Address**: Surat, Gujarat, India
 

@@ -90,7 +90,7 @@ export function Footer() {
                   </li>
                   <li className="flex gap-3 text-sm">
                     <Mail className="h-5 w-5 text-primary shrink-0" />
-                    <span>info@grownext.in</span>
+                    <span>contact@grownext.in</span>
                   </li>
                 </ul>
               </div>

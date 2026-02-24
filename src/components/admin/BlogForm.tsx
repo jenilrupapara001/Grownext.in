@@ -8,14 +8,18 @@ import { Button } from '@/components/ui/button'
 import {
     Save, X, Eye, Type, Image as ImageIcon, Calendar, Clock, Tag, Layout, Hash, Upload, Loader2, Plus,
     Bold, Italic, Strikethrough, Heading1, Heading2, Heading3, List, ListOrdered, Link, Code, Quote,
-    Minus, Table, AlignLeft
+    Minus, Table, AlignLeft, SendHorizontal
 } from 'lucide-react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import Image from 'next/image'
+import { useSession } from 'next-auth/react'
 
 export default function BlogForm({ post }: { post?: BlogPost }) {
     const router = useRouter()
+    const { data: session } = useSession()
+    const isAdmin = (session?.user as any)?.role === 'admin'
+    const authorName = session?.user?.name || 'Writer'
     const [isSaving, setIsSaving] = useState(false)
     const [previewMode, setPreviewMode] = useState(false)
 
@@ -45,12 +49,14 @@ export default function BlogForm({ post }: { post?: BlogPost }) {
         }
     }, [formData.title, post])
 
-    const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent, forceStatus?: 'approved' | 'pending') => {
         e.preventDefault()
         setIsSaving(true)
 
         const { slug, content, ...frontmatter } = formData
-        const result = await savePost(slug, { ...frontmatter, content })
+        // Writers always submit as 'pending', admins publish as 'approved'
+        const status = forceStatus ?? (isAdmin ? 'approved' : 'pending')
+        const result = await savePost(slug, { ...frontmatter, content, status, author: authorName })
 
         setIsSaving(false)
         if (result.success) {
@@ -413,10 +419,12 @@ export default function BlogForm({ post }: { post?: BlogPost }) {
                         disabled={isSaving}
                         className="rounded-full px-12 h-14 bg-primary text-white font-black shadow-xl shadow-primary/20 hover:scale-105 transition-transform"
                     >
-                        {isSaving ? 'Synchronizing...' : (
+                        {isSaving ? 'Saving...' : (
                             <span className="flex items-center gap-2">
-                                <Save className="h-5 w-5" />
-                                {post ? 'Update Authority' : 'Publish Global Insight'}
+                                {isAdmin ? <Save className="h-5 w-5" /> : <SendHorizontal className="h-5 w-5" />}
+                                {isAdmin
+                                    ? (post ? 'Update & Publish' : 'Publish Now')
+                                    : (post ? 'Resubmit for Review' : 'Submit for Review')}
                             </span>
                         )}
                     </Button>

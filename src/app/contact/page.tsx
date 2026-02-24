@@ -141,7 +141,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-black text-gray-900 text-xl mb-1">Email Our Strategy Team</h4>
-                  <p className="text-gray-600 text-lg font-medium">info@grownext.in</p>
+                  <p className="text-gray-600 text-lg font-medium">contact@grownext.in</p>
                 </div>
               </div>
               <div className="flex gap-8 group">

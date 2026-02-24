@@ -1,11 +1,13 @@
-import { getAllPosts } from '@/lib/blog'
+import { getAllPostsForAdmin } from '@/lib/blog'
 import Link from 'next/link'
-import { Plus, Edit2, Trash2, ExternalLink, Calendar, Clock, Tag } from 'lucide-react'
+import { Plus } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import BlogTable from '@/components/admin/BlogTable'
 
 export default function BlogAdminDashboard() {
-    const posts = getAllPosts()
+    const posts = getAllPostsForAdmin()
+    const pendingCount = posts.filter(p => p.frontmatter.status === 'pending').length
+    const approvedCount = posts.filter(p => !p.frontmatter.status || p.frontmatter.status === 'approved').length
 
     return (
         <div className="space-y-8">
@@ -22,21 +24,25 @@ export default function BlogAdminDashboard() {
                 </Button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                 <div className="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-sm">
                     <div className="text-gray-400 font-black text-xs uppercase tracking-widest mb-1">Total Posts</div>
                     <div className="text-4xl font-black text-gray-900 italic">{posts.length}</div>
+                </div>
+                <div className="bg-white p-8 rounded-[2rem] border border-green-100 shadow-sm">
+                    <div className="text-green-600 font-black text-xs uppercase tracking-widest mb-1">Live</div>
+                    <div className="text-4xl font-black text-green-600 italic">{approvedCount}</div>
+                </div>
+                <div className={`p-8 rounded-[2rem] shadow-sm border ${pendingCount > 0 ? 'bg-amber-50 border-amber-200' : 'bg-white border-gray-100'}`}>
+                    <div className={`font-black text-xs uppercase tracking-widest mb-1 ${pendingCount > 0 ? 'text-amber-600' : 'text-gray-400'}`}>
+                        {pendingCount > 0 ? '⏳ Pending Review' : 'Pending'}
+                    </div>
+                    <div className={`text-4xl font-black italic ${pendingCount > 0 ? 'text-amber-600' : 'text-gray-900'}`}>{pendingCount}</div>
                 </div>
                 <div className="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-sm">
                     <div className="text-gray-400 font-black text-xs uppercase tracking-widest mb-1">Featured</div>
                     <div className="text-4xl font-black text-gray-900 italic">
                         {posts.filter(p => p.frontmatter.featured).length}
-                    </div>
-                </div>
-                <div className="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-sm">
-                    <div className="text-gray-400 font-black text-xs uppercase tracking-widest mb-1">Last Updated</div>
-                    <div className="text-lg font-black text-gray-900 uppercase truncate">
-                        {posts[0]?.frontmatter.date || 'N/A'}
                     </div>
                 </div>
             </div>

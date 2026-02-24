@@ -4,6 +4,8 @@ import matter from 'gray-matter'
 
 const contentDir = path.join(process.cwd(), 'src/content/blog')
 
+export type BlogStatus = 'draft' | 'pending' | 'approved' | 'rejected'
+
 export type BlogPostFrontmatter = {
     title: string
     desc: string
@@ -12,6 +14,9 @@ export type BlogPostFrontmatter = {
     date: string
     image: string
     featured?: boolean
+    status?: BlogStatus
+    author?: string
+    rejectionReason?: string
 }
 
 export type BlogPost = {
@@ -20,48 +25,44 @@ export type BlogPost = {
     content: string
 }
 
+/** Public-facing: only returns approved posts (or posts with no status = legacy approved) */
 export function getAllPosts(): BlogPost[] {
-    // Check if directory exists, if not create it
     if (!fs.existsSync(contentDir)) {
         fs.mkdirSync(contentDir, { recursive: true })
         return []
     }
 
-    const files = fs.readdirSync(contentDir)
-
-    const posts = files
-        .filter((fileName) => fileName.endsWith('.md'))
+    return fs.readdirSync(contentDir)
+        .filter((f) => f.endsWith('.md'))
         .map((fileName) => {
             const slug = fileName.replace('.md', '')
-            const fullPath = path.join(contentDir, fileName)
-            const fileContents = fs.readFileSync(fullPath, 'utf8')
-
-            const { data, content } = matter(fileContents)
-
-            return {
-                slug,
-                frontmatter: data as BlogPostFrontmatter,
-                content,
-            }
+            const { data, content } = matter(fs.readFileSync(path.join(contentDir, fileName), 'utf8'))
+            return { slug, frontmatter: data as BlogPostFrontmatter, content }
         })
-        // Sort posts by date descending
+        .filter((p) => !p.frontmatter.status || p.frontmatter.status === 'approved')
         .sort((a, b) => (new Date(a.frontmatter.date) > new Date(b.frontmatter.date) ? -1 : 1))
+}
 
-    return posts
+/** Admin-facing: returns ALL posts regardless of status */
+export function getAllPostsForAdmin(): BlogPost[] {
+    if (!fs.existsSync(contentDir)) return []
+
+    return fs.readdirSync(contentDir)
+        .filter((f) => f.endsWith('.md'))
+        .map((fileName) => {
+            const slug = fileName.replace('.md', '')
+            const { data, content } = matter(fs.readFileSync(path.join(contentDir, fileName), 'utf8'))
+            return { slug, frontmatter: data as BlogPostFrontmatter, content }
+        })
+        .sort((a, b) => (new Date(a.frontmatter.date) > new Date(b.frontmatter.date) ? -1 : 1))
 }
 
 export function getPostBySlug(slug: string): BlogPost | null {
     try {
         const fullPath = path.join(contentDir, `${slug}.md`)
-        const fileContents = fs.readFileSync(fullPath, 'utf8')
-        const { data, content } = matter(fileContents)
-
-        return {
-            slug,
-            frontmatter: data as BlogPostFrontmatter,
-            content,
-        }
-    } catch (error) {
+        const { data, content } = matter(fs.readFileSync(fullPath, 'utf8'))
+        return { slug, frontmatter: data as BlogPostFrontmatter, content }
+    } catch {
         return null
     }
 }
