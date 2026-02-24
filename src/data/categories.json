@@ -1,0 +1,120 @@
+[
+    {
+        "id": "apparel",
+        "name": "Apparel & Accessories",
+        "icon": "ShoppingBag",
+        "demand": "Very High",
+        "subcategories": [
+            "Men's Clothing",
+            "Women's Clothing",
+            "Apparel Design & Processing Services",
+            "Sportswear",
+            "Uniforms",
+            "Ethnic Clothing",
+            "Garment Accessories"
+        ]
+    },
+    {
+        "id": "electronics",
+        "name": "Consumer Electronics",
+        "icon": "Cpu",
+        "demand": "High",
+        "subcategories": [
+            "Mobile Phones & Accessories",
+            "Computer Hardware & Software",
+            "Home Audio, Video & Accessories",
+            "Camera, Photo & Accessories",
+            "Portable Audio, Video & Accessories",
+            "Smart Electronics",
+            "Video Game & Accessories"
+        ]
+    },
+    {
+        "id": "machinery",
+        "name": "Machinery & Equipment",
+        "icon": "Factory",
+        "demand": "Very High",
+        "subcategories": [
+            "Agriculture Machinery",
+            "Building Material Machinery",
+            "Chemical & Pharmaceutical Machinery",
+            "Engine & Parts",
+            "General Industrial Equipment",
+            "Machine Tool Equipment",
+            "Packaging Machinery"
+        ]
+    },
+    {
+        "id": "home-garden",
+        "name": "Home & Garden",
+        "icon": "Sofa",
+        "demand": "High",
+        "subcategories": [
+            "Kitchen & Tabletop",
+            "Home Decor",
+            "Household Cleaning Tools",
+            "Pet Products",
+            "Garden Supplies",
+            "Home Storage & Organization",
+            "Household Chemicals"
+        ]
+    },
+    {
+        "id": "beauty",
+        "name": "Beauty & Personal Care",
+        "icon": "Zap",
+        "demand": "Ultra High",
+        "subcategories": [
+            "Makeup",
+            "Skin Care",
+            "Hair Care",
+            "Manicure & Pedicure",
+            "Perfume & Deodorant",
+            "Beauty Equipment",
+            "Oral Hygiene"
+        ]
+    },
+    {
+        "id": "agro",
+        "name": "Agriculture & Food",
+        "icon": "Leaf",
+        "demand": "High",
+        "subcategories": [
+            "Spices & Seasoning",
+            "Agricultural Produce",
+            "Grain",
+            "Beans",
+            "Nuts & Kernels",
+            "Plant & Animal Oil",
+            "Processed Food"
+        ]
+    },
+    {
+        "id": "jewelry",
+        "name": "Jewelry & Accessories",
+        "icon": "Gem",
+        "demand": "High",
+        "subcategories": [
+            "Loose Diamonds",
+            "Loose Gemstones",
+            "Fine Jewelry",
+            "Fashion Jewelry",
+            "Watch & Accessories",
+            "Jewelry Boxes & Displays"
+        ]
+    },
+    {
+        "id": "chemicals",
+        "name": "Chemicals & Plastics",
+        "icon": "FlaskConical",
+        "demand": "Stable",
+        "subcategories": [
+            "Basic Organic Chemicals",
+            "Basic Inorganic Chemicals",
+            "Industrial Gas",
+            "Catalyst & Chemical Auxiliary Agent",
+            "Plastics & Products",
+            "Rubber & Products"
+        ]
+    }
+]

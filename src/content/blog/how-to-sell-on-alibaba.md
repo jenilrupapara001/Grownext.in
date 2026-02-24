@@ -1,10 +1,12 @@
 ---
-title: "How to Sell on Alibaba: A Complete Guide for Indian Exporters"
-desc: "Learn the step-by-step process of setting up a successful Alibaba Seller Account and dominating international B2B sales from India."
-category: "Platform Strategy"
-time: "12 min read"
-date: "Jan 15, 2026"
-image: "/blog-export-guide.png"
+title: 'How to Sell on Alibaba: A Complete Guide for Indian Exporters'
+desc: >-
+  Learn the step-by-step process of setting up a successful Alibaba Seller
+  Account and dominating international B2B sales from India.
+category: Platform Strategy
+date: '2026-02-22'
+time: 12 min read
+image: /hero.png
 featured: true
 ---
 
@@ -57,3 +59,5 @@ A buyer account is free and allows you to source products. An **Alibaba Seller A
 
 ### Can a Channel Partner manage my account?
 Yes. As an authorized **Alibaba Channel Partner Gujarat**, Grownext provides complete end-to-end management, from mini-site design to daily inquiry handling and keyword optimization.
+
+![jewel.png](/uploads/1771923989564-jewel.png)

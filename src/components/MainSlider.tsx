@@ -9,13 +9,13 @@ const slides = [
     {
         title: "Easy Step-by-Step Setup",
         description: "We help you with all the paperwork and verification to get your business live on Alibaba.com quickly and without any stress.",
-        image: "/hero.png",
+        image: "/diam.png",
         benefits: ["Full Documentation Help", "Account Verification", "Simple Onboarding"]
     },
     {
         title: "Show Up First in Searches",
         description: "Our experts find the right keywords for your products so that global buyers see your business first when they search.",
-        image: "/machine.png",
+        image: "/jewelery.png",
         benefits: ["Product Keywords", "High-Ranking Listings", "Competitor Analysis"]
     },
     {

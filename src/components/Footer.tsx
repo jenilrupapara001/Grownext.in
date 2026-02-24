@@ -29,13 +29,13 @@ const footerNavigation = {
 
 export function Footer() {
   return (
-    <footer className="bg-gray-950 text-gray-300" aria-labelledby="footer-heading">
+    <footer className="relative z-30 bg-gray-950 text-gray-300" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">Footer</h2>
       <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 lg:px-8">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8">
             <Link href="/">
-              <Image src="/Logo.png?v=2" alt="GrowNext Logo" width={120} height={40} />
+              <Image src="/Logo.png" alt="GrowNext Logo" width={120} height={40} />
             </Link>
             <p className="text-sm leading-6 max-w-xs">
               Official Alibaba.com Channel Partner empowering Indian Businesses to scale exports through global lead generation and strategic onboarding.

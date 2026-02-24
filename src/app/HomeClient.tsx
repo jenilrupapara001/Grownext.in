@@ -7,7 +7,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { MainSlider } from '@/components/MainSlider'
 import ColorBends from '@/components/ColorBends'
 import Globe from '@/components/Globe'
-import CardSwap, { Card } from '@/components/CardSwap'
+import InfiniteMarquee from '@/components/InfiniteMarquee'
 import {
   ChevronRight,
   ShieldCheck,
@@ -26,6 +26,7 @@ import {
   Ship,
   Factory,
   Diamond,
+  Gem,
   Clock,
   BookOpen,
   Box,
@@ -39,12 +40,27 @@ import {
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { BlogPost } from '@/lib/blog'
+import { GoogleReviews } from '@/components/GoogleReviews'
 
 const stats = [
   { label: 'Export Leads Generated', value: '10K+', icon: Zap },
   { label: 'Successful Businesses', value: '500+', icon: Users2 },
   { label: 'Global Market Access', value: '190+', icon: Globe2 },
   { label: 'Happy Exporters', value: '98%', icon: Award },
+]
+const industrialSectors = [
+  { icon: Factory, label: 'Engineering & Machinery', img: '/machine.png', desc: 'Scaling heavy machinery exports globally' },
+  { icon: Package, label: 'Textiles & Garments', img: '/apparel.png', desc: 'Globalizing Indian textiles and garments' },
+  { icon: Gem, label: 'Gems & Jewelry', img: '/jewel.png', desc: 'Connecting craft to global luxury buyers' },
+  { icon: LineChart, label: 'Organic Chemicals', img: 'https://images.unsplash.com/photo-1532187863486-abf51ad9f69d?auto=format&fit=crop&q=80&w=800', desc: 'Navigating global chemical trade regulations' },
+  { icon: Truck, label: 'Automobiles & Spares', img: 'https://images.unsplash.com/photo-1517524008410-b4bd60b30fc3?auto=format&fit=crop&q=80&w=800', desc: 'Exporting premium Indian auto components' },
+  { icon: Cpu, label: 'Electronics & IT', img: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800', desc: 'Scaling Indian tech hardware globally' },
+  { icon: FlaskConical, label: 'Pharmaceuticals', img: 'https://images.unsplash.com/photo-1587854692152-cbe660dbbb88?auto=format&fit=crop&q=80&w=800', desc: 'Indian pharma reaching global healthcare' },
+  { icon: Leaf, label: 'Agriculture & Spices', img: '/food.png', desc: 'Exporting premium spices and produce' },
+  { icon: Briefcase, label: 'Leather Products', img: 'https://images.unsplash.com/photo-1524380365553-39903ef8460a?auto=format&fit=crop&q=80&w=800', desc: 'Indian leather craft for global markets' },
+  { icon: Box, label: 'Packaging Materials', img: 'https://images.unsplash.com/photo-1589939705384-5185138a04b9?auto=format&fit=crop&q=80&w=800', desc: 'Sustainable packaging solutions exported' },
+  { icon: ShoppingBag, label: 'Handicrafts & Art', img: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&q=80&w=800', desc: 'Artisanal India reaching global homes' },
+  { icon: Sofa, label: 'Furniture & Wood', img: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=800', desc: 'Indian woodcraft for international living' },
 ]
 
 const services = [
@@ -68,145 +84,143 @@ const services = [
   },
 ]
 
-const testimonials = [
-  {
-    quote: "Within 3 months of onboarding with Grownext, we started receiving verified inquiries from the Middle East and Europe. Their knowledge of Western India's industrial landscape is unmatched.",
-    author: "Rakesh Patel",
-    role: "MD, Gujarat Polychem",
-    location: "Vapi, India",
-    rating: 5
-  },
-  {
-    quote: "The account management team at Grownext handled everything from listing to lead generation. Our exports have grown by 40% in just six months since joining the platform.",
-    author: "Amit Sharma",
-    role: "Export Manager, IndoGems",
-    location: "Jaipur, India",
-    rating: 5
-  }
-]
-
 export default function HomeClient({ latestPosts }: { latestPosts: BlogPost[] }) {
   const { scrollY } = useScroll()
   const heroOpacity = useTransform(scrollY, [0, 700], [1, 0])
-  const heroScale = useTransform(scrollY, [0, 700], [1, 0.88])
-  const heroY = useTransform(scrollY, [0, 700], [0, -60])
+  const heroScale = useTransform(scrollY, [0, 700], [1, 0.92])
+  const heroY = useTransform(scrollY, [0, 700], [0, -40])
 
   return (
-    <div className="flex flex-col bg-gray-50">
-      {/* Mega Hero Section - Full screen fixed with ColorBends GPU shader */}
-      <div className="fixed top-0 left-0 w-full h-[100vh] z-0 overflow-hidden bg-[#f5f0eb]">
-        {/* Full-bleed ColorBends – covers entire hero */}
+    <div className="flex flex-col bg-white">
+      {/* Hero — fixed, full-screen, ColorBends GPU shader */}
+      <div className="fixed top-0 left-0 w-full h-[100vh] z-0 overflow-hidden bg-[#f8f4f0]">
+
+        {/* Hero Background Image */}
         <div className="absolute inset-0">
-          <ColorBends
-            colors={["#ff6600", "#ff8533", "#ff3300", "#ffaa00", "#cc4400"]}
-            rotation={15}
-            speed={0.18}
-            scale={1.1}
-            frequency={1.2}
-            warpStrength={1.4}
-            mouseInfluence={1.2}
-            parallax={0.6}
-            noise={0.06}
-            transparent
-            autoRotate={2}
+          <Image
+            src="/back.png"
+            alt="Hero Background"
+            fill
+            className="object-cover object-center"
+            priority
           />
+          {/* Subtle overlays to ensure text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white/50 via-transparent to-transparent pointer-events-none" />
         </div>
 
-        {/* Overlay gradient for text legibility */}
-        <div className="absolute inset-0 bg-gradient-to-br from-white/70 via-white/30 to-transparent pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-t from-white/60 via-transparent to-transparent pointer-events-none" />
-
-        {/* Hero content */}
-        <div className="relative z-10 h-full flex flex-col items-center justify-center px-6 md:px-12 lg:px-20 text-center">
+        {/* Hero content – left-aligned, editorial */}
+        <div className="relative z-10 h-full flex flex-col justify-center pt-32 px-6 md:px-12 lg:px-20">
           <motion.div
             style={{ opacity: heroOpacity, scale: heroScale, y: heroY }}
-            className="flex flex-col items-center max-w-7xl mx-auto w-full"
+            className="max-w-7xl w-full"
           >
             {/* Badge */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-primary/40 bg-white/60 backdrop-blur-sm px-5 py-2.5 text-xs sm:text-sm font-bold text-primary uppercase tracking-widest mb-10 sm:mb-14 shadow-sm"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-white/70 backdrop-blur-sm px-4 py-2 text-[11px] font-black text-primary uppercase tracking-[0.2em] mb-8 shadow-sm"
             >
-              <BadgeCheck className="h-4 w-4" />
-              Alibaba Authorized Channel Partner
+              <BadgeCheck className="h-3.5 w-3.5" />
+              Alibaba Authorized Channel Partner · Gujarat, India
             </motion.div>
 
-            {/* Headline – 3 lines staggered */}
-            <div className="overflow-hidden">
-              <motion.div
-                initial={{ opacity: 0, y: 80 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className="block text-[13vw] sm:text-[11vw] md:text-[8rem] lg:text-[9.5rem] font-black tracking-tighter text-gray-900 leading-[0.88]"
-              >
-                START YOUR
-              </motion.div>
-            </div>
-            <div className="overflow-hidden">
-              <motion.div
-                initial={{ opacity: 0, y: 80 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                className="block text-[13vw] sm:text-[11vw] md:text-[8rem] lg:text-[9.5rem] font-black tracking-tighter leading-[0.88] bg-gradient-to-r from-[#ff6600] via-[#ff8533] to-[#ff3300] bg-clip-text text-transparent pb-4 lg:pb-6"
-              >
-                GLOBAL EXPORT
-              </motion.div>
-            </div>
-            <div className="overflow-hidden mb-10 md:mb-14">
-              <motion.div
-                initial={{ opacity: 0, y: 80 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="block text-[13vw] sm:text-[11vw] md:text-[8rem] lg:text-[9.5rem] font-black tracking-tighter text-gray-900 leading-[0.88]"
-              >
-                JOURNEY.
-              </motion.div>
-            </div>
+            {/* Headline — staggered lines, left-aligned */}
+            <h1 className="font-black tracking-tighter leading-[0.88] mb-8">
+              <div className="overflow-hidden">
+                <motion.div
+                  initial={{ y: 100, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                  className="text-[13vw] sm:text-[10vw] md:text-[8.5rem] lg:text-[10rem] text-[#2B2B2B]"
+                >
+                  SELL ON
+                </motion.div>
+              </div>
+              <div className="overflow-hidden">
+                <motion.div
+                  initial={{ y: 100, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 0.32, ease: [0.16, 1, 0.3, 1] }}
+                  className="text-[13vw] sm:text-[10vw] md:text-[8.5rem] lg:text-[10rem] text-[#FF6A00] pb-3"
+                >
+                  ALIBABA.COM
+                </motion.div>
+              </div>
+              <div className="overflow-hidden">
+                <motion.div
+                  initial={{ y: 100, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 0.44, ease: [0.16, 1, 0.3, 1] }}
+                  className="text-[13vw] sm:text-[10vw] md:text-[8.5rem] lg:text-[10rem] text-[#2B2B2B]"
+                >
+                  GROW GLOBAL.
+                </motion.div>
+              </div>
+            </h1>
 
-            {/* Subline */}
+            {/* Subline — SEO-rich, punchy */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.65 }}
-              className="text-lg sm:text-xl md:text-2xl text-gray-700 font-medium max-w-2xl mb-12 md:mb-16 leading-relaxed"
+              transition={{ duration: 0.7, delay: 0.6 }}
+              className="text-lg sm:text-xl text-[#58595B] font-medium max-w-xl mb-10 leading-relaxed"
             >
-              Wondering <span className="text-gray-900 font-bold italic">how to sell on Alibaba</span>? We provide end-to-end support for Indian manufacturers to export globally with total confidence.
+              India's #1 <strong className="text-[#2B2B2B]">Alibaba Channel Partner in Gujarat</strong> we handle complete{' '}
+              <strong className="text-[#2B2B2B]">Alibaba Registration</strong>, Alibaba Seller Account setup, listing optimization, and global lead generation so you can focus on manufacturing.
             </motion.p>
 
-            {/* CTA Buttons */}
+            {/* CTAs */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.8 }}
-              className="flex flex-wrap items-center justify-center gap-4 sm:gap-6"
+              transition={{ duration: 0.6, delay: 0.75 }}
+              className="flex flex-wrap items-center gap-4"
             >
-              <Button asChild size="lg" className="rounded-full px-8 sm:px-10 h-14 sm:h-16 text-base sm:text-lg font-bold bg-primary hover:bg-gray-900 text-white transition-all shadow-xl hover:shadow-2xl border-none active:scale-95">
+              <Button asChild size="lg" className="rounded-full px-8 h-14 text-base font-bold bg-primary hover:bg-gray-900 text-white transition-all shadow-xl hover:shadow-2xl border-none active:scale-95">
                 <Link href="/contact">Get a Free Export Plan <ArrowRight className="ml-2 h-5 w-5" /></Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="rounded-full px-8 sm:px-10 h-14 sm:h-16 text-base sm:text-lg font-bold border-gray-800 text-gray-900 bg-white/70 backdrop-blur-sm hover:bg-white transition-all shadow">
-                <Link href="/services">Expert Consultation</Link>
+              <Button asChild size="lg" variant="outline" className="rounded-full px-8 h-14 text-base font-bold border-gray-300 text-gray-900 bg-white/80 backdrop-blur-sm hover:bg-white hover:border-gray-400 transition-all shadow-sm">
+                <Link href="/services">How It Works</Link>
               </Button>
+            </motion.div>
+
+            {/* Trust bar — keyword-rich micro-labels */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.1, duration: 0.8 }}
+              className="mt-12 flex flex-wrap gap-x-8 gap-y-2"
+            >
+              {[
+                'Alibaba Supplier Account Setup',
+                'Alibaba Plan & Package Advisory',
+                'How to Export from India',
+                '190+ Countries Reached',
+                '500+ Exporters Onboarded',
+              ].map((tag) => (
+                <span key={tag} className="text-xs font-bold text-gray-400 uppercase tracking-wider">{tag}</span>
+              ))}
             </motion.div>
           </motion.div>
 
           {/* Scroll indicator */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.4, duration: 1 }}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+            transition={{ delay: 1.5, duration: 1 }}
+            className="absolute bottom-8 left-6 md:left-12 lg:left-20 flex items-center gap-3"
           >
-            <span className="text-xs font-bold text-gray-500 uppercase tracking-widest">Scroll</span>
             <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-              className="h-8 w-5 rounded-full border-2 border-gray-400 flex items-start justify-center pt-1.5"
+              animate={{ y: [0, 6, 0] }}
+              transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
+              className="h-9 w-5 rounded-full border-2 border-gray-400 flex items-start justify-center pt-1.5"
             >
               <div className="h-1.5 w-1 rounded-full bg-gray-400" />
             </motion.div>
-          </motion.div>
+            <span className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">Scroll to explore</span>
+          </motion.div> */}
         </div>
       </div>
 
@@ -234,8 +248,8 @@ export default function HomeClient({ latestPosts }: { latestPosts: BlogPost[] })
                 <div className="h-14 w-14 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-sm">
                   <pillar.icon className="h-7 w-7" />
                 </div>
-                <h3 className="font-black text-gray-900 text-xl mb-3">{pillar.title}</h3>
-                <p className="text-gray-600 font-bold leading-relaxed">{pillar.desc}</p>
+                <h3 className="font-black text-[#2B2B2B] text-xl mb-3">{pillar.title}</h3>
+                <p className="text-[#58595B] font-bold leading-relaxed">{pillar.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -250,7 +264,7 @@ export default function HomeClient({ latestPosts }: { latestPosts: BlogPost[] })
                   <Star key={i} className="h-4 w-4 fill-primary text-primary" />
                 ))}
               </div>
-              <span className="text-sm font-black text-gray-900 ml-2">4.9/5 Rating by Indian Exporters</span>
+              <span className="text-sm font-black text-[#2B2B2B] ml-2">4.9/5 Rating by Indian Exporters</span>
             </div>
           </div>
           <div className="flex flex-wrap justify-center gap-8 md:gap-12 opacity-60 grayscale hover:grayscale-0 transition-all duration-700">
@@ -480,136 +494,49 @@ export default function HomeClient({ latestPosts }: { latestPosts: BlogPost[] })
           </div>
         </section>
 
-        {/* Featured Sectors */}
-        <section className="relative px-6 md:px-12 lg:px-20 py-24 md:py-32 overflow-hidden">
-          {/* Subtle Ambient Glow */}
-          <div className="absolute top-1/2 left-0 w-[40rem] h-[40rem] bg-primary/5 rounded-full blur-[120px] -translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+        {/* Featured Sectors — High Authority Multi-Row Marquee */}
+        <section className="relative py-32 lg:py-48 bg-white overflow-hidden">
+          {/* Subtle Ambient Industrial Authority Pattern */}
+          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.02] pointer-events-none" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80rem] h-[80rem] bg-primary/[0.03] rounded-full blur-[160px] pointer-events-none" />
 
-          <motion.div
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={{
-              hidden: {},
-              show: { transition: { staggerChildren: 0.15 } }
-            }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 relative z-10 items-center"
-          >
+          <div className="relative z-10 flex flex-col items-center">
             <motion.div
-              variants={{
-                hidden: { opacity: 0, x: -30 },
-                show: { opacity: 1, x: 0, transition: { duration: 0.6, ease: "easeOut" } }
-              }}
-              className="flex flex-col justify-center"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-20 lg:mb-28 px-6"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-black uppercase tracking-widest mb-6 w-fit">
-                <Box className="h-4 w-4" />
-                Industry Focus
+              <div className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-white border border-primary/10 text-primary text-[11px] font-black uppercase tracking-[0.4em] mb-10 shadow-sm mx-auto">
+                <div className="h-2 w-2 rounded-full bg-primary animate-pulse" />
+                Strategic Export Verticals
               </div>
-              <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-[1.1]">
-                Sectors We <span className="text-primary italic">Empower</span>
+              <h2 className="text-5xl md:text-8xl font-black text-[#2B2B2B] mb-10 tracking-tighter leading-[0.85] uppercase italic text-center">
+                Sectors We <span className="bg-gradient-to-r from-primary to-orange-600 bg-clip-text text-transparent not-italic">Empower.</span>
               </h2>
-              <p className="text-xl text-gray-600 mb-10 font-medium leading-relaxed max-w-lg">
-                We specialize in scaling businesses across high-demand export categories from India, navigating complex global markets with ease.
+              <p className="text-xl md:text-2xl text-[#58595B] font-medium leading-relaxed max-w-3xl mx-auto text-center px-4">
+                Specialized Alibaba.com onboarding frameworks designed for India’s high-demand export categories. We turn local manufacturing into global dominance.
               </p>
-
-              <div className="flex flex-wrap gap-3">
-                {[
-                  { icon: Factory, label: 'Engineering & Machinery' },
-                  { icon: Package, label: 'Textiles & Garments' },
-                  { icon: Diamond, label: 'Gems & Jewelry' },
-                  { icon: LineChart, label: 'Organic Chemicals' },
-                  { icon: Truck, label: 'Automobiles & Spares' },
-                  { icon: Cpu, label: 'Electronics & IT' },
-                  { icon: FlaskConical, label: 'Pharmaceuticals' },
-                  { icon: Leaf, label: 'Agriculture & Spices' },
-                  { icon: Briefcase, label: 'Leather Products' },
-                  { icon: Box, label: 'Packaging Materials' },
-                  { icon: ShoppingBag, label: 'Handicrafts & Art' },
-                  { icon: Sofa, label: 'Furniture & Wood' },
-                ].map((sector, i) => (
-                  <motion.div
-                    key={sector.label}
-                    variants={{
-                      hidden: { opacity: 0, scale: 0.9 },
-                      show: { opacity: 1, scale: 1, transition: { duration: 0.3 } }
-                    }}
-                    whileHover={{ y: -2, scale: 1.05 }}
-                    className="flex items-center gap-2 px-4 py-3 rounded-full bg-white border border-gray-100 shadow-sm hover:shadow-md hover:border-primary/40 transition-all cursor-pointer group"
-                  >
-                    <sector.icon className="h-5 w-5 text-primary" />
-                    <span className="font-bold text-gray-700 text-sm group-hover:text-gray-900 transition-colors">{sector.label}</span>
-                  </motion.div>
-                ))}
-              </div>
             </motion.div>
 
-            <div className="relative h-[500px] sm:h-[600px] w-full mt-10 lg:mt-0 flex items-center justify-center">
-              <CardSwap
-                cardDistance={80}
-                verticalDistance={80}
-                delay={4000}
-                pauseOnHover={true}
-              >
-                {[
-                  { img: '/machine.png', title: 'Industrial Focus', desc: 'Scaling heavy machinery exports globally' },
-                  { img: '/apparel.png', title: 'Apparel & Fabrics', desc: 'Globalizing Indian textiles and garments' },
-                  { img: '/food.png', title: 'Agriculture & Food', desc: 'Exporting premium spices and produce' },
-                  { img: '/jewel.png', title: 'Jewels & Diamonds', desc: 'Connecting craft to global luxury buyers' },
-                ].map((card, i) => (
-                  <Card key={card.title} customClass="w-[280px] h-[380px] sm:w-[350px] sm:h-[450px] overflow-hidden rounded-[2.5rem] shadow-2xl border-4 border-white/10 group cursor-pointer">
-                    <Image
-                      src={card.img}
-                      alt={card.title}
-                      fill
-                      className="object-cover transition-transform duration-1000 group-hover:scale-110"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-gray-950/90 via-gray-950/20 to-transparent transition-opacity duration-500 group-hover:opacity-100" />
-
-                    <div className="absolute bottom-0 left-0 right-0 p-8 flex flex-col justify-end h-full">
-                      <h3 className="text-white text-2xl md:text-3xl font-black mb-2 leading-tight">{card.title}</h3>
-                      <p className="text-gray-300 font-bold opacity-80 group-hover:opacity-100 transition-opacity duration-500">{card.desc}</p>
-                    </div>
-                  </Card>
-                ))}
-              </CardSwap>
+            {/* Infinite Marquee — Full Width Coverage */}
+            <div className="w-full">
+              <InfiniteMarquee
+                items={industrialSectors.map((sector, i) => ({
+                  id: i,
+                  title: sector.label,
+                  description: sector.desc,
+                  image: sector.img,
+                  icon: <sector.icon className="h-8 w-8 text-white" />
+                }))}
+                speed={80}
+              />
             </div>
-          </motion.div>
+          </div>
         </section>
 
-        {/* Testimonials - Enhanced */}
-        <section className="px-6 md:px-12 lg:px-20">
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-base font-black leading-7 text-primary uppercase tracking-widest">Client Success</h2>
-            <p className="mt-4 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl">
-              Real impact for Indian exporters
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-            {testimonials.map((t, i) => (
-              <div
-                key={i}
-                className="group bg-gray-50 p-12 rounded-[3rem] border border-transparent hover:border-primary/10 hover:bg-white hover:shadow-2xl transition-all duration-500"
-              >
-                <div className="flex gap-1 mb-8">
-                  {[...Array(t.rating)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-primary text-primary" />
-                  ))}
-                </div>
-                <p className="text-2xl text-gray-800 font-bold leading-relaxed mb-10 italic">"{t.quote}"</p>
-                <div className="flex items-center gap-5">
-                  <div className="h-16 w-16 rounded-2xl bg-primary flex items-center justify-center text-white text-2xl font-black">
-                    {t.author[0]}
-                  </div>
-                  <div>
-                    <h4 className="font-extrabold text-gray-900 text-lg">{t.author}</h4>
-                    <p className="text-sm font-bold text-gray-500 uppercase tracking-widest">{t.role} • {t.location}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+        {/* Live Google Reviews */}
+        <GoogleReviews />
 
         {/* Knowledge Hub (Blog Section) */}
         <section className="bg-gray-50/50 py-24 px-6 md:px-12 lg:px-20 relative overflow-hidden">
@@ -623,11 +550,11 @@ export default function HomeClient({ latestPosts }: { latestPosts: BlogPost[] })
                   <BookOpen className="h-4 w-4" />
                   Knowledge Hub
                 </h2>
-                <p className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight leading-[1.1]">
+                <p className="text-4xl md:text-5xl font-extrabold text-[#2B2B2B] tracking-tight leading-[1.1]">
                   Master Global Trade with Expert Insights
                 </p>
               </div>
-              <Button asChild variant="outline" className="rounded-full border-gray-200 hover:border-primary hover:bg-primary/5 text-gray-900 font-bold px-8 h-12 shadow-sm">
+              <Button asChild variant="outline" className="rounded-full border-[#EDEDED] hover:border-primary hover:bg-primary/5 text-[#2B2B2B] font-bold px-8 h-12 shadow-sm">
                 <Link href="/blog">View All Articles</Link>
               </Button>
             </div>
@@ -716,6 +643,6 @@ export default function HomeClient({ latestPosts }: { latestPosts: BlogPost[] })
           </div>
         </section>
       </div>
-    </div>
+    </div >
   )
 }

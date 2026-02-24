@@ -1,179 +1,209 @@
 'use client'
 
-import * as React from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { Menu, X, ChevronRight } from 'lucide-react'
-import { cn } from '@/lib/utils'
-import { Button } from '@/components/ui/button'
+import { Menu, X, ArrowRight } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
 
-const navigation = [
+const navLinks = [
   { name: 'Home', href: '/' },
-  { name: 'Company', href: '/company' },
   { name: 'Services', href: '/services' },
-  { name: 'Alibaba Selling', href: '/alibaba-global-selling' },
+  { name: 'Platform', href: '/alibaba-global-selling' },
+  { name: 'Sectors', href: '/sectors' },
+  { name: 'Company', href: '/company' },
   { name: 'Contact', href: '/contact' },
 ]
 
 export function Navbar() {
-  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
-  const [isScrolled, setIsScrolled] = React.useState(false)
+  const [isOpen, setIsOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const pathname = usePathname()
 
-  React.useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0)
-    }
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', handleScroll)
+    handleScroll()
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsOpen(false)
+  }, [pathname])
+
   return (
-    <header className={`fixed inset-x-0 top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 ${isScrolled ? 'shadow-lg' : ''}`}>
-      <nav
-        className="mx-auto flex max-w-7xl items-center justify-between p-4 lg:px-8"
-        aria-label="Global"
-      >
-        {/* Logo */}
-        <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-2">
-            <div className="lg:hidden">
-              <Image
-                src="/Logo.png?v=2"
-                alt="GrowNext Logo"
-                width={50}
-                height={50}
-                className="rounded-lg"
-              />
-            </div>
-            <div className="hidden lg:block">
-              <Image
-                src="/Logo.png?v=2"
-                alt="GrowNext Logo"
-                width={120}
-                height={40}
-              />
-            </div>
+    <>
+      <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 flex justify-center py-5 ${scrolled ? 'px-4' : 'px-6 md:px-10'}`}>
+        <motion.div
+          initial={{ y: -80, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className={`flex items-center justify-between px-5 md:px-8 py-2.5 rounded-full border transition-all duration-500 ${scrolled
+            ? 'bg-[#FF6A00] border-[#FF6A00]/20 backdrop-blur-2xl shadow-[0_8px_32px_rgba(255,106,0,0.2)] w-full max-w-5xl'
+            : 'bg-[#FF6A00] border-[#FF6A00]/40 backdrop-blur-xl shadow-lg w-full max-w-7xl'
+            }`}
+        >
+          {/* Logo */}
+          <Link href="/" className="flex items-center relative z-[101]">
+            {/* Desktop: full logo */}
+            <Image
+              src="/Logo.png"
+              alt="Grownext"
+              width={130}
+              height={36}
+              className="hidden sm:block h-9 w-auto object-contain brightness-0 invert"
+              priority
+            />
+            {/* Mobile: favicon-style logo */}
+            <img
+              src="/favicon.ico"
+              alt="Grownext"
+              width={32}
+              height={32}
+              className="block sm:hidden h-8 w-8 object-contain brightness-0 invert"
+            />
           </Link>
-        </div>
 
-        {/* Mobile menu button */}
-        <div className="flex lg:hidden">
-          <button
-            type="button"
-            className="inline-flex items-center justify-center rounded-md p-2.5 bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
-            onClick={() => setMobileMenuOpen(true)}
-          >
-            <span className="sr-only">Open main menu</span>
-            <Menu className="h-6 w-6" />
-          </button>
-        </div>
+          {/* Desktop Nav Links */}
+          <div className="hidden lg:flex items-center gap-1">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="relative px-4 py-2 text-[11px] font-black tracking-[0.12em] text-white hover:text-white/80 transition-colors z-10"
+                >
+                  {link.name}
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeTab"
+                      className="absolute inset-0 bg-white/15 border border-white/20 rounded-full -z-10"
+                      transition={{ type: 'spring', bounce: 0.2, duration: 0.5 }}
+                    />
+                  )}
+                </Link>
+              )
+            })}
+          </div>
 
-        {/* Desktop navigation */}
-        <div className="hidden lg:flex lg:gap-x-8">
-          {navigation.map((item) => (
+          {/* Desktop CTA */}
+          <div className="hidden lg:flex items-center">
             <Link
-              key={item.name}
-              href={item.href}
-              className={cn(
-                'text-sm font-semibold leading-6 transition-colors',
-                pathname === item.href
-                  ? 'text-primary'
-                  : 'text-gray-900 hover:text-primary'
-              )}
+              href="/contact"
+              className="px-6 py-2.5 bg-white text-primary text-[11px] font-black uppercase tracking-widest rounded-full hover:bg-gray-900 hover:text-white hover:shadow-lg transition-all active:scale-95"
             >
-              {item.name}
+              Consult
             </Link>
-          ))}
-        </div>
+          </div>
 
-        {/* Desktop CTA */}
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Button asChild className="rounded-full px-6">
-            <Link href="/contact" className="flex items-center gap-2">
-              Get Free Consultation <ChevronRight className="h-4 w-4" />
-            </Link>
-          </Button>
-        </div>
+          {/* Mobile Hamburger */}
+          <div className="lg:hidden flex items-center">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="relative z-[101] p-2.5 rounded-full bg-white/10 border border-white/20"
+              aria-label="Toggle menu"
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                {isOpen ? (
+                  <motion.span
+                    key="close"
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <X className="w-5 h-5 text-white" />
+                  </motion.span>
+                ) : (
+                  <motion.span
+                    key="open"
+                    initial={{ rotate: 90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: -90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Menu className="w-5 h-5 text-white" />
+                  </motion.span>
+                )}
+              </AnimatePresence>
+            </button>
+          </div>
+        </motion.div>
       </nav>
 
-      {/* ================= MOBILE MENU ================= */}
-
-      {/* Backdrop with blur */}
-      {mobileMenuOpen && (
-        <div
-          className="lg:hidden fixed inset-0 z-40 bg-black/40 backdrop-blur-sm transition-all"
-          onClick={() => setMobileMenuOpen(false)}
-        />
-      )}
-
-      {/* Mobile drawer */}
-      <div
-        className={cn(
-          'lg:hidden fixed top-0 right-0 z-50 h-full w-full max-w-sm bg-white/90 backdrop-blur-xl shadow-2xl border-l border-gray-100 transition-transform duration-300 ease-in-out',
-          mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-        )}
-      >
-        {/* Drawer header */}
-        <div className="flex items-center justify-between p-4 border-b border-gray-100">
-          <Link
-            href="/"
-            className="flex items-center gap-2"
-            onClick={() => setMobileMenuOpen(false)}
+      {/* Full-screen Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[90] bg-white flex flex-col items-center justify-center lg:hidden overflow-hidden"
           >
-            <div className="bg-primary p-2 rounded-lg">
-              <span className="text-white font-bold text-xl">G</span>
+            {/* Subtle background pattern */}
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(255,102,0,0.06),_transparent_60%)] pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(255,102,0,0.04),_transparent_60%)] pointer-events-none" />
+
+            <div className="relative z-10 text-center space-y-6 px-8 w-full">
+              {/* Logo in mobile menu */}
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.05 }}
+                className="mb-10"
+              >
+                <Image src="/Logo.png" alt="Grownext" width={140} height={40} className="h-10 w-auto mx-auto" />
+              </motion.div>
+
+              <div className="flex flex-col gap-2">
+                {navLinks.map((link, i) => {
+                  const isActive = pathname === link.href
+                  return (
+                    <motion.div
+                      key={link.name}
+                      initial={{ opacity: 0, x: -30 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: -30 }}
+                      transition={{ delay: 0.06 * (i + 1), ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      <Link
+                        href={link.href}
+                        onClick={() => setIsOpen(false)}
+                        className={`text-5xl font-black uppercase tracking-tighter italic leading-none inline-flex items-center gap-4 group transition-colors ${isActive ? 'text-primary' : 'text-gray-900 hover:text-primary'
+                          }`}
+                      >
+                        {link.name}
+                        <ArrowRight className="w-8 h-8 opacity-0 -translate-x-6 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-primary" />
+                      </Link>
+                    </motion.div>
+                  )
+                })}
+              </div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="pt-10 flex flex-col items-center gap-4"
+              >
+                <Link
+                  href="/contact"
+                  onClick={() => setIsOpen(false)}
+                  className="px-10 py-4 bg-primary text-white text-sm font-black uppercase tracking-widest rounded-full shadow-xl active:scale-95 transition-all"
+                >
+                  Book Free Consultation →
+                </Link>
+                <div className="h-px w-16 bg-gray-200 mt-2" />
+                <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-gray-400">Alibaba Authorized Channel Partner</p>
+              </motion.div>
             </div>
-            <span className="text-xl font-bold tracking-tight text-gray-900">
-              Grow<span className="text-primary">Next</span>
-            </span>
-          </Link>
-          <button
-            type="button"
-            className="rounded-md p-2 text-gray-700 hover:bg-gray-100 transition-colors"
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            <span className="sr-only">Close menu</span>
-            <X className="h-6 w-6" />
-          </button>
-        </div>
-
-        {/* Drawer content */}
-        <div className="flex flex-col h-full">
-          <nav className="flex-1 px-6 py-8">
-            <ul className="space-y-1">
-              {navigation.map((item) => (
-                <li key={item.name}>
-                  <Link
-                    href={item.href}
-                    className={cn(
-                      'block rounded-lg px-4 py-3 text-base font-semibold transition-colors',
-                      pathname === item.href
-                        ? 'text-primary bg-primary/5'
-                        : 'text-gray-900 hover:bg-gray-50'
-                    )}
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          {/* Drawer CTA */}
-          <div className="px-6 pb-8">
-            <Button
-              asChild
-              className="w-full rounded-full py-3"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              <Link href="/contact">Get Free Consultation</Link>
-            </Button>
-          </div>
-        </div>
-      </div>
-    </header>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   )
 }
