@@ -3,8 +3,9 @@ import { getAllPosts } from '@/lib/blog'
 import BlogClient from './BlogClient'
 
 export const metadata = {
-    title: 'Knowledge Hub | Grownext',
-    description: 'Expert strategies, market intel, and operational guides to scale your Indian export business globally.',
+    title: 'Knowledge Hub | Export Insights & Global Selling Guides | GrowNext',
+    description: 'Explore expert strategies, market intelligence, and operational guides designed to help Indian manufacturers and exporters scale their business globally through Alibaba.com.',
+    keywords: ['export insights', 'global selling guides', 'Alibaba.com tips', 'Indian exporter blog', 'B2B marketing strategies'],
 }
 
 export default function BlogIndex() {

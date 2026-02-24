@@ -20,9 +20,39 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     if (!post) {
         return { title: 'Post Not Found' }
     }
+
+    const title = `${post.frontmatter.title} | GrowNext Blog`
+    const description = post.frontmatter.desc
+    const url = `https://grownext.in/blog/${post.slug}`
+
     return {
-        title: post.frontmatter.title,
-        description: post.frontmatter.desc,
+        title,
+        description,
+        alternates: {
+            canonical: url,
+        },
+        openGraph: {
+            title,
+            description,
+            url,
+            type: 'article',
+            publishedTime: post.frontmatter.date,
+            authors: ['GrowNext'],
+            images: [
+                {
+                    url: post.frontmatter.image || '/og-image.png',
+                    width: 1200,
+                    height: 630,
+                    alt: post.frontmatter.title,
+                },
+            ],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title,
+            description,
+            images: [post.frontmatter.image || '/og-image.png'],
+        },
     }
 }
 
