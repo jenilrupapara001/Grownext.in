@@ -7,6 +7,7 @@ import { VisualEditsMessenger } from "orchids-visual-edits";
 import { Toaster } from "@/components/ui/sonner";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import AuthProvider from "@/components/AuthProvider";
+import Script from "next/script";
 
 const lexend = Lexend({
   subsets: ["latin"],
@@ -38,6 +39,21 @@ export default function RootLayout({
           <Toaster position="top-center" />
           <VisualEditsMessenger />
         </AuthProvider>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-J8ET8XH71C"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-J8ET8XH71C', {
+              page_path: window.location.pathname,
+            });
+          `}
+        </Script>
       </body>
     </html>
   );
