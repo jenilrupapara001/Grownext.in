@@ -460,7 +460,7 @@ export default function HomeClient({ latestPosts }: { latestPosts: BlogPost[] })
               >
                 <div className="aspect-[4/5] md:aspect-square lg:aspect-[4/5] rounded-[2.5rem] md:rounded-[3rem] overflow-hidden bg-gray-900 relative shadow-2xl border-4 border-white/5 group">
                   <Image
-                    src="/1.png"
+                    src="/emer.png"
                     alt="Industrial Logistics"
                     fill
                     className="object-cover opacity-70 transition-transform duration-1000 group-hover:scale-110"

@@ -21,7 +21,7 @@ const slides = [
     {
         title: "Get Real Export Inquiries",
         description: "Start receiving genuine business leads from buyers in 190+ countries. We help you manage these leads to close more deals.",
-        image: "/1.png",
+        image: "/emer.png",
         benefits: ["Global Buyer Access", "Verified Inquiries", "Direct Support"]
     }
 ];
