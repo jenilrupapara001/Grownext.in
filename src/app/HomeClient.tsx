@@ -6,8 +6,89 @@ import Image from 'next/image'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { MainSlider } from '@/components/MainSlider'
 import ColorBends from '@/components/ColorBends'
-import Globe from '@/components/Globe'
-import InfiniteMarquee from '@/components/InfiniteMarquee'
+import { Globe3D, GlobeMarker } from "@/components/ui/3d-globe";
+import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
+
+const sampleMarkers: GlobeMarker[] = [
+  {
+    lat: 40.7128,
+    lng: -74.006,
+    src: "https://assets.aceternity.com/avatars/1.webp",
+    label: "New York",
+  },
+  {
+    lat: 51.5074,
+    lng: -0.1278,
+    src: "https://assets.aceternity.com/avatars/2.webp",
+    label: "London",
+  },
+  {
+    lat: 35.6762,
+    lng: 139.6503,
+    src: "https://assets.aceternity.com/avatars/3.webp",
+    label: "Tokyo",
+  },
+  {
+    lat: -33.8688,
+    lng: 151.2093,
+    src: "https://assets.aceternity.com/avatars/4.webp",
+    label: "Sydney",
+  },
+  {
+    lat: 48.8566,
+    lng: 2.3522,
+    src: "https://assets.aceternity.com/avatars/5.webp",
+    label: "Paris",
+  },
+  {
+    lat: 28.6139,
+    lng: 77.209,
+    src: "https://assets.aceternity.com/avatars/6.webp",
+    label: "New Delhi",
+  },
+  {
+    lat: 55.7558,
+    lng: 37.6173,
+    src: "https://assets.aceternity.com/avatars/7.webp",
+    label: "Moscow",
+  },
+  {
+    lat: -22.9068,
+    lng: -43.1729,
+    src: "https://assets.aceternity.com/avatars/8.webp",
+    label: "Rio de Janeiro",
+  },
+  {
+    lat: 31.2304,
+    lng: 121.4737,
+    src: "https://assets.aceternity.com/avatars/9.webp",
+    label: "Shanghai",
+  },
+  {
+    lat: 25.2048,
+    lng: 55.2708,
+    src: "https://assets.aceternity.com/avatars/10.webp",
+    label: "Dubai",
+  },
+  {
+    lat: -34.6037,
+    lng: -58.3816,
+    src: "https://assets.aceternity.com/avatars/11.webp",
+    label: "Buenos Aires",
+  },
+  {
+    lat: 1.3521,
+    lng: 103.8198,
+    src: "https://assets.aceternity.com/avatars/12.webp",
+    label: "Singapore",
+  },
+  {
+    lat: 37.5665,
+    lng: 126.978,
+    src: "https://assets.aceternity.com/avatars/13.webp",
+    label: "Seoul",
+  },
+];
 import {
   ChevronRight,
   ShieldCheck,
@@ -62,6 +143,34 @@ const industrialSectors = [
   { icon: ShoppingBag, label: 'Handicrafts & Art', img: 'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&q=80&w=800', desc: 'Artisanal India reaching global homes' },
   { icon: Sofa, label: 'Furniture & Wood', img: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=800', desc: 'Indian woodcraft for international living' },
 ]
+const SectorContent = ({ sector }: { sector: typeof industrialSectors[0] }) => {
+  return (
+    <div className="bg-[#F5F5F7] dark:bg-neutral-800 p-8 md:p-14 rounded-3xl mb-4">
+      <div className="flex items-center gap-4 mb-8">
+        <div className="h-12 w-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
+          <sector.icon className="h-6 w-6" />
+        </div>
+        <h4 className="text-xl md:text-2xl font-bold text-neutral-800 dark:text-neutral-200 uppercase tracking-wider">
+          {sector.label}
+        </h4>
+      </div>
+      <p className="text-neutral-600 dark:text-neutral-400 text-base md:text-2xl font-sans max-w-3xl mx-auto leading-relaxed">
+        <span className="font-bold text-neutral-700 dark:text-neutral-200 block mb-4">
+          Unlocking global potential for {sector.label} manufacturers.
+        </span>
+        {sector.desc}. Grownext provides the expertise and Alibaba.com infrastructure needed to connect your products with verified buyers in 190+ countries.
+      </p>
+      <div className="relative aspect-video w-full mt-10 rounded-2xl overflow-hidden shadow-2xl">
+        <Image
+          src={sector.img}
+          alt={sector.label}
+          fill
+          className="object-cover"
+        />
+      </div>
+    </div>
+  );
+};
 
 const services = [
   {
@@ -92,135 +201,94 @@ export default function HomeClient({ latestPosts }: { latestPosts: BlogPost[] })
 
   return (
     <div className="flex flex-col bg-white">
-      {/* Hero — fixed, full-screen, ColorBends GPU shader */}
-      <div className="fixed top-0 left-0 w-full h-[100vh] z-0 overflow-hidden bg-[#f8f4f0]">
-
-        {/* Hero Background Image */}
-        <div className="absolute inset-0">
-          <Image
-            src="/back.png"
-            alt="Hero Background"
-            fill
-            className="object-cover object-center"
-            priority
-          />
-          {/* Subtle overlays to ensure text readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-transparent pointer-events-none" />
-          <div className="absolute inset-0 bg-gradient-to-t from-white/50 via-transparent to-transparent pointer-events-none" />
-        </div>
-
-        {/* Hero content – left-aligned, editorial */}
-        <div className="relative z-10 h-full flex flex-col justify-center pt-32 px-6 md:px-12 lg:px-20">
+      {/* Hero — 3D Globe Design */}
+      <div className="fixed top-0 left-0 w-full h-[100vh] z-0 overflow-hidden bg-neutral-950">
+        <div className="relative z-10 h-full flex flex-col items-start justify-center px-6 md:px-12 lg:px-32 w-full pt-20">
           <motion.div
             style={{ opacity: heroOpacity, scale: heroScale, y: heroY }}
-            className="max-w-7xl w-full"
+            className="relative z-20 w-full lg:w-[50%] text-left"
           >
-            {/* Badge */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-white/70 backdrop-blur-sm px-4 py-2 text-[11px] font-black text-primary uppercase tracking-[0.2em] mb-8 shadow-sm"
+              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm px-4 py-2 text-[11px] font-black text-primary uppercase tracking-[0.2em] mb-8 shadow-sm"
             >
               <BadgeCheck className="h-3.5 w-3.5" />
               Alibaba Authorized Channel Partner · Gujarat, India
             </motion.div>
 
-            {/* Headline — staggered lines, left-aligned */}
-            <h1 className="font-black tracking-tighter leading-[0.88] mb-8">
-              <div className="overflow-hidden">
-                <motion.div
-                  initial={{ y: 100, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-[13vw] sm:text-[10vw] md:text-[8.5rem] lg:text-[10rem] text-[#2B2B2B]"
-                >
-                  SELL ON
-                </motion.div>
-              </div>
-              <div className="overflow-hidden">
-                <motion.div
-                  initial={{ y: 100, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.32, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-[13vw] sm:text-[10vw] md:text-[8.5rem] lg:text-[10rem] text-[#FF6A00] pb-3"
-                >
-                  ALIBABA.COM
-                </motion.div>
-              </div>
-              <div className="overflow-hidden">
-                <motion.div
-                  initial={{ y: 100, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.8, delay: 0.44, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-[13vw] sm:text-[10vw] md:text-[8.5rem] lg:text-[10rem] text-[#2B2B2B]"
-                >
-                  GROW GLOBAL.
-                </motion.div>
-              </div>
+            <h1 className="mb-4 text-5xl font-extrabold tracking-tight text-white md:text-7xl lg:text-8xl leading-[0.9]">
+              <motion.span
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="block"
+              >
+                Export from Gujarat  <span className="italic">to 190+ Countries</span>
+              </motion.span>
+              <motion.span
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.35 }}
+                className="block mt-2"
+              >
+                with <span className="text-primary italic">Alibaba.com</span>
+              </motion.span>
             </h1>
 
-            {/* Subline — SEO-rich, punchy */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.6 }}
-              className="text-lg sm:text-xl text-[#58595B] font-medium max-w-xl mb-10 leading-relaxed"
+              className="mt-6 max-w-xl text-neutral-400 md:mt-8 md:text-xl leading-relaxed font-medium"
             >
-              India's #1 <strong className="text-[#2B2B2B]">Alibaba Channel Partner in Gujarat</strong> we handle complete{' '}
-              <strong className="text-[#2B2B2B]">Alibaba Registration</strong>, Alibaba Seller Account setup, listing optimization, and global lead generation so you can focus on manufacturing.
+              Grownext is <strong className="text-white">Gujarat’s Official Alibaba Channel Partner </strong>
+              helping local manufacturers register, optimize, and <strong className="text-white">win global B2B orders</strong>.
             </motion.p>
 
-            {/* CTAs */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.75 }}
-              className="flex flex-wrap items-center gap-4"
-            >
-              <Button asChild size="lg" className="rounded-full px-8 h-14 text-base font-bold bg-primary hover:bg-gray-900 text-white transition-all shadow-xl hover:shadow-2xl border-none active:scale-95">
-                <Link href="/contact">Schedule Your Export Growth Audit <ArrowRight className="ml-2 h-5 w-5" /></Link>
+            <div className="mt-10 flex flex-wrap gap-4 md:mt-12">
+              <Button asChild size="lg" className="rounded-full px-8 h-14 text-base font-bold bg-primary hover:bg-orange-600 text-white transition-all shadow-xl hover:shadow-primary/20 active:scale-95">
+                <Link href="/contact">Get Started <ArrowRight className="ml-2 h-5 w-5" /></Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="rounded-full px-8 h-14 text-base font-bold border-gray-300 text-gray-900 bg-white/80 backdrop-blur-sm hover:bg-white hover:border-gray-400 transition-all shadow-sm">
-                <Link href="/services">How It Works</Link>
+              <Button asChild size="lg" variant="outline" className="rounded-full px-8 h-14 text-base font-bold border-white/20 text-white bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-white/30 transition-all shadow-sm">
+                <Link href="/services">Learn More</Link>
               </Button>
-            </motion.div>
+            </div>
 
-            {/* Trust bar — keyword-rich micro-labels */}
+            {/* Trust Tags */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 1.1, duration: 0.8 }}
-              className="mt-12 flex flex-wrap gap-x-8 gap-y-2"
+              className="mt-16 flex flex-wrap gap-x-8 gap-y-4"
             >
               {[
                 'Alibaba Supplier Account Setup',
-                'Alibaba Plan & Package Advisory',
-                'How to Export from India',
                 '190+ Countries Reached',
                 '500+ Exporters Onboarded',
               ].map((tag) => (
-                <span key={tag} className="text-xs font-bold text-gray-400 uppercase tracking-wider">{tag}</span>
+                <span key={tag} className="text-xs font-bold text-neutral-500 uppercase tracking-wider flex items-center gap-2 text-left">
+                  <div className="h-1 w-1 rounded-full bg-primary" />
+                  {tag}
+                </span>
               ))}
             </motion.div>
           </motion.div>
+        </div>
 
-          {/* Scroll indicator */}
-          {/* <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.5, duration: 1 }}
-            className="absolute bottom-8 left-6 md:left-12 lg:left-20 flex items-center gap-3"
-          >
-            <motion.div
-              animate={{ y: [0, 6, 0] }}
-              transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
-              className="h-9 w-5 rounded-full border-2 border-gray-400 flex items-start justify-center pt-1.5"
-            >
-              <div className="h-1.5 w-1 rounded-full bg-gray-400" />
-            </motion.div>
-            <span className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">Scroll to explore</span>
-          </motion.div> */}
+        {/* Globe container - Positioned to the right bottom corner */}
+        <div className="absolute -right-20 -bottom-40 md:-right-40 md:-bottom-60 lg:-right-60 lg:-bottom-80 z-10 size-[800px] md:size-[1000px] lg:size-[1400px] opacity-60 pointer-events-none lg:pointer-events-auto">
+          <Globe3D
+            className="h-full w-full"
+            markers={sampleMarkers}
+            config={{
+              atmosphereColor: "#ff6a00",
+              atmosphereIntensity: 20,
+              bumpScale: 5,
+              autoRotateSpeed: 0.3,
+            }}
+          />
         </div>
       </div>
 
@@ -519,17 +587,21 @@ export default function HomeClient({ latestPosts }: { latestPosts: BlogPost[] })
               </p>
             </motion.div>
 
-            {/* Infinite Marquee — Full Width Coverage */}
+            {/* Apple Cards Carousel — Full Width Experience */}
             <div className="w-full">
-              <InfiniteMarquee
-                items={industrialSectors.map((sector, i) => ({
-                  id: i,
-                  title: sector.label,
-                  description: sector.desc,
-                  image: sector.img,
-                  icon: <sector.icon className="h-8 w-8 text-white" />
-                }))}
-                speed={7}
+              <Carousel
+                items={industrialSectors.map((sector, index) => (
+                  <Card
+                    key={sector.label}
+                    index={index}
+                    card={{
+                      src: sector.img,
+                      title: sector.label,
+                      category: "Export Vertical",
+                      content: <SectorContent sector={sector} />
+                    }}
+                  />
+                ))}
               />
             </div>
           </div>
