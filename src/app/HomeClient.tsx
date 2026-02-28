@@ -98,6 +98,7 @@ import {
   Users2,
   CheckCircle2,
   ArrowRight,
+  Clock,
   Zap,
   BadgeCheck,
   Package,
@@ -451,7 +452,7 @@ export default function HomeClient({ latestPosts }: { latestPosts: BlogPost[] })
                     Official Alibaba.com Channel Partner in Gujarat
                   </div>
                   <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6 leading-[1.1] uppercase italic">
-                    Why Gujarat’s Leading Manufacturers Trust <span className="text-primary italic not-italic">GrowNext</span> for Alibaba Export Growth
+                    Why Gujarat’s Leading Manufacturers Trust <span className="text-primary italic not-italic">Grownext</span> for Alibaba Export Growth
                   </h2>
                   <p className="text-gray-400 font-bold text-lg md:text-xl italic border-l-4 border-primary pl-6">
                     &quot;Official Alibaba.com Channel Partner in Gujarat helping local industries scale to 190+ countries.&quot;
@@ -548,7 +549,7 @@ export default function HomeClient({ latestPosts }: { latestPosts: BlogPost[] })
                         </div>
                         <div>
                           <div className="text-white font-bold">Strategic Export Team</div>
-                          <div className="text-primary text-xs md:text-sm font-black uppercase tracking-widest">GrowNext Gujarat</div>
+                          <div className="text-primary text-xs md:text-sm font-black uppercase tracking-widest">Grownext Gujarat</div>
                         </div>
                       </div>
                     </div>
@@ -572,17 +573,18 @@ export default function HomeClient({ latestPosts }: { latestPosts: BlogPost[] })
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-20 lg:mb-28 px-6"
+              className="text-center mb-16 lg:mb-24 px-6"
             >
-              <div className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-white border border-primary/10 text-primary text-[11px] font-black uppercase tracking-[0.4em] mb-10 shadow-sm mx-auto">
+              <div className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full bg-white border border-primary/10 text-primary text-[10px] font-black uppercase tracking-[0.4em] mb-8 shadow-sm mx-auto">
                 <div className="h-2 w-2 rounded-full bg-primary animate-pulse" />
                 Strategic Export Verticals
               </div>
-              <h2 className="text-5xl md:text-8xl font-black text-[#2B2B2B] mb-10 tracking-tighter leading-[0.85] uppercase italic text-center">
-                Sectors We <span className="bg-gradient-to-r from-primary to-orange-600 bg-clip-text text-transparent not-italic">Empower.</span>
+              <h2 className="text-4xl md:text-6xl lg:text-[min(4.5vw,72px)] font-black text-[#2B2B2B] mb-8 tracking-tighter leading-[1.1] md:leading-[1] uppercase italic text-center max-w-5xl mx-auto">
+                Export Sectors We Empower Across <br className="hidden lg:block" />
+                <span className="bg-gradient-to-r from-primary to-orange-600 bg-clip-text text-transparent not-italic block mt-1 lg:mt-0 lg:inline">Gujarat.</span>
               </h2>
-              <p className="text-xl md:text-2xl text-[#58595B] font-medium leading-relaxed max-w-3xl mx-auto text-center px-4">
-                Specialized Alibaba.com onboarding frameworks designed for India&apos;s high-demand export categories. We turn local manufacturing into global dominance.
+              <p className="text-base md:text-lg lg:text-[min(1.2vw,20px)] text-[#58595B] font-bold leading-relaxed max-w-4xl mx-auto text-center px-4 border-t border-neutral-100 pt-8 mt-2">
+                As Gujarat’s Official Alibaba.com Channel Partner, <span className="text-neutral-900">Grownext</span> specializes in high-performance onboarding frameworks tailored for the state’s most powerful manufacturing clusters. We help local industries transform from domestic suppliers into globally recognized export brands.
               </p>
             </motion.div>
 
@@ -606,96 +608,136 @@ export default function HomeClient({ latestPosts }: { latestPosts: BlogPost[] })
         <GoogleReviews />
 
         {/* Knowledge Hub (Blog Section) */}
-        <section className="bg-neutral-950 py-32 px-6 md:px-12 lg:px-20 relative overflow-hidden group/blog">
+        <section id="blog" className="bg-white py-32 px-6 md:px-12 lg:px-20 relative overflow-hidden group/blog">
+          {/* Aesthetic background elements */}
+          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.02] pointer-events-none" />
+
+          {/* Dynamic Ambient Glows */}
+          <div className="absolute top-0 left-1/4 w-[50rem] h-[50rem] bg-primary/[0.03] rounded-full blur-[120px] pointer-events-none -translate-y-1/2" />
+          <div className="absolute bottom-0 right-1/4 w-[40rem] h-[40rem] bg-blue-500/[0.02] rounded-full blur-[100px] pointer-events-none translate-y-1/2" />
+
           {/* Reference Grid Pattern */}
           <GridPattern
             width={60}
             height={60}
-            className="opacity-[0.15] [mask-image:radial-gradient(800px_circle_at_center,white,transparent)]"
+            className="opacity-[0.05] [mask-image:radial-gradient(1000px_circle_at_center,white,transparent)]"
           />
 
-          {/* Subtle Ambient Glow */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60rem] h-[60rem] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
-
           <div className="max-w-7xl mx-auto relative z-10">
-            <div className="text-center mb-24">
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
+              <div className="max-w-4xl">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="mb-8"
+                >
+                  <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-black uppercase tracking-[0.2em] mb-6">
+                    <BadgeCheck className="w-4 h-4" />
+                    Official Alibaba.com Channel Partner in Gujarat
+                  </div>
+                  <h2 className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight text-[#2B2B2B] mb-6 leading-[1.1] uppercase italic">
+                    Global Trade <span className="text-primary italic not-italic">Intelligence.</span>
+                  </h2>
+                  <p className="text-[#58595B] font-bold text-lg md:text-xl italic border-l-4 border-primary pl-6">
+                    &quot;Master the art of international B2B commerce with exclusive insights from Gujarat&apos;s leading Alibaba Export Strategists.&quot;
+                  </p>
+                </motion.div>
+              </div>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight"
+                className="hidden md:block"
               >
-                Blog
-              </motion.h2>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-                className="text-lg md:text-xl text-neutral-500 font-medium max-w-2xl mx-auto leading-relaxed"
-              >
-                Discover insightful resources and expert advice from our seasoned team to elevate your knowledge.
-              </motion.p>
+                <Button asChild size="lg" className="rounded-2xl px-12 h-20 text-xl font-black uppercase tracking-widest shadow-2xl shadow-primary/20 hover:shadow-primary/40 transition-all active:scale-95 group">
+                  <Link href="/blog" className="flex items-center gap-3">
+                    View All Insights
+                    <ArrowRight className="h-6 w-6 group-hover:translate-x-2 transition-transform" />
+                  </Link>
+                </Button>
+              </motion.div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
               {latestPosts.slice(0, 3).map((post, i) => (
                 <motion.div
                   key={post.slug}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  transition={{ duration: 0.6, delay: i * 0.2, ease: "easeOut" }}
                   viewport={{ once: true }}
-                  className="group flex flex-col bg-neutral-900/40 backdrop-blur-sm rounded-[2rem] overflow-hidden border border-white/5 shadow-2xl hover:shadow-primary/5 transition-all duration-500 hover:-translate-y-2"
+                  className="group relative flex flex-col bg-neutral-900/40 backdrop-blur-xl rounded-[3rem] overflow-hidden border border-white/5 hover:border-primary/20 transition-all duration-700 hover:shadow-[0_40px_80px_-20px_rgba(255,102,0,0.15)] h-full"
                 >
-                  <Link href={`/blog/${post.slug}`} className="relative h-64 overflow-hidden block">
+                  {/* Glass Card Header */}
+                  <Link href={`/blog/${post.slug}`} className="relative aspect-[4/3] overflow-hidden block">
                     <Image
                       src={post.frontmatter.image}
                       alt={post.frontmatter.title}
                       fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:rotate-1"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-neutral-950/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-700" />
+
+                    {/* Category Badge */}
+                    <div className="absolute top-6 left-6 inline-flex items-center px-4 py-1.5 rounded-full bg-neutral-950/80 backdrop-blur-md border border-white/10 text-white text-[10px] font-black uppercase tracking-widest z-20 transition-all group-hover:bg-primary">
+                      {post.frontmatter.category || "Export Strategy"}
+                    </div>
                   </Link>
 
-                  <div className="p-8 flex flex-col flex-grow">
-                    <div className="flex items-center gap-3 mb-6">
-                      <div className="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center overflow-hidden border border-white/10">
-                        {post.frontmatter.author ? (
-                          <div className="text-[10px] font-black text-primary">
-                            {post.frontmatter.author.substring(0, 2).toUpperCase()}
-                          </div>
-                        ) : (
-                          <Users2 className="h-4 w-4 text-primary" />
-                        )}
+                  <div className="p-10 flex flex-col flex-grow relative">
+                    <div className="flex items-center justify-between mb-8">
+                      <div className="flex items-center gap-3">
+                        <div className="h-10 w-10 rounded-2xl bg-primary/10 flex items-center justify-center overflow-hidden border border-primary/20 group-hover:bg-primary group-hover:border-primary transition-all duration-500">
+                          {post.frontmatter.author ? (
+                            <span className="text-xs font-black text-primary group-hover:text-white">
+                              {post.frontmatter.author.substring(0, 2).toUpperCase()}
+                            </span>
+                          ) : (
+                            <Users2 className="h-5 w-5 text-primary group-hover:text-white" />
+                          )}
+                        </div>
+                        <div>
+                          <p className="text-[10px] font-black text-white/40 uppercase tracking-widest leading-none">Intelligence By</p>
+                          <p className="text-sm font-bold text-white group-hover:text-primary transition-colors">{post.frontmatter.author || "Manu Arora"}</p>
+                        </div>
                       </div>
-                      <span className="text-sm font-bold text-neutral-400">
-                        {post.frontmatter.author || "Manu Arora"}
-                      </span>
+                      <div className="flex items-center gap-2 text-[10px] font-black text-white/30 uppercase tracking-tighter italic">
+                        <Clock className="h-3 w-3" />
+                        6 Min Read
+                      </div>
                     </div>
 
-                    <h3 className="text-2xl font-bold text-white leading-tight mb-4 group-hover:text-primary transition-colors line-clamp-2">
+                    <h3 className="text-2xl md:text-3xl font-black text-white leading-[1.1] mb-6 group-hover:text-primary transition-colors line-clamp-2 uppercase italic tracking-tighter">
                       <Link href={`/blog/${post.slug}`}>{post.frontmatter.title}</Link>
                     </h3>
 
-                    <p className="text-neutral-500 font-medium leading-relaxed mb-8 flex-grow line-clamp-3">
-                      {post.frontmatter.desc}
+                    <p className="text-neutral-500 font-bold leading-relaxed mb-10 flex-grow line-clamp-3 text-sm italic">
+                      &quot;{post.frontmatter.desc}&quot;
                     </p>
 
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="flex items-center gap-2 text-primary font-black text-xs uppercase tracking-[0.2em] group-hover:gap-3 transition-all mt-auto"
-                    >
-                      Read Article <ArrowRight className="h-4 w-4" />
-                    </Link>
+                    <div className="pt-8 border-t border-white/5 mt-auto">
+                      <Link
+                        href={`/blog/${post.slug}`}
+                        className="inline-flex items-center gap-3 text-white font-black text-xs uppercase tracking-[0.3em] group/link hover:text-primary transition-all"
+                      >
+                        Decode Insight
+                        <div className="h-8 w-8 rounded-full border border-white/10 flex items-center justify-center group-hover/link:border-primary group-hover/link:bg-primary transition-all group-hover/link:scale-110">
+                          <ArrowRight className="h-4 w-4 group-hover/link:translate-x-1 transition-transform" />
+                        </div>
+                      </Link>
+                    </div>
                   </div>
+
+                  {/* Decorative Glow Hook */}
+                  <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-primary/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-1000" />
                 </motion.div>
               ))}
             </div>
 
-            <div className="mt-20 text-center">
-              <Button asChild variant="outline" className="rounded-full border-white/10 hover:border-primary hover:bg-primary/5 text-white font-bold px-10 h-14 transition-all hover:scale-105 active:scale-95">
-                <Link href="/blog">Explore Knowledge Hub</Link>
+            <div className="mt-20 text-center md:hidden">
+              <Button asChild size="lg" className="w-full rounded-2xl h-16 text-lg font-black uppercase tracking-widest shadow-2xl shadow-primary/20 hover:shadow-primary/40 transition-all active:scale-95">
+                <Link href="/blog">View All Insights</Link>
               </Button>
             </div>
           </div>

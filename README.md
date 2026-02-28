@@ -1,4 +1,4 @@
-# GrowNext - Official Alibaba.com Partner in India
+# Grownext - Official Alibaba.com Partner in India
 
 [![Next.js](https://img.shields.io/badge/Next.js-15.5.7-black)](https://nextjs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org/)
@@ -7,7 +7,7 @@
 
 ## 🌟 Overview
 
-GrowNext is the official Alibaba.com Channel Partner in India, empowering Indian manufacturers and SMEs to scale their export businesses globally. We provide comprehensive services from seller onboarding to global lead generation, helping businesses transition from local success to international dominance.
+Grownext is the official Alibaba.com Channel Partner in India, empowering Indian manufacturers and SMEs to scale their export businesses globally. We provide comprehensive services from seller onboarding to global lead generation, helping businesses transition from local success to international dominance.
 
 ### Key Statistics
 - **10K+** Export Inquiries Generated
@@ -200,7 +200,7 @@ Code quality is maintained with ESLint. The configuration includes:
 
 ## 🤝 Contributing
 
-We welcome contributions to GrowNext! Here's how you can help:
+We welcome contributions to Grownext! Here's how you can help:
 
 1. **Fork the repository**
 2. **Create a feature branch**: `git checkout -b feature/your-feature-name`
@@ -219,11 +219,11 @@ We welcome contributions to GrowNext! Here's how you can help:
 
 ## 📄 License
 
-This project is proprietary software owned by GrowNext. All rights reserved.
+This project is proprietary software owned by Grownext. All rights reserved.
 
 ## 📞 Contact
 
-**GrowNext - Official Alibaba.com Partner in India**
+**Grownext - Official Alibaba.com Partner in India**
 
 - **Website**: [https://grownext.in](https://grownext.in)
 - **Email**: contact@grownext.in

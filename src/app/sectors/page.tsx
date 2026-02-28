@@ -307,7 +307,7 @@ export default function SectorsPage() {
                                 India's Export <br /> <span className="bg-gradient-to-r from-blue-500 to-indigo-500 bg-clip-text text-transparent not-italic">Engine.</span>
                             </h2>
                             <p className="text-xl sm:text-2xl text-gray-400 font-medium leading-relaxed mb-16 max-w-3xl mx-auto">
-                                From <span className="text-white font-bold">Diamond Export Surat</span> hubs to the massive <span className="text-white font-bold">Textile Export from India</span> corridors, GrowNext provides the authoritative infrastructure manufacturers need to dominate.
+                                From <span className="text-white font-bold">Diamond Export Surat</span> hubs to the massive <span className="text-white font-bold">Textile Export from India</span> corridors, Grownext provides the authoritative infrastructure manufacturers need to dominate.
                             </p>
                             <div className="flex flex-wrap justify-center gap-10">
                                 <div className="flex flex-col items-center">

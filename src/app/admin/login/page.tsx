@@ -45,7 +45,7 @@ export default function LoginPage() {
                     <div className="flex items-center gap-3">
                         <div className="h-12 w-12 bg-primary rounded-2xl flex items-center justify-center font-black text-white text-xl shadow-lg shadow-primary/30">G</div>
                         <div>
-                            <div className="font-black text-white text-xl uppercase tracking-tight italic">GrowNext</div>
+                            <div className="font-black text-white text-xl uppercase tracking-tight italic">Grownext</div>
                             <div className="text-[10px] font-black text-primary uppercase tracking-[0.3em]">Admin Portal</div>
                         </div>
                     </div>

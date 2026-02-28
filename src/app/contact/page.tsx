@@ -162,7 +162,7 @@ export default function Contact() {
               <div className="relative z-10">
                 <h4 className="text-2xl font-black mb-6 flex items-center gap-3">
                   <div className="h-2 w-2 rounded-full bg-primary" />
-                  Why consult with GrowNext?
+                  Why consult with Grownext?
                 </h4>
                 <div className="space-y-4 mb-10">
                   {[

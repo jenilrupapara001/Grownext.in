@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
         return { title: 'Post Not Found' }
     }
 
-    const title = `${post.frontmatter.title} | GrowNext Blog`
+    const title = `${post.frontmatter.title} | Grownext Blog`
     const description = post.frontmatter.desc
     const url = `https://grownext.in/blog/${post.slug}`
 
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
             url,
             type: 'article',
             publishedTime: post.frontmatter.date,
-            authors: ['GrowNext'],
+            authors: ['Grownext'],
             images: [
                 {
                     url: post.frontmatter.image || '/og-image.png',

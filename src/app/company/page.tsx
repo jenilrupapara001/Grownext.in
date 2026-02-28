@@ -62,7 +62,7 @@ const coreValues = [
 ]
 
 const timeline = [
-  { year: '2020', title: 'The Inception', description: 'GrowNext was founded with a small team of export enthusiasts in Mumbai, dedicated to helping local manufacturers.' },
+  { year: '2020', title: 'The Inception', description: 'Grownext was founded with a small team of export enthusiasts in Mumbai, dedicated to helping local manufacturers.' },
   { year: '2021', title: 'Alibaba Partnership', description: 'Became an Official Alibaba.com Channel Partner for the West India region, expanding our service capabilities.' },
   { year: '2022', title: '500+ Clients', description: 'Successfully onboarded over 500 SMEs across Textiles, Machinery, and Agriculture, generating millions in inquiries.' },
   { year: '2024', title: 'Global Expansion', description: 'Extended support to international markets including GCC and Southeast Asia, bridging more borders than ever.' },
@@ -98,7 +98,7 @@ export default function Company() {
               className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-white/50 backdrop-blur-md px-5 py-2.5 text-[11px] font-black text-primary uppercase tracking-[0.25em] mb-10 shadow-sm"
             >
               <div className="h-2.5 w-2.5 rounded-full bg-primary animate-pulse" />
-              GrowNext Export Consultancy
+              Grownext Export Consultancy
             </motion.div>
 
             {/* Staggered Heading */}
@@ -183,14 +183,14 @@ export default function Company() {
 
             <div>
               <h2 className="text-sm font-black text-primary uppercase tracking-[0.4em] mb-8 flex items-center gap-3">
-                <History className="h-5 w-5" /> The GrowNext Odyssey
+                <History className="h-5 w-5" /> The Grownext Odyssey
               </h2>
               <h3 className="text-4xl sm:text-5xl font-black text-gray-950 tracking-tight leading-[0.95] mb-12 uppercase italic">
                 Helping India <br /> <span className="text-primary not-italic">Grow Faster.</span>
               </h3>
               <div className="space-y-8 text-lg text-gray-600 font-medium leading-relaxed">
                 <p>
-                  GrowNext was started to help Indian businesses find customers across the world. We are an <strong className="text-gray-950 font-black">Official Alibaba.com Partner</strong> based in India.
+                  Grownext was started to help Indian businesses find customers across the world. We are an <strong className="text-gray-950 font-black">Official Alibaba.com Partner</strong> based in India.
                 </p>
                 <p>
                   We know how Indian factories work, from textiles in Surat to engineering in Pune. We are here to help you get more business from global buyers with simple, effective tools.
@@ -390,7 +390,7 @@ export default function Company() {
               Ready to Define <br /> Your <span className="text-primary not-italic">Global Identity?</span>
             </motion.h2>
             <p className="mx-auto mt-8 max-w-2xl text-xl leading-relaxed text-gray-400 font-medium mb-16 px-4">
-              Don't leave your export growth to chance. Partner with GrowNext, the <span className="text-white font-bold">Surat B2B Export Experts</span>, and build your authoritative global bridge.
+              Don't leave your export growth to chance. Partner with Grownext, the <span className="text-white font-bold">Surat B2B Export Experts</span>, and build your authoritative global bridge.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-10">
               <Button asChild size="lg" className="rounded-full px-14 h-20 text-xl font-black bg-primary text-white hover:scale-105 transition-transform shadow-2xl border-none outline-none">

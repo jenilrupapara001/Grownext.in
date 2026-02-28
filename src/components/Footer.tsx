@@ -10,7 +10,7 @@ const footerNavigation = {
     { name: 'Account Management', href: '/services' },
   ],
   company: [
-    { name: 'About GrowNext', href: '/company' },
+    { name: 'About Grownext', href: '/company' },
     { name: 'Mission & Vision', href: '/company' },
     { name: 'Case Studies', href: '/' },
     { name: 'Contact', href: '/contact' },
@@ -35,7 +35,7 @@ export function Footer() {
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8">
             <Link href="/">
-              <Image src="/Logo.png" alt="GrowNext Logo" width={120} height={40} />
+              <Image src="/Logo.png" alt="Grownext Logo" width={120} height={40} />
             </Link>
             <p className="text-sm leading-6 max-w-xs">
               Official Alibaba.com Channel Partner empowering Indian Businesses to scale exports through global lead generation and strategic onboarding.
@@ -98,7 +98,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs leading-5">&copy; {new Date().getFullYear()} GrowNext. All rights reserved.</p>
+          <p className="text-xs leading-5">&copy; {new Date().getFullYear()} Grownext. All rights reserved.</p>
           <div className="flex gap-8">
             {footerNavigation.legal.map((item) => (
               <Link key={item.name} href={item.href} className="text-xs leading-5 hover:text-white transition-colors">

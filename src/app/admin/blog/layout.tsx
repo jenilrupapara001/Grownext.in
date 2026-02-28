@@ -23,7 +23,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 <div className="p-8">
                     <Link href="/" className="flex items-center gap-2">
                         <div className="h-8 w-8 bg-primary rounded-lg flex items-center justify-center font-black">G</div>
-                        <span className="font-black tracking-tight text-xl italic uppercase">GrowNext <span className="text-primary not-italic">Admin</span></span>
+                        <span className="font-black tracking-tight text-xl italic uppercase">Grownext <span className="text-primary not-italic">Admin</span></span>
                     </Link>
                 </div>
 

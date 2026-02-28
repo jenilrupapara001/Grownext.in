@@ -17,11 +17,11 @@ const lexend = Lexend({
 export const metadata: Metadata = {
   metadataBase: new URL('https://grownext.in'),
   title: {
-    default: 'GrowNext | Official Alibaba.com Channel Partner in India',
-    template: '%s | GrowNext — Alibaba Partner India',
+    default: 'Grownext | Official Alibaba.com Channel Partner in India',
+    template: '%s | Grownext — Alibaba Partner India',
   },
   description:
-    'GrowNext is an Official Alibaba.com Channel Partner in India. We help Indian manufacturers & exporters sell globally — from seller account setup and store optimization to Alibaba Gold Supplier certification and B2B lead generation.',
+    'Grownext is an Official Alibaba.com Channel Partner in India. We help Indian manufacturers & exporters sell globally — from seller account setup and store optimization to Alibaba Gold Supplier certification and B2B lead generation.',
   keywords: [
     'Alibaba.com partner India',
     'official Alibaba channel partner',
@@ -34,11 +34,11 @@ export const metadata: Metadata = {
     'Alibaba channel partner Gujarat',
     'Alibaba channel partner Surat',
     'Indian exporter Alibaba',
-    'GrowNext export services',
+    'Grownext export services',
   ],
-  authors: [{ name: 'GrowNext', url: 'https://grownext.in' }],
-  creator: 'GrowNext',
-  publisher: 'GrowNext',
+  authors: [{ name: 'Grownext', url: 'https://grownext.in' }],
+  creator: 'Grownext',
+  publisher: 'Grownext',
   category: 'Business',
   alternates: {
     canonical: 'https://grownext.in',
@@ -47,8 +47,8 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_IN',
     url: 'https://grownext.in',
-    siteName: 'GrowNext',
-    title: 'GrowNext | Official Alibaba.com Channel Partner in India',
+    siteName: 'Grownext',
+    title: 'Grownext | Official Alibaba.com Channel Partner in India',
     description:
       'Empowering Indian manufacturers to reach global buyers through Alibaba.com. Official Channel Partner for onboarding, Gold Supplier certification, and export growth.',
     images: [
@@ -56,13 +56,13 @@ export const metadata: Metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'GrowNext — Official Alibaba.com Partner in India',
+        alt: 'Grownext — Official Alibaba.com Partner in India',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'GrowNext | Official Alibaba.com Channel Partner in India',
+    title: 'Grownext | Official Alibaba.com Channel Partner in India',
     description:
       'Official Alibaba.com Channel Partner helping Indian exporters scale globally. Expert onboarding, optimization & B2B lead generation.',
     images: ['/og-image.png'],
@@ -128,7 +128,7 @@ export default function RootLayout({
             {
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
-              "name": "GrowNext",
+              "name": "Grownext",
               "image": "https://grownext.in/og-image.png",
               "@id": "https://grownext.in",
               "url": "https://grownext.in",

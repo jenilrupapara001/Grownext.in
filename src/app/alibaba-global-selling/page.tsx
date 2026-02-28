@@ -46,15 +46,15 @@ const myths = [
   },
   {
     myth: "I need to know English perfectly.",
-    fact: "Alibaba provides built-in real-time translation tools for 18+ languages, and GrowNext helps you manage communications effectively with global buyers.",
+    fact: "Alibaba provides built-in real-time translation tools for 18+ languages, and Grownext helps you manage communications effectively with global buyers.",
     icon: XCircle
   }
 ]
 
 const faqs = [
   {
-    question: "Is GrowNext officially associated with Alibaba?",
-    answer: "Yes, GrowNext is an official Alibaba.com Channel Partner in India. We are certified by Alibaba.com to provide onboarding, technical training, and account management services specifically for the Indian market."
+    question: "Is Grownext officially associated with Alibaba?",
+    answer: "Yes, Grownext is an official Alibaba.com Channel Partner in India. We are certified by Alibaba.com to provide onboarding, technical training, and account management services specifically for the Indian market."
   },
   {
     question: "How long does the onboarding process take?",
@@ -291,7 +291,7 @@ export default function AlibabaSelling() {
                 The Global <br /> <span className="text-primary NOT-italic">Seller Arsenal.</span>
               </h3>
               <p className="text-xl text-gray-600 font-medium leading-relaxed mb-16 max-w-lg">
-                Alibaba.com isn't just a website—it's a comprehensive toolset. With GrowNext's certified management, you get priority access to elite B2B features.
+                Alibaba.com isn't just a website—it's a comprehensive toolset. With Grownext's certified management, you get priority access to elite B2B features.
               </p>
 
               <div className="space-y-6">
@@ -392,7 +392,7 @@ export default function AlibabaSelling() {
           <h2 className="text-4xl sm:text-6xl font-black text-gray-950 tracking-tighter mb-8 uppercase italic leading-[0.9]">
             Common <span className="text-primary NOT-italic">Inquiries.</span>
           </h2>
-          <p className="text-xl text-gray-500 font-medium mb-24 max-w-2xl mx-auto">Everything you need to know about the platform and the GrowNext certification partnership.</p>
+          <p className="text-xl text-gray-500 font-medium mb-24 max-w-2xl mx-auto">Everything you need to know about the platform and the Grownext certification partnership.</p>
 
           <Accordion type="single" collapsible className="w-full space-y-4">
             {faqs.map((faq, i) => (

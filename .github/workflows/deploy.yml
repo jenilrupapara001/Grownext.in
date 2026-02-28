@@ -1,4 +1,4 @@
-name: Deploy GrowNext to VPS
+name: Deploy Grownext to VPS
 
 on:
   push:
