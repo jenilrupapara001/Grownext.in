@@ -73,7 +73,7 @@ export default function InfiniteMarquee({
                                         <Star key={i} className="h-5 w-5 fill-primary text-primary" />
                                     ))}
                                 </div>
-                                <p className="text-2xl text-gray-800 font-bold leading-relaxed mb-10 italic">"{item.quote || item.description}"</p>
+                                <p className="text-2xl text-gray-800 font-bold leading-relaxed mb-10 italic">&quot;{item.quote || item.description}&quot;</p>
                                 <div className="flex items-center gap-5">
                                     <div className="h-16 w-16 rounded-2xl bg-primary flex items-center justify-center text-white text-2xl font-black shrink-0">
                                         {item.author?.[0] || 'U'}
