@@ -136,7 +136,7 @@ export default function RegistrationPage() {
                             Alibaba.com Official Channel Partner
                         </div>
 
-                        <h1 className="text-5xl sm:text-7xl lg:text-[6rem] font-black tracking-tighter text-white leading-[1] mb-8">
+                        <h1 className="text-5xl sm:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter text-white break-words leading-[1] mb-8">
                             Alibaba Seller Account <br />
                             <span className="text-primary italic">Registration India</span>
                         </h1>

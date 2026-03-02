@@ -176,10 +176,10 @@ export default function HomeClient({ latestPosts }: { latestPosts: BlogPost[] })
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm px-4 py-2 text-[11px] font-black text-primary uppercase tracking-[0.2em] mb-8 shadow-sm"
+              className="inline-flex items-center gap-3 rounded-xl border border-primary/50 bg-primary/10 backdrop-blur-sm px-5 py-3 text-sm font-black text-white uppercase tracking-[0.1em] mb-8 shadow-[0_0_20px_rgba(255,102,0,0.2)]"
             >
-              <BadgeCheck className="h-3.5 w-3.5" />
-              Alibaba Authorized Channel Partner · Gujarat, India
+              <BadgeCheck className="h-5 w-5 text-primary" />
+              Official Alibaba.com Channel Partner · Gujarat, India
             </motion.div>
 
             <h1 className="mb-4 text-5xl font-extrabold tracking-tight text-white md:text-7xl lg:text-8xl leading-[0.9]">
@@ -201,22 +201,25 @@ export default function HomeClient({ latestPosts }: { latestPosts: BlogPost[] })
               </motion.span>
             </h1>
 
+            {/* Outcome-Focused Subheadline */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.6 }}
-              className="mt-6 max-w-xl text-neutral-400 md:mt-8 md:text-xl leading-relaxed font-medium"
+              className="mt-6 max-w-2xl text-neutral-300 md:mt-8 md:text-xl leading-relaxed font-medium"
             >
-              Grownext is <strong className="text-white">Gujarat’s Official Alibaba Channel Partner </strong>
-              helping local manufacturers register, optimize, and <strong className="text-white">win global B2B orders</strong>.
+              <strong className="text-white">Grownext is Gujarat's Official Alibaba.com Partner.</strong> We've helped 500+ local manufacturers get their first international order — from setup to the day a buyer from Germany or Dubai contacts them directly. <span className="text-primary font-bold">This could be you in 30 days.</span>
             </motion.p>
 
+            {/* Outcome-Specific CTAs */}
             <div className="mt-10 flex flex-wrap gap-4 md:mt-12">
-              <Button asChild size="lg" className="rounded-full px-8 h-14 text-base font-bold bg-primary hover:bg-orange-600 text-white transition-all shadow-xl hover:shadow-primary/20 active:scale-95">
-                <Link href="/contact">Get Started <ArrowRight className="ml-2 h-5 w-5" /></Link>
+              <Button asChild size="lg" className="rounded-full px-8 h-14 md:h-16 text-sm md:text-base font-black uppercase tracking-wide bg-primary hover:bg-orange-600 text-white transition-all shadow-2xl hover:shadow-primary/40 active:scale-95 border-2 border-primary">
+                <Link href="/contact" className="flex items-center gap-2">
+                  Get My First International Order <ArrowRight className="h-5 w-5" />
+                </Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="rounded-full px-8 h-14 text-base font-bold border-white/20 text-white bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-white/30 transition-all shadow-sm">
-                <Link href="/services">Learn More</Link>
+              <Button asChild size="lg" variant="outline" className="rounded-full px-8 h-14 md:h-16 text-sm md:text-base font-bold tracking-wide border-white/20 text-white bg-white/5 backdrop-blur-sm hover:bg-white/10 hover:border-white/40 transition-all shadow-sm">
+                <Link href="/services">Show Me How It Works (Free)</Link>
               </Button>
             </div>
 

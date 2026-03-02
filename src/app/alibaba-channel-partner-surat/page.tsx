@@ -142,7 +142,7 @@ export default function SuratPartnerPage() {
                             Alibaba Authorized Channel Partner Surat
                         </div>
 
-                        <h1 className="text-5xl sm:text-7xl lg:text-[7.5rem] font-black tracking-tighter text-gray-900 leading-[0.88] mb-10">
+                        <h1 className="text-5xl sm:text-7xl lg:text-8xl xl:text-9xl font-black tracking-tighter text-gray-900 break-words leading-[0.88] mb-10">
                             The Heart of <br />
                             <span className="text-primary italic">Surat's Export</span>
                         </h1>

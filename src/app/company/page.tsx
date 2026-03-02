@@ -102,13 +102,13 @@ export default function Company() {
             </motion.div>
 
             {/* Staggered Heading */}
-            <h1 className="font-black tracking-tighter leading-[0.82] mb-12">
+            <h1 className="font-extrabold tracking-tighter leading-[0.9] text-5xl md:text-7xl lg:text-8xl mb-12">
               <div className="overflow-hidden">
                 <motion.div
                   initial={{ y: 140, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-[14vw] sm:text-[11vw] md:text-[8rem] lg:text-[9.5rem] text-gray-950   italic"
+                  className="text-gray-950 italic"
                 >
                   The Global.
                 </motion.div>
@@ -118,7 +118,7 @@ export default function Company() {
                   initial={{ y: 140, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.9, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-[14vw] sm:text-[11vw] md:text-[8rem] lg:text-[9.5rem] bg-gradient-to-r from-blue-700 via-primary to-orange-600 bg-clip-text text-transparent uppercase italic"
+                  className="bg-gradient-to-r from-blue-700 via-primary to-orange-600 bg-clip-text text-transparent uppercase italic"
                 >
                   Architects.
                 </motion.div>
