@@ -164,25 +164,52 @@ export default function GujaratPartnerPage() {
                             Gujarat's Primary Authorized Channel Partner
                         </div>
 
-                        <h1 className="text-5xl sm:text-7xl lg:text-[7rem] font-black tracking-tighter text-gray-900 leading-[0.9] mb-10">
-                            Alibaba Channel <br />
-                            <span className="text-primary italic">Partner Gujarat</span>
+                        <h1 className="text-4xl sm:text-6xl lg:text-[5.5rem] font-black tracking-tighter text-gray-900 leading-[0.9] mb-10">
+                            Comprehensive Alibaba <br />
+                            <span className="text-primary italic">Export Solutions</span>
+                            <span className="block text-3xl sm:text-4xl lg:text-5xl mt-4">for Gujarat Manufacturers</span>
                         </h1>
 
-                        <p className="text-xl sm:text-2xl text-gray-600 font-medium max-w-2xl mb-12 leading-relaxed">
-                            Serving industrial hubs across <strong className="text-gray-900">Surat, Ahmedabad, Rajkot, and Morbi.</strong> We bridge the gap between Gujarat's manufacturing power and global B2B demand.
+                        <p className="text-xl sm:text-2xl text-gray-900 font-bold max-w-4xl mb-6 leading-relaxed">
+                            As an Official Alibaba.com Channel Partner in Gujarat, GrowNext provides complete seller account registration, supplier onboarding, listing optimization, and global lead generation services designed to help Indian manufacturers scale exports to 190+ countries.
                         </p>
 
-                        <div className="flex flex-wrap gap-6">
-                            <Button asChild size="lg" className="rounded-full px-10 h-18 text-lg font-black bg-primary hover:bg-gray-900 text-white shadow-2xl active:scale-95 transition-all">
-                                <Link href="/contact">Schedule Local Consultation</Link>
-                            </Button>
-                            <div className="flex flex-col justify-center">
-                                <div className="text-sm font-black text-gray-900 uppercase">Authorized Agency</div>
-                                <div className="text-[11px] font-bold text-gray-400 uppercase tracking-widest">Morbi · Surat · Ahmedabad</div>
+                        <p className="text-lg text-gray-600 font-medium max-w-3xl mb-12 leading-relaxed border-l-4 border-primary/30 pl-6">
+                            The authorized digital export infrastructure trusted by engineering, textile, ceramic, pharma, and chemical exporters across Ahmedabad, Rajkot, Surat, and Morbi.
+                        </p>
+
+                        <div className="flex flex-col gap-8">
+                            <div className="flex flex-wrap gap-6 items-center">
+                                <Button asChild size="lg" className="rounded-full px-10 h-18 text-lg font-black bg-primary hover:bg-gray-900 text-white shadow-2xl active:scale-95 transition-all">
+                                    <Link href="/contact">Book Free Export Audit</Link>
+                                </Button>
+                                <div className="flex flex-col gap-2">
+                                    {[
+                                        "Authorized Alibaba Channel Partner in Gujarat",
+                                        "Verified Supplier Onboarding Agency",
+                                        "Gujarat-Based Export Advisory Team"
+                                    ].map((badge, idx) => (
+                                        <div key={idx} className="flex items-center gap-2 text-[11px] font-black text-gray-900 uppercase tracking-wider">
+                                            <CheckCircle2 className="h-3.5 w-3.5 text-primary" />
+                                            {badge}
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
                         </div>
                     </motion.div>
+                </div>
+
+                {/* Optional Power Upgrade: Credibility Band */}
+                <div className="absolute bottom-0 left-0 right-0 bg-gray-900/80 backdrop-blur-md border-t border-white/10 py-4 px-6 md:px-12 lg:px-20 z-20">
+                    <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-4">
+                        <div className="flex items-center gap-8 text-white/70 font-bold text-[10px] md:text-xs uppercase tracking-[0.2em]">
+                            <span className="flex items-center gap-2"><div className="h-1 w-1 bg-primary rounded-full" /> 500+ Gujarat Manufacturers Onboarded</span>
+                            <span className="flex items-center gap-2"><div className="h-1 w-1 bg-primary rounded-full" /> 190+ Global Markets Reached</span>
+                            <span className="flex items-center gap-2"><div className="h-1 w-1 bg-primary rounded-full" /> Verified Alibaba Partner</span>
+                        </div>
+                        <div className="hidden md:block h-px w-20 bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+                    </div>
                 </div>
             </section>
 

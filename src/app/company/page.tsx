@@ -108,7 +108,7 @@ export default function Company() {
                   initial={{ y: 140, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-[14vw] sm:text-[11vw] md:text-[8rem] lg:text-[9.5rem] text-gray-950 uppercase italic"
+                  className="text-[14vw] sm:text-[11vw] md:text-[8rem] lg:text-[9.5rem] text-gray-950   italic"
                 >
                   The Global.
                 </motion.div>

@@ -227,28 +227,25 @@ export default function ServicesPage() {
             </motion.div>
 
             {/* Staggered Editorial Headline */}
-            <h1 className="font-black tracking-tighter leading-[0.82] mb-10">
-              <div className="overflow-hidden">
-                <motion.div
-                  initial={{ y: 140, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-[15vw] sm:text-[11vw] md:text-[9rem] lg:text-[11rem] text-gray-950 uppercase italic"
-                >
-                  Scale Your
-                </motion.div>
-              </div>
-              <div className="overflow-hidden">
-                <motion.div
-                  initial={{ y: 140, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.9, delay: 0.32, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-[15vw] sm:text-[11vw] md:text-[9rem] lg:text-[11rem] bg-gradient-to-r from-blue-700 via-primary to-orange-600 bg-clip-text text-transparent uppercase italic"
-                >
-                  Exports.
-                </motion.div>
-              </div>
+            <h1 className="mb-4 text-5xl font-extrabold tracking-tight text-black md:text-7xl lg:text-8xl leading-[0.9]">
+              <motion.span
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="block"
+              >
+                Comprehensive Alibaba Export Solutions  <span className="italic">for </span>
+              </motion.span>
+              <motion.span
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.35 }}
+                className="block mt-2"
+              >
+                <span className="text-primary italic">Gujarat Manufacturers</span>
+              </motion.span>
             </h1>
+
 
             <motion.p
               initial={{ opacity: 0, y: 30 }}
@@ -256,7 +253,7 @@ export default function ServicesPage() {
               transition={{ duration: 0.8, delay: 0.55 }}
               className="text-xl sm:text-2xl text-gray-600 font-medium max-w-2xl mb-14 leading-relaxed"
             >
-              The <strong className="text-gray-950 font-black">Authorized digital infrastructure</strong> Indian manufacturers trust to dominate global trade routes and secure verified B2B buyers.
+              As an <strong className="text-gray-950 font-black">Official Alibaba.com Channel Partner in Gujarat</strong>, GrowNext provides complete seller account registration, supplier onboarding, listing optimization, and global lead generation services designed to help Gujarat manufacturers scale exports to 190+ countries.
             </motion.p>
 
             <motion.div
