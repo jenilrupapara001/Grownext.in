@@ -210,14 +210,14 @@ function Marker({
     return (
         <group ref={groupRef} visible={isVisible}>
             {/* Pin line from surface to image - properly oriented */}
-            <mesh position={lineCenter} quaternion={lineQuaternion}>
+            {/* <mesh position={lineCenter} quaternion={lineQuaternion}>
                 <cylinderGeometry args={[0.003, 0.003, lineHeight, 8]} />
                 <meshBasicMaterial
                     color={hovered ? "#ffffff" : "#94a3b8"}
                     transparent
                     opacity={hovered ? 0.9 : 0.6}
                 />
-            </mesh>
+            </mesh> */}
 
             {/* Pin point at the surface */}
             <mesh position={surfacePosition} quaternion={lineQuaternion}>
@@ -247,9 +247,9 @@ function Marker({
                             width: "8px",
                             height: "8px",
                         }}
-                        onMouseEnter={handlePointerEnter}
-                        onMouseLeave={handlePointerLeave}
-                        onClick={handleClick}
+                    // onMouseEnter={handlePointerEnter}
+                    // onMouseLeave={handlePointerLeave}
+                    // onClick={handleClick}
                     >
                         <img
                             src={marker.src}

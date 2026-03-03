@@ -11,82 +11,10 @@ import GridPattern from "@/components/GridPattern";
 
 const sampleMarkers: GlobeMarker[] = [
   {
-    lat: 40.7128,
-    lng: -74.006,
-    src: "https://assets.aceternity.com/avatars/1.webp",
-    label: "New York",
-  },
-  {
-    lat: 51.5074,
-    lng: -0.1278,
-    src: "https://assets.aceternity.com/avatars/2.webp",
-    label: "London",
-  },
-  {
-    lat: 35.6762,
-    lng: 139.6503,
-    src: "https://assets.aceternity.com/avatars/3.webp",
-    label: "Tokyo",
-  },
-  {
-    lat: -33.8688,
-    lng: 151.2093,
-    src: "https://assets.aceternity.com/avatars/4.webp",
-    label: "Sydney",
-  },
-  {
-    lat: 48.8566,
-    lng: 2.3522,
-    src: "https://assets.aceternity.com/avatars/5.webp",
-    label: "Paris",
-  },
-  {
-    lat: 28.6139,
-    lng: 77.209,
-    src: "https://assets.aceternity.com/avatars/6.webp",
-    label: "New Delhi",
-  },
-  {
-    lat: 55.7558,
-    lng: 37.6173,
-    src: "https://assets.aceternity.com/avatars/7.webp",
-    label: "Moscow",
-  },
-  {
-    lat: -22.9068,
-    lng: -43.1729,
-    src: "https://assets.aceternity.com/avatars/8.webp",
-    label: "Rio de Janeiro",
-  },
-  {
-    lat: 31.2304,
-    lng: 121.4737,
-    src: "https://assets.aceternity.com/avatars/9.webp",
-    label: "Shanghai",
-  },
-  {
-    lat: 25.2048,
-    lng: 55.2708,
-    src: "https://assets.aceternity.com/avatars/10.webp",
-    label: "Dubai",
-  },
-  {
-    lat: -34.6037,
-    lng: -58.3816,
-    src: "https://assets.aceternity.com/avatars/11.webp",
-    label: "Buenos Aires",
-  },
-  {
-    lat: 1.3521,
-    lng: 103.8198,
-    src: "https://assets.aceternity.com/avatars/12.webp",
-    label: "Singapore",
-  },
-  {
-    lat: 37.5665,
-    lng: 126.978,
-    src: "https://assets.aceternity.com/avatars/13.webp",
-    label: "Seoul",
+    lat: 20.91667,
+    lng: 73.05,
+    src: "/favicon.ico",
+    label: "Surat, Gujarat",
   },
 ];
 import {
@@ -167,10 +95,10 @@ export default function HomeClient({ latestPosts }: { latestPosts: BlogPost[] })
     <div className="flex flex-col bg-white">
       {/* Hero — 3D Globe Design */}
       <div className="fixed top-0 left-0 w-full h-[100vh] z-0 overflow-hidden bg-neutral-950">
-        <div className="relative z-10 h-full flex flex-col items-start justify-center px-6 md:px-12 lg:px-32 w-full pt-20">
+        <div className="relative z-10 h-full flex flex-col items-start justify-start px-6 md:px-12 lg:px-32 w-full pt-[140px] md:pt-[180px] lg:pt-[220px] pb-20 overflow-y-auto no-scrollbar">
           <motion.div
             style={{ opacity: heroOpacity, scale: heroScale, y: heroY }}
-            className="relative z-20 w-full lg:w-[50%] text-left"
+            className="relative z-20 w-full lg:w-[65%] xl:w-[55%] text-left"
           >
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -208,7 +136,7 @@ export default function HomeClient({ latestPosts }: { latestPosts: BlogPost[] })
               transition={{ duration: 0.7, delay: 0.6 }}
               className="mt-6 max-w-2xl text-neutral-300 md:mt-8 md:text-xl leading-relaxed font-medium"
             >
-              <strong className="text-white">Grownext is Gujarat's Official Alibaba.com Partner.</strong> We've helped 500+ local manufacturers get their first international order — from setup to the day a buyer from Germany or Dubai contacts them directly. <span className="text-primary font-bold">This could be you in 30 days.</span>
+              <strong className="text-white">Grownext is Gujarat's Official Alibaba.com Partner.</strong> We've helped 500+ local manufacturers get their first international order from setup to the day a buyer from Germany or Dubai contacts them directly. <span className="text-primary font-bold">This could be you in 30 days.</span>
             </motion.p>
 
             {/* Outcome-Specific CTAs */}
@@ -613,7 +541,7 @@ export default function HomeClient({ latestPosts }: { latestPosts: BlogPost[] })
         {/* Knowledge Hub (Blog Section) */}
         <section id="blog" className="bg-white py-32 px-6 md:px-12 lg:px-20 relative overflow-hidden group/blog">
           {/* Aesthetic background elements */}
-          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.02] pointer-events-none" />
+          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.05] pointer-events-none" />
 
           {/* Dynamic Ambient Glows */}
           <div className="absolute top-0 left-1/4 w-[50rem] h-[50rem] bg-primary/[0.03] rounded-full blur-[120px] pointer-events-none -translate-y-1/2" />
