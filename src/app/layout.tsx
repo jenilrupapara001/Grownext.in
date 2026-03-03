@@ -89,7 +89,7 @@ export const metadata: Metadata = {
   },
 };
 
-import { ChatBot } from "@/components/ChatBot";
+import { WhatsAppButton } from "@/components/WhatsAppButton";
 
 export default function RootLayout({
   children,
@@ -108,7 +108,7 @@ export default function RootLayout({
           <Footer />
           <Toaster position="top-center" />
           <VisualEditsMessenger />
-          <ChatBot />
+          <WhatsAppButton />
         </AuthProvider>
         {/* Google Analytics */}
         <Script
