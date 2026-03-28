@@ -603,8 +603,8 @@ export default function HomeClient({ latestPosts }: { latestPosts: BlogPost[] })
                   {/* Glass Card Header */}
                   <Link href={`/blog/${post.slug}`} className="relative aspect-[4/3] overflow-hidden block">
                     <Image
-                      src={post.frontmatter.image}
-                      alt={post.frontmatter.title}
+                      src={post.image}
+                      alt={post.title}
                       fill
                       className="object-cover transition-transform duration-1000 group-hover:scale-110 group-hover:rotate-1"
                     />
@@ -612,7 +612,7 @@ export default function HomeClient({ latestPosts }: { latestPosts: BlogPost[] })
 
                     {/* Category Badge */}
                     <div className="absolute top-6 left-6 inline-flex items-center px-4 py-1.5 rounded-full bg-neutral-950/80 backdrop-blur-md border border-white/10 text-white text-[10px] font-black uppercase tracking-widest z-20 transition-all group-hover:bg-primary">
-                      {post.frontmatter.category || "Export Strategy"}
+                      {post.category || "Export Strategy"}
                     </div>
                   </Link>
 
@@ -620,9 +620,9 @@ export default function HomeClient({ latestPosts }: { latestPosts: BlogPost[] })
                     <div className="flex items-center justify-between mb-8">
                       <div className="flex items-center gap-3">
                         <div className="h-10 w-10 rounded-2xl bg-primary/10 flex items-center justify-center overflow-hidden border border-primary/20 group-hover:bg-primary group-hover:border-primary transition-all duration-500">
-                          {post.frontmatter.author ? (
+                          {post.author ? (
                             <span className="text-xs font-black text-primary group-hover:text-white">
-                              {post.frontmatter.author.substring(0, 2).toUpperCase()}
+                              {post.author.substring(0, 2).toUpperCase()}
                             </span>
                           ) : (
                             <Users2 className="h-5 w-5 text-primary group-hover:text-white" />
@@ -630,7 +630,7 @@ export default function HomeClient({ latestPosts }: { latestPosts: BlogPost[] })
                         </div>
                         <div>
                           <p className="text-[10px] font-black text-white/40 uppercase tracking-widest leading-none">Intelligence By</p>
-                          <p className="text-sm font-bold text-white group-hover:text-primary transition-colors">{post.frontmatter.author || "Manu Arora"}</p>
+                          <p className="text-sm font-bold text-white group-hover:text-primary transition-colors">{post.author || "Manu Arora"}</p>
                         </div>
                       </div>
                       <div className="flex items-center gap-2 text-[10px] font-black text-white/30 uppercase tracking-tighter italic">
@@ -640,11 +640,11 @@ export default function HomeClient({ latestPosts }: { latestPosts: BlogPost[] })
                     </div>
 
                     <h3 className="text-2xl md:text-3xl font-black text-white leading-[1.1] mb-6 group-hover:text-primary transition-colors line-clamp-2 uppercase italic tracking-tighter">
-                      <Link href={`/blog/${post.slug}`}>{post.frontmatter.title}</Link>
+                      <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                     </h3>
 
                     <p className="text-neutral-500 font-bold leading-relaxed mb-10 flex-grow line-clamp-3 text-sm italic">
-                      &quot;{post.frontmatter.desc}&quot;
+                      &quot;{post.desc}&quot;
                     </p>
 
                     <div className="pt-8 border-t border-white/5 mt-auto">

@@ -3,7 +3,7 @@ import { getAllPosts } from '@/lib/blog'
 
 const BASE_URL = 'https://grownext.in'
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const staticPages: MetadataRoute.Sitemap = [
         {
             url: BASE_URL,
@@ -68,12 +68,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ]
 
     // Dynamically include all approved blog posts
-    const posts = getAllPosts()
+    const posts = await getAllPosts()
     const blogPages: MetadataRoute.Sitemap = posts.map((post) => ({
         url: `${BASE_URL}/blog/${post.slug}`,
-        lastModified: new Date(post.frontmatter.date),
+        lastModified: new Date(post.date),
         changeFrequency: 'monthly' as const,
-        priority: post.frontmatter.featured ? 0.8 : 0.7,
+        priority: post.featured ? 0.8 : 0.7,
     }))
 
     return [...staticPages, ...blogPages]

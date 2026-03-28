@@ -18,9 +18,9 @@ export default function BlogClient({ initialPosts }: { initialPosts: BlogPost[] 
 
     // Filter Logic
     const filteredPosts = initialPosts.filter(post => {
-        const matchesCategory = activeCategory === 'All' || post.frontmatter.category === activeCategory
-        const matchesSearch = post.frontmatter.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            post.frontmatter.desc.toLowerCase().includes(searchQuery.toLowerCase())
+        const matchesCategory = activeCategory === 'All' || post.category === activeCategory
+        const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            post.desc.toLowerCase().includes(searchQuery.toLowerCase())
         return matchesCategory && matchesSearch
     })
 
@@ -31,7 +31,7 @@ export default function BlogClient({ initialPosts }: { initialPosts: BlogPost[] 
         currentPage * POSTS_PER_PAGE
     )
 
-    const featuredPost = initialPosts.find(p => p.frontmatter.featured) || initialPosts[0]
+    const featuredPost = initialPosts.find(p => p.featured) || initialPosts[0]
 
     return (
         <div className="bg-[#fafafa] min-h-screen">
@@ -52,7 +52,7 @@ export default function BlogClient({ initialPosts }: { initialPosts: BlogPost[] 
                                 <span className="text-sm font-black text-primary uppercase tracking-[0.5em]">Knowledge Hub</span>
                             </motion.div>
 
-                            <h1 className="text-6xl sm:text-8xl md:text-9xl font-black text-gray-950 tracking-tighter leading-[0.85] uppercase italic">
+                            <h1 className="text-6xl sm:text-8xl md:text-9xl font-black text-gray-950 tracking-tighter leading-[0.85] uppercase italic text-fluid-display">
                                 <div className="overflow-hidden">
                                     <motion.div
                                         initial={{ y: "100%" }}
@@ -80,7 +80,7 @@ export default function BlogClient({ initialPosts }: { initialPosts: BlogPost[] 
                             transition={{ delay: 0.4 }}
                             className="lg:pb-4 max-w-sm"
                         >
-                            <p className="text-xl text-gray-500 font-medium leading-relaxed border-l-2 border-gray-100 pl-8">
+                            <p className="text-xl text-gray-500 font-medium leading-relaxed border-l-2 border-gray-100 pl-8 text-fluid-base">
                                 Deep-dive blueprints for Indian manufacturers to navigate global trade routes and dominate Alibaba.com.
                             </p>
                         </motion.div>
@@ -96,8 +96,8 @@ export default function BlogClient({ initialPosts }: { initialPosts: BlogPost[] 
                         >
                             <div className="relative aspect-[21/9] w-full rounded-[3rem] overflow-hidden shadow-2xl border border-gray-100">
                                 <Image
-                                    src={featuredPost.frontmatter.image}
-                                    alt={featuredPost.frontmatter.title}
+                                    src={featuredPost.image}
+                                    alt={featuredPost.title}
                                     fill
                                     className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-105 group-hover:scale-100"
                                 />
@@ -109,11 +109,11 @@ export default function BlogClient({ initialPosts }: { initialPosts: BlogPost[] 
                                             <span className="bg-primary px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-widest text-white shadow-lg">
                                                 Editorial Choice
                                             </span>
-                                            <span className="text-white/60 text-xs font-bold uppercase tracking-widest">{featuredPost.frontmatter.category}</span>
+                                            <span className="text-white/60 text-xs font-bold uppercase tracking-widest">{featuredPost.category}</span>
                                         </div>
-                                        <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-none mb-8 group-hover:text-primary transition-colors duration-500">
+                                        <h2 className="text-4xl md:text-6xl font-black text-white tracking-tighter leading-none mb-8 group-hover:text-primary transition-colors duration-500 text-fluid-3xl">
                                             <Link href={`/blog/${featuredPost.slug}`}>
-                                                {featuredPost.frontmatter.title}
+                                                {featuredPost.title}
                                             </Link>
                                         </h2>
                                         <div className="flex items-center gap-10">
@@ -121,7 +121,7 @@ export default function BlogClient({ initialPosts }: { initialPosts: BlogPost[] 
                                                 <Link href={`/blog/${featuredPost.slug}`}>Read Full Intel</Link>
                                             </Button>
                                             <div className="flex items-center gap-4 text-white/40 text-sm font-bold uppercase tracking-widest">
-                                                <Clock className="h-5 w-5 text-primary" /> {featuredPost.frontmatter.time}
+                                                <Clock className="h-5 w-5 text-primary" /> {featuredPost.time}
                                             </div>
                                         </div>
                                     </div>
@@ -178,8 +178,8 @@ export default function BlogClient({ initialPosts }: { initialPosts: BlogPost[] 
                                 >
                                     <div className="relative h-72 overflow-hidden">
                                         <Image
-                                            src={post.frontmatter.image}
-                                            alt={post.frontmatter.title}
+                                            src={post.image}
+                                            alt={post.title}
                                             fill
                                             className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 scale-110 group-hover:scale-100"
                                         />
@@ -190,21 +190,21 @@ export default function BlogClient({ initialPosts }: { initialPosts: BlogPost[] 
                                         </div>
                                         <div className="absolute bottom-6 left-6">
                                             <span className="bg-primary/90 backdrop-blur-md px-5 py-2 rounded-full text-[9px] font-black text-white uppercase tracking-widest shadow-lg">
-                                                {post.frontmatter.category}
+                                                {post.category}
                                             </span>
                                         </div>
                                     </div>
                                     <div className="p-10 flex flex-col flex-grow">
                                         <div className="flex items-center gap-4 text-gray-400 text-[10px] font-bold uppercase tracking-[0.2em] mb-6">
-                                            <span>{post.frontmatter.date}</span>
+                                            <span>{post.date}</span>
                                             <div className="h-1 w-1 rounded-full bg-gray-200" />
-                                            <span className="flex items-center gap-1.5"><Clock className="h-3.5 w-3.5 text-primary" /> {post.frontmatter.time}</span>
+                                            <span className="flex items-center gap-1.5"><Clock className="h-3.5 w-3.5 text-primary" /> {post.time}</span>
                                         </div>
-                                        <h3 className="text-2xl font-black text-gray-950 leading-tight mb-6 group-hover:text-primary transition-colors">
-                                            <Link href={`/blog/${post.slug}`}>{post.frontmatter.title}</Link>
+                                        <h3 className="text-2xl font-black text-gray-950 leading-tight mb-6 group-hover:text-primary transition-colors text-fluid-lg uppercase italic tracking-tighter">
+                                            <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                                         </h3>
-                                        <p className="text-gray-500 font-medium leading-relaxed mb-10 line-clamp-3">
-                                            {post.frontmatter.desc}
+                                        <p className="text-gray-500 font-medium leading-relaxed mb-10 line-clamp-3 text-sm italic">
+                                            {post.desc}
                                         </p>
                                         <div className="mt-auto pt-8 border-t border-gray-50 flex items-center justify-between">
                                             <Link href={`/blog/${post.slug}`} className="flex items-center gap-3 text-gray-950 font-black text-xs uppercase tracking-widest group-hover:text-primary transition-all">
@@ -218,7 +218,7 @@ export default function BlogClient({ initialPosts }: { initialPosts: BlogPost[] 
                         ) : (
                             <div className="col-span-full py-40 text-center">
                                 <BookOpen className="h-20 w-20 text-gray-200 mx-auto mb-8" />
-                                <h3 className="text-3xl font-black text-gray-950 mb-4 tracking-tighter">No intelligence found</h3>
+                                <h3 className="text-3xl font-black text-gray-950 mb-4 tracking-tighter uppercase italic">No intelligence found</h3>
                                 <p className="text-gray-500 font-medium max-w-sm mx-auto mb-10">Try adjusting your search criteria to locate different strategic resources.</p>
                                 <Button
                                     onClick={() => { setSearchQuery(''); setActiveCategory('All'); }}
