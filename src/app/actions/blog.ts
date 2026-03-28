@@ -1,12 +1,10 @@
 'use server'
 
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
+import { supabase } from '@/lib/supabase'
 import { revalidatePath } from 'next/cache'
 import type { BlogStatus } from '@/lib/blog'
-
-const contentDir = path.join(process.cwd(), 'src/content/blog')
+import fs from 'fs'
+import path from 'path'
 
 export type BlogPostData = {
     title: string
@@ -21,23 +19,43 @@ export type BlogPostData = {
     content: string
 }
 
+function generateSlug(title: string): string {
+    return title
+        .toLowerCase()
+        .replace(/[^\w ]+/g, '')
+        .replace(/ +/g, '-')
+}
+
 export async function savePost(slug: string, data: BlogPostData) {
     try {
-        if (!fs.existsSync(contentDir)) {
-            fs.mkdirSync(contentDir, { recursive: true })
+        const finalSlug = slug || generateSlug(data.title)
+        
+        const dbData = {
+            slug: finalSlug,
+            title: data.title,
+            description: data.desc,
+            category: data.category,
+            reading_time: data.time,
+            publish_date: data.date,
+            image_url: data.image,
+            is_featured: !!data.featured,
+            status: data.status || 'pending',
+            author_name: data.author,
+            content: data.content,
+            updated_at: new Date().toISOString()
         }
 
-        const { content, ...frontmatter } = data
-        const fileContent = matter.stringify(content, frontmatter)
+        const { error } = await supabase
+            .from('blogs')
+            .upsert(dbData, { onConflict: 'slug' })
 
-        const filePath = path.join(contentDir, `${slug}.md`)
-        fs.writeFileSync(filePath, fileContent, 'utf8')
+        if (error) throw error
 
         revalidatePath('/blog')
-        revalidatePath(`/blog/${slug}`)
+        revalidatePath(`/blog/${finalSlug}`)
         revalidatePath('/admin/blog')
 
-        return { success: true }
+        return { success: true, slug: finalSlug }
     } catch (error) {
         console.error('Error saving post:', error)
         return { success: false, error: 'Failed to save post' }
@@ -61,17 +79,16 @@ export async function submitForReview(slug: string) {
 
 async function updateStatus(slug: string, status: BlogStatus, rejectionReason?: string) {
     try {
-        const filePath = path.join(contentDir, `${slug}.md`)
-        if (!fs.existsSync(filePath)) return { success: false, error: 'Post not found' }
+        const { error } = await supabase
+            .from('blogs')
+            .update({ 
+                status, 
+                rejection_reason: rejectionReason,
+                updated_at: new Date().toISOString()
+            })
+            .eq('slug', slug)
 
-        const raw = fs.readFileSync(filePath, 'utf8')
-        const { data, content } = matter(raw)
-
-        data.status = status
-        if (rejectionReason) data.rejectionReason = rejectionReason
-        else delete data.rejectionReason
-
-        fs.writeFileSync(filePath, matter.stringify(content, data), 'utf8')
+        if (error) throw error
 
         revalidatePath('/blog')
         revalidatePath(`/blog/${slug}`)
@@ -107,8 +124,12 @@ export async function uploadImage(formData: FormData) {
 
 export async function deletePost(slug: string) {
     try {
-        const filePath = path.join(contentDir, `${slug}.md`)
-        if (fs.existsSync(filePath)) fs.unlinkSync(filePath)
+        const { error } = await supabase
+            .from('blogs')
+            .delete()
+            .eq('slug', slug)
+
+        if (error) throw error
 
         revalidatePath('/blog')
         revalidatePath('/admin/blog')

@@ -4,10 +4,10 @@ import { Plus } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import BlogTable from '@/components/admin/BlogTable'
 
-export default function BlogAdminDashboard() {
-    const posts = getAllPostsForAdmin()
-    const pendingCount = posts.filter(p => p.frontmatter.status === 'pending').length
-    const approvedCount = posts.filter(p => !p.frontmatter.status || p.frontmatter.status === 'approved').length
+export default async function BlogAdminDashboard() {
+    const posts = await getAllPostsForAdmin()
+    const pendingCount = posts.filter(p => p.status === 'pending').length
+    const approvedCount = posts.filter(p => p.status === 'approved').length
 
     return (
         <div className="space-y-8">
@@ -42,7 +42,7 @@ export default function BlogAdminDashboard() {
                 <div className="bg-white p-8 rounded-[2rem] border border-gray-100 shadow-sm">
                     <div className="text-gray-400 font-black text-xs uppercase tracking-widest mb-1">Featured</div>
                     <div className="text-4xl font-black text-gray-900 italic">
-                        {posts.filter(p => p.frontmatter.featured).length}
+                        {posts.filter(p => p.featured).length}
                     </div>
                 </div>
             </div>

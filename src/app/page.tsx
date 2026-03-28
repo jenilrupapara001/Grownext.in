@@ -7,8 +7,8 @@ export const metadata = {
   keywords: ['Alibaba Channel Partner India', 'Alibaba Partner Gujarat', 'Sell on Alibaba', 'Export from India', 'B2B Lead Generation'],
 }
 
-export default function HomePage() {
-  const posts = getAllPosts()
+export default async function HomePage() {
+  const posts = await getAllPosts()
 
   // Return the client component with the fetched posts
   return <HomeClient latestPosts={posts} />

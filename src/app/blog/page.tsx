@@ -8,9 +8,9 @@ export const metadata = {
     keywords: ['export insights', 'global selling guides', 'Alibaba.com tips', 'Indian exporter blog', 'B2B marketing strategies'],
 }
 
-export default function BlogIndex() {
+export default async function BlogIndex() {
     // Fetch posts on the server
-    const posts = getAllPosts()
+    const posts = await getAllPosts()
 
     return <BlogClient initialPosts={posts} />
 }

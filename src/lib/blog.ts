@@ -1,68 +1,86 @@
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
-
-const contentDir = path.join(process.cwd(), 'src/content/blog')
+import { supabase } from './supabase'
 
 export type BlogStatus = 'draft' | 'pending' | 'approved' | 'rejected'
 
-export type BlogPostFrontmatter = {
+export type BlogPost = {
+    id?: string
+    slug: string
     title: string
     desc: string
     category: string
     time: string
     date: string
     image: string
-    featured?: boolean
-    status?: BlogStatus
-    author?: string
-    rejectionReason?: string
-}
-
-export type BlogPost = {
-    slug: string
-    frontmatter: BlogPostFrontmatter
+    featured: boolean
+    status: BlogStatus
+    author: string
+    rejection_reason?: string
     content: string
+    created_at?: string
+    updated_at?: string
 }
 
-/** Public-facing: only returns approved posts (or posts with no status = legacy approved) */
-export function getAllPosts(): BlogPost[] {
-    if (!fs.existsSync(contentDir)) {
-        fs.mkdirSync(contentDir, { recursive: true })
+/** Public-facing: only returns approved posts */
+export async function getAllPosts(): Promise<BlogPost[]> {
+    const { data, error } = await supabase
+        .from('blogs')
+        .select('*')
+        .eq('status', 'approved')
+        .order('publish_date', { ascending: false })
+
+    if (error) {
+        console.error('Error fetching blogs:', error)
         return []
     }
 
-    return fs.readdirSync(contentDir)
-        .filter((f) => f.endsWith('.md'))
-        .map((fileName) => {
-            const slug = fileName.replace('.md', '')
-            const { data, content } = matter(fs.readFileSync(path.join(contentDir, fileName), 'utf8'))
-            return { slug, frontmatter: data as BlogPostFrontmatter, content }
-        })
-        .filter((p) => !p.frontmatter.status || p.frontmatter.status === 'approved')
-        .sort((a, b) => (new Date(a.frontmatter.date) > new Date(b.frontmatter.date) ? -1 : 1))
+    return (data || []).map(mapDbToBlogPost)
 }
 
 /** Admin-facing: returns ALL posts regardless of status */
-export function getAllPostsForAdmin(): BlogPost[] {
-    if (!fs.existsSync(contentDir)) return []
+export async function getAllPostsForAdmin(): Promise<BlogPost[]> {
+    const { data, error } = await supabase
+        .from('blogs')
+        .select('*')
+        .order('publish_date', { ascending: false })
 
-    return fs.readdirSync(contentDir)
-        .filter((f) => f.endsWith('.md'))
-        .map((fileName) => {
-            const slug = fileName.replace('.md', '')
-            const { data, content } = matter(fs.readFileSync(path.join(contentDir, fileName), 'utf8'))
-            return { slug, frontmatter: data as BlogPostFrontmatter, content }
-        })
-        .sort((a, b) => (new Date(a.frontmatter.date) > new Date(b.frontmatter.date) ? -1 : 1))
+    if (error) {
+        console.error('Error fetching blogs for admin:', error)
+        return []
+    }
+
+    return (data || []).map(mapDbToBlogPost)
 }
 
-export function getPostBySlug(slug: string): BlogPost | null {
-    try {
-        const fullPath = path.join(contentDir, `${slug}.md`)
-        const { data, content } = matter(fs.readFileSync(fullPath, 'utf8'))
-        return { slug, frontmatter: data as BlogPostFrontmatter, content }
-    } catch {
+export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
+    const { data, error } = await supabase
+        .from('blogs')
+        .select('*')
+        .eq('slug', slug)
+        .maybeSingle()
+
+    if (error || !data) {
         return null
+    }
+
+    return mapDbToBlogPost(data)
+}
+
+function mapDbToBlogPost(dbPost: any): BlogPost {
+    return {
+        id: dbPost.id,
+        slug: dbPost.slug,
+        title: dbPost.title,
+        desc: dbPost.description,
+        category: dbPost.category,
+        time: dbPost.reading_time,
+        date: dbPost.publish_date,
+        image: dbPost.image_url,
+        featured: dbPost.is_featured,
+        status: dbPost.status,
+        author: dbPost.author_name,
+        rejection_reason: dbPost.rejection_reason,
+        content: dbPost.content,
+        created_at: dbPost.created_at,
+        updated_at: dbPost.updated_at
     }
 }

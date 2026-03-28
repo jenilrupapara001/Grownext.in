@@ -9,20 +9,21 @@ import { Button } from '@/components/ui/button'
 import { getAllPosts, getPostBySlug } from '@/lib/blog'
 
 export async function generateStaticParams() {
-    const posts = getAllPosts()
+    const posts = await getAllPosts()
     return posts.map((post) => ({
         slug: post.slug,
     }))
 }
 
 export async function generateMetadata({ params }: { params: { slug: string } }) {
-    const post = getPostBySlug(params.slug)
+    const { slug } = await params
+    const post = await getPostBySlug(slug)
     if (!post) {
         return { title: 'Post Not Found' }
     }
 
-    const title = `${post.frontmatter.title} | Grownext Blog`
-    const description = post.frontmatter.desc
+    const title = `${post.title} | Grownext Blog`
+    const description = post.desc
     const url = `https://grownext.in/blog/${post.slug}`
 
     return {
@@ -36,14 +37,14 @@ export async function generateMetadata({ params }: { params: { slug: string } })
             description,
             url,
             type: 'article',
-            publishedTime: post.frontmatter.date,
+            publishedTime: post.date,
             authors: ['Grownext'],
             images: [
                 {
-                    url: post.frontmatter.image || '/og-image.png',
+                    url: post.image || '/og-image.png',
                     width: 1200,
                     height: 630,
-                    alt: post.frontmatter.title,
+                    alt: post.title,
                 },
             ],
         },
@@ -51,13 +52,14 @@ export async function generateMetadata({ params }: { params: { slug: string } })
             card: 'summary_large_image',
             title,
             description,
-            images: [post.frontmatter.image || '/og-image.png'],
+            images: [post.image || '/og-image.png'],
         },
     }
 }
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-    const post = getPostBySlug(params.slug)
+export default async function BlogPost({ params }: { params: { slug: string } }) {
+    const { slug } = await params
+    const post = await getPostBySlug(slug)
 
     if (!post) {
         notFound()
@@ -75,33 +77,35 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
 
                     <div className="flex flex-wrap items-center gap-3 md:gap-4 mb-6">
                         <span className="bg-primary/10 text-primary px-3 md:px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest">
-                            {post.frontmatter.category}
+                            {post.category}
                         </span>
                         <span className="flex items-center gap-1.5 md:gap-2 text-gray-500 text-xs md:text-sm font-bold">
                             <CalendarDays className="h-4 w-4" />
-                            Published: {post.frontmatter.date}
+                            Published: {post.date}
                         </span>
                         <span className="flex items-center gap-1.5 md:gap-2 text-gray-500 text-xs md:text-sm font-bold">
                             <Clock className="h-4 w-4" />
-                            {post.frontmatter.time}
+                            {post.time}
                         </span>
                     </div>
 
                     <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-[1.1] mb-6 md:mb-8">
-                        {post.frontmatter.title}
+                        {post.title}
                     </h1>
 
                     <p className="text-xl text-gray-600 font-medium leading-relaxed mb-12">
-                        {post.frontmatter.desc}
+                        {post.desc}
                     </p>
 
                     <div className="relative h-[400px] md:h-[500px] w-full rounded-[2.5rem] overflow-hidden shadow-2xl border border-gray-100">
-                        <Image
-                            src={post.frontmatter.image}
-                            alt={post.frontmatter.title}
-                            fill
-                            className="object-cover"
-                        />
+                        {post.image && (
+                            <Image
+                                src={post.image}
+                                alt={post.title}
+                                fill
+                                className="object-cover"
+                            />
+                        )}
                     </div>
                 </div>
             </section>
@@ -111,9 +115,14 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
                 <div className="max-w-3xl mx-auto bg-white rounded-[3rem] p-8 md:p-16 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.05)] border border-gray-100">
 
                     <article className="prose prose-lg md:prose-xl prose-gray max-w-none prose-headings:font-black prose-h2:text-3xl prose-h3:text-2xl prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-p:leading-relaxed">
-                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                            {post.content}
-                        </ReactMarkdown>
+                        {/* If TipTap content is HTML, we should render it as HTML */}
+                        {post.content.startsWith('<') ? (
+                            <div dangerouslySetInnerHTML={{ __html: post.content }} />
+                        ) : (
+                            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                {post.content}
+                            </ReactMarkdown>
+                        )}
                     </article>
 
                     {/* Inline Conversion CTA */}

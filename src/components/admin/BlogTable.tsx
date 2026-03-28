@@ -49,7 +49,7 @@ export default function BlogTable({ posts }: { posts: BlogPost[] }) {
                 </thead>
                 <tbody className="divide-y divide-gray-50">
                     {posts.map((post) => {
-                        const status = post.frontmatter.status || 'approved'
+                        const status = post.status
                         const sc = statusConfig[status] ?? statusConfig.draft
                         const isPendingPost = status === 'pending'
 
@@ -58,16 +58,16 @@ export default function BlogTable({ posts }: { posts: BlogPost[] }) {
                                 <td className="px-8 py-5">
                                     <div className="flex items-center gap-4">
                                         <div className="h-12 w-20 relative rounded-lg overflow-hidden shrink-0 border border-gray-100">
-                                            <Image src={post.frontmatter.image} alt={post.frontmatter.title} fill className="object-cover" />
+                                            {post.image && <Image src={post.image} alt={post.title} fill className="object-cover" />}
                                         </div>
                                         <div>
-                                            <div className="font-extrabold text-gray-900">{post.frontmatter.title}</div>
+                                            <div className="font-extrabold text-gray-900">{post.title}</div>
                                             <div className="text-xs text-gray-400 font-medium">/{post.slug}</div>
-                                            {post.frontmatter.author && (
-                                                <div className="text-xs text-gray-400 font-medium mt-0.5">by {post.frontmatter.author}</div>
+                                            {post.author && (
+                                                <div className="text-xs text-gray-400 font-medium mt-0.5">by {post.author}</div>
                                             )}
-                                            {status === 'rejected' && post.frontmatter.rejectionReason && (
-                                                <div className="text-xs text-red-500 font-medium mt-1">↳ {post.frontmatter.rejectionReason}</div>
+                                            {status === 'rejected' && post.rejection_reason && (
+                                                <div className="text-xs text-red-500 font-medium mt-1">↳ {post.rejection_reason}</div>
                                             )}
                                         </div>
                                     </div>
@@ -81,13 +81,13 @@ export default function BlogTable({ posts }: { posts: BlogPost[] }) {
                                 <td className="px-8 py-5">
                                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gray-100 text-[10px] font-black text-gray-600 uppercase tracking-wider">
                                         <Tag className="h-3 w-3" />
-                                        {post.frontmatter.category}
+                                        {post.category}
                                     </span>
                                 </td>
                                 <td className="px-8 py-5">
                                     <div className="flex items-center gap-2 text-sm font-bold text-gray-500">
                                         <Calendar className="h-4 w-4" />
-                                        {post.frontmatter.date}
+                                        {post.date}
                                     </div>
                                 </td>
                                 <td className="px-8 py-5 text-right">
